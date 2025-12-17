@@ -448,7 +448,7 @@ function sectionMoveInit() {
     const id = $(this).attr('href').replace('#', '');
     if ($(`#${id}`).length > 0) {
       let posY = $(`#${id}`).offset().top - 57;
-      if ($(this).index() === 1) posY = 155;
+      if ($(this).index() === 1) posY = 0;
       $('html, body').animate({ scrollTop: posY }, 300);
     }
   });
