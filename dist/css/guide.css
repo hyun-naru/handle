@@ -2,12 +2,40 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 0.5rem;
   height: 3.125rem;
   border-bottom: 0.0625rem solid #ddd;
 }
+.guide_location div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 0.0625rem;
+  height: 100%;
+}
+.guide_location div::after {
+  content: "";
+  display: inline-block;
+  height: 1rem;
+  width: 0.0625rem;
+  background: #ddd;
+}
 .guide_location a {
   font-size: 1.25rem;
+}
+.section + * {
+  margin-top: 2.5rem;
+}
+.tit01 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #00a2ff;
 }
 .compWrap h2 {
   display: -webkit-box;
@@ -17,6 +45,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 1.75rem;
+  font-weight: 700;
 }
 .compWrap h2 .guideCopyBtn {
   width: 1.875rem;
@@ -28,6 +58,9 @@
   background-position: center;
   background-size: 1.25rem;
   border-radius: 50%;
+}
+.compWrap + * {
+  margin-top: 1.25rem;
 }
 .alert_wrap {
   position: fixed;

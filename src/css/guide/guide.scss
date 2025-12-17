@@ -1,18 +1,46 @@
 
 .guide_location {
+    position: sticky;
+    top: 0;
+    left: 0;
     display: flex;
+    align-items: center;
     gap: 8px;
     height: 50px;
+    background: $white;
     border-bottom: 1px solid $border-color1;
+    div {
+        display: flex;
+        align-items: center;
+        width: 1px;
+        height: 100%;
+        &::after {
+            content:'';
+            display: inline-block;
+            height: 16px;
+            width: 1px;
+            background: $border-color1;
+        }
+    }
     a {
         font-size: 20px;
     }
+}
+.section + * {
+    margin-top: 40px;
+}
+.tit01 {
+    font-size: 36px;
+    font-weight: 700;
+    color: $primary-color1;
 }
 .compWrap {
     h2 {
         display: flex;
         gap: 8px;
         align-items: center;
+        font-size: 28px;
+        font-weight: 700;
         .guideCopyBtn {
             width: 30px;
             height: 30px;
@@ -24,6 +52,9 @@
             background-size: 20px;
             border-radius: 50%;
         }
+    }
+    + * {
+        margin-top: 20px;
     }
 }
 .alert_wrap {

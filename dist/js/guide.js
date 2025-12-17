@@ -439,7 +439,7 @@ function sectionMoveInit() {
   getSeiction();
   sectionArry.forEach(([id, title], i) => {
     const txt = title.replace('Guide', '');
-    $('.guide_location').append(`<a href="#${id}" class="guide_list">${txt}</a>`);
+    $('.guide_location').append(`<div></div><a href="#${id}" class="guide_list">${txt}</a>`);
   });
 
   // 클릭 시 섹션 이동

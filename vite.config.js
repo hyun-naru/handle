@@ -73,9 +73,9 @@ const getContexts = dir => {
 const pageData = getContexts('src');
 
 const replaceMap = {
-  '/css/reset.css': '../../../css/reset.css',
-  '/css/common.css': '../../../css/common.css',
-  '/css/guide.css': '../../../css/guide.css',
+  '/css/reset.css': '../../css/reset.css',
+  '/css/common.css': '../../css/common.css',
+  '/css/guide.css': '../../css/guide.css',
 };
 
 export default defineConfig({
