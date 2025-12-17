@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<title>하나생명 FileList</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<style>
+/* reset */
+html,body{width:100%;height:100%;min-height:100%;}
+body,object,iframe,
+h1,h2,h3,h4,h5,h6,div,span,p,blockquote,pre,abbr,acronym,address,cite,code,del,dfn,em,img,figure,
+ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,
+form,fieldset,legend,a,textarea,option,button,label,table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{
+	margin:0;padding:0;border:0;outline:0;background:transparent;-webkit-box-sizing:border-box;box-sizing:border-box;-moz-box-sizing:border-box;
+	-webkit-appearance:none;appearance:none;-ms-appearance:none;-moz-appearance:none;resize:none;outline:0;
+	-webkit-text-size-adjust:none;word-break:break-all;-webkit-tap-highlight-color:rgba(0,0,0,0); 
+}
+input,select {margin:0;padding:0;font-size:12px;font-family:'NotoSansR', "맑은 고딕", "돋움", Dotum, Apple SD GothicNeo ,Droid Sans, arial, sans-serif;-webkit-box-sizing:border-box;box-sizing:border-box;-moz-box-sizing:border-box;}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {display:block;}
+body {min-width:1000px;font-size:12px;font-family:'NotoSansR', "맑은 고딕", "돋움", Dotum, Apple SD Gothi Neo ,Droid Sans, arial, sans-serif;}
+
+a{color:#000; text-decoration:none;}
+a:hover {color:#194d90; text-decoration:underline;}
+a, img {border:none;}
+em {font-style:normal;}
+ol, ul{list-style:none;}
+
+
+/* common */
+.header {position:relative; overflow:hidden;}
+.header h1{text-align:center;}
+.header h1 span{display:inline-block; width:181px; height:49px; -webkit-border-radius:5px; border-radius:5px; font-size:0; color:#fff; background: url("guide_img/h1_logo.png") no-repeat 0 0 ; }
+.header p {margin-top:2px; font-weight:normal !important; font-size:14px; color:#666; text-align:center;}
+.header p span {color:red;}
+.header #information {position:absolute; right:0; top:25px; margin-left:100px; font-size:14px; font-weight:bold;}
+
+table {width:100%; border-collapse:collapse; border-spacing:0; border-bottom:1px solid #ccc;}
+table caption, fieldset legend{overflow:hidden;z-index:-1;width:0;height:0;font-size:0;line-height:0;text-indent:-9999999px;}
+th {padding:5px 0; color:#666; background:#f3f3f3; border-top:1px solid #e1e1e1; border-left:1px solid #e1e1e1;}
+td {padding:7px 5px; border-top:1px solid #e1e1e1; border-left:1px solid #e1e1e1; line-height:16px;}
+tr:first-child td {border-top:1px solid #6995c0;}
+th:first-child, td:first-child {border-left:0;}
+td:first-child,
+td:nth-child(2) {font-weight:bold;}
+
+td > ul {margin:0; padding-left:20px;}
+td a {color:#000; text-decoration:none;}
+table tr th select {width:60px;padding:3px; margin:10px 0 0;border:1px solid #e1e1e1;appearance:select;-webkit-appearance: select;-moz-appearance:select;}
+table tr th select.selectDepth {width:120px;}
+table tbody tr.on th,
+table tbody tr.on td {background:#f5f5f7 !important;}
+
+.overlay{position:absolute; top:0; left:0; display:none; width:100%; height:auto !important; height:100%; min-height:100%; background-color: rgba(0, 0, 0, 0.5); z-index:1; zoom:1;}
+.wrapper{padding:20px 20px 40px;}
+.menuWrap{position:relative;margin-top:10px;padding-top:50px;}
+.menu, .menu table{width:100%;}
+
+.menu>dt{position:absolute;top:0;width:10%;}
+.menu>dt a{display:block;height:50px;line-height:50px;text-align:center;cursor:pointer;border:1px solid #ccc;border-left:0;}
+.menu>dt:first-child a {border-left:1px solid #ccc;}
+.menu>dt.selected a {margin-top:0;background:#000; color:#fff; border-color:#000;}
+.menu dt.selected + dd {display: block;}
+.menu>dt a.tm{border-left:1px solid #CCC;}
+.menu>dt.tm1 a{border-left:1px solid #CCC;}
+.menu>dt.tm1 a.selected{border-left:1px solid #f32e7d;}
+.tm2{left:10%;}
+.tm3{left:20%;}
+.tm4{left:30%;}
+.tm5{left:40%;}
+.viewAll{right:0;}
+.menu>dd{display:none;margin-top:-1px;padding:20px 0;border-top:1px solid #ccc;}
+
+.alignC {text-align:center;}
+.hold td, .hold{background:#DDC8DA}
+.del td, .del{background:#999; text-decoration:line-through;}
+.ing td, .ing{background:#FC6;}
+.link td, .link {background:#b7cedf;}
+.noHtml td, .noHtml{background:#bad8ba;}
+.line{border-left:1px solid #f6f6f6 !important;}
+.red {color:#c8212f;}
+.sIcon{display:inline-block; width:20px; height:13px;vertical-align:middle;}
+
+.btn{display:inline-block;padding:3px 5px;font-size:11px;text-align:center;letter-spacing:-1px;color:#fff; color: #892997;background-color: #f4eefc;}
+.btn.off {color: #b90b0b;background-color: #feeeee;}
+.btn.end {color: #5f8b33;background-color: #eaf5e1;}
+.btn.mdy {color: #f2ac1a;background-color: #fffbe5;}
+
+.siteInfo{display:table; width:100%;}
+.siteInfo dt{display:table-cell; width:10%; min-width:120px;  padding:15px; border:1px solid #999; background:#000; color:#fff; font-weight:bold; letter-spacing:-1px; text-align:center; vertical-align:middle;}
+.siteInfo dd{display:table-cell;  padding:15px 10px; border:1px solid #ccc; border-right:0; border-left:0;}
+
+#toTop{display:none; position:fixed; bottom:0; width:100%;}
+#toTop a{display:block; padding:9px 10px; text-align:center; background:#333; color:#fff;}
+.dashList {padding-left:0;}
+.dashList > li {padding-left:9px; font-size:12px; line-height:130%;background:url('/images/common/blt/blt_dashedM.png') no-repeat 0 6px; background-size:5px 1px;}
+.old, .old.on td, .old td a {background: #c2eeff !important;}
+.move, .move.on td, .move td a {background: #aa893a !important; color: #fff !important;}
+.previewIframe{display:none; position:fixed; left:0; background:#fff; border:1px solid #000; z-index:999; top:0; width:360px; height:100%;}
+		
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<h1>Front-end Web developer Worksheet</h1>
+		<p>※ 파일은 <span>크롬, 파이어폭스, ie9이상, 사파리등 표준 브라우저에 최적화</span>되어있습니다.</p>
+		<br><br>
+		<dl class="siteInfo">
+			<dt>진행상황</dt>
+			<dd>전체페이지 : <span id="total" class="btn"></span> 진척율 : <span id="persent" class="btn off"></span> 작업완료 : <span id="ok-page" class="btn end"></span> 수정 : <span id="mdy" class="btn mdy"></span>
+		</dl>
+	</div>
+	<div class="menuWrap">
+		<dl class="menu">
+			<dt class="selected"><a href="#none">페이지</a></dt>
+			<dd>
+				<table class="js-menu-table">
+					<caption></caption>
+					<colgroup>
+						<col style="width:180px" />
+						<col style="width:200px" />
+						<col style="width:200px" />
+						<col style="width:200px" />
+						<col style="width:300px" />
+						<col style="width:70px" />
+						<col style="width:70px" />
+						<col style="width:70px" />
+						<col style="width:300px" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th class="depth1">D1<br><select class="js-depth1"></select></th>
+							<th class="depth2">D2<br><select class="js-depth2"></select></th>
+							<th class="depth3">D3</th>
+							<th>팝업</th>
+							<th class="url">URL(파일명)</th>
+							<th class="owner"><br>담당자<br><select class="js-owner"></select></th>
+							<th class="ed-date"><br>완료일<br><select class="js-ed-date"></select></th>
+							<th class="md-date"><br>수정일<br><select class="js-md-date"></select></th>
+							<th>비고</th>
+						</tr>
+					</thead>
+					<tbody class="">
+						<tr>
+							<td>모바일 창구 메인</td>
+							<td>마이페이지</td>
+							<td></td>
+							<td></td>
+							<td>
+								<a href="/html/index.html" target="_blank">
+									/html/index.html
+								</a>
+							</td>
+							<td class="alignC"><span>아무개</span></td>
+							<td class="alignC"><span class="btn end">05-21</span></td>
+							<td class="alignC"><span class="btn mdy">05-22</span></td>
+							<td>
+								<ul class="dashList">
+									<li></li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>마이페이지2</td>
+							<td></td>
+							<td></td>
+							<td>
+								<a href="/html/index2.html" target="_blank">
+									/html/index2.html
+								</a>
+							</td>
+							<td class="alignC"><span>아무개</span></td>
+							<td class="alignC"><span class="btn end">05-22</span></td>
+							<td class="alignC"><span class="btn mdy">05-22</span></td>
+							<td>
+								<ul class="dashList">
+									<li></li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td>모바일 창구 메인</td>
+							<td>마이페이지</td>
+							<td></td>
+							<td></td>
+							<td>
+								<a href="/html/index.html" target="_blank">
+									/html/index.html
+								</a>
+							</td>
+							<td class="alignC"><span>아무개</span></td>
+							<td class="alignC"><span class="btn"></span></td>
+							<td class="alignC"><span class="btn"></span></td>
+							<td>
+								<ul class="dashList">
+									<li></li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</dd>
+			<!-- ------------------------------------------------------가이드/공통 ----------------------------------------------------------------------- -->
+			<dt class="tm2"><a href="#none">가이드/공통</a></dt>
+			<dd>
+				<table class="js-menu-table duide">
+					<caption>하나생명 가이드/ 공통 진행사항</caption>
+					<colgroup>
+						<col style="width:180px" />
+						<col style="width:200px" />
+						<col style="width:200px" />
+						<col style="width:200px" />
+						<col style="width:300px" />
+						<col style="width:70px" />
+						<col style="width:70px" />
+						<col style="width:300px" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th class="depth1">D1<br><select class="js-depth1"></select></th>
+							<th class="depth2">D2<br><select class="js-depth2"></select></th>
+							<th class="depth3">D3</th>
+							<th>팝업</th>
+							<th>URL(파일명)</th>
+							<th class="ed-date"><br>완료일<br><select class="js-ed-date"></select></th>
+							<th class="md-date"><br>수정일<br><select class="js-md-date"></select></th>
+							<th>비고</th>
+						</tr>
+					</thead>
+					<tbody class="sum">
+						<tr class="sec">
+							<td>가이드</td>
+							<td>layout</td>
+							<td></td>
+							<td><a href="layout.html" target="_blank">layout.html</a></td>
+							<td></td>
+							
+							<td class="alignC"><!-- <span class="btn mdy">0-0</span> --></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>header</td>
+							<td></td>
+							<td><a href="header.html" target="_blank">header.html</a></td>
+							<td></td>
+							
+							<td class="alignC"><!-- <span class="btn mdy">0-0</span> --></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>layer popup</td>
+							<td>(type1, type2, type3)</td>
+							<td><a href="layerPopup.html" target="_blank">layerPopup.html</a></td>
+							<td></td>
+							
+							<td class="alignC"><!-- <span class="btn mdy">0-0</span> --></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>공통</td>
+							<td></td>
+							<td><a href="common.html" target="_blank">common.html</a></td>
+							<td></td>
+							
+							<td class="alignC"><!-- <span class="btn mdy">0-0</span> --></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>게시판</td>
+							<td></td>
+							<td><a href="board.html" target="_blank">board.html</a></td>
+							<td></td>
+							
+							<td class="alignC"><!-- <span class="btn mdy">0-0</span> --></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</dd>
+		</dl>
+
+	</div>
+
+</div>
+
+
+
+<script type="text/javascript" src="/js/libs/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="/guide/js/guide_jq.js"></script>
+<!-- <script type="text/javascript" src="/guide/js/guide.js"></script> -->
+<script type="text/javascript">
+$(document).ready(() => {
+	$('table tr').bind('mouseover',function(){$(this).addClass('on')});
+	$('table tr').bind('mouseout',function(){$(this).removeClass('on')});
+});
+</script>
+</body>
+</html>

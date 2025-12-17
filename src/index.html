@@ -1,0 +1,446 @@
+{{#> layout/guide indexList=true }}
+	<header><h1><em>코딩 샘플링 - GUIDE</em>, Front-end Web developer Worksheet</h1></header>
+	<!-- noticeWrap -->
+	<section class="noticeWrap">
+		<h2>Notice</h2>
+		<ul>
+			<li>Undone: 작업중 , Done: 코딩완료, Modify: 코딩 완료 후 HTML수정, Delete: 코딩 완료 후 삭제</li>
+		</ul>
+	</section>
+	<!-- //noticeWrap -->
+	<!-- filterWrap -->
+	<section class="filterWrap">
+		<h2>Task Key/Filter</h2>
+		<form action="/">
+			<fieldset>
+				<legend>Filter option(It'll be automatically applied)</legend>
+				<label><input type="checkbox" value="all">All</label>
+				<label><input type="checkbox"><b>1</b><i>Undone</i></label>
+				<label><input type="checkbox"><b>2</b><i>Done</i></label>
+				<label><input type="checkbox"><b>3</b><i>Modify</i></label>
+				<label><input type="checkbox"><b>4</b><i>Delete</i></label>
+			</fieldset>
+		</form>
+	</section>
+	<!-- //filterWrap -->
+	<!-- Worksheet -->
+	<section>
+		<h2>Worksheet: Mobile</h2>
+		<h3>가이드</h3>
+		<table class="js-menu-table">
+			<!-- caption : 경로입력 -->
+			<caption>html/guide</caption>
+			<thead>
+				<tr>
+					<th scope="col" class="menuDepth depth1">Depth1<select class="js-depth1"></select></th>
+					<th scope="col" class="menuDepth depth2">Depth2<select class="js-depth2"></select></th>
+					<th scope="col" class="menuDepth depth3">Depth3</th>
+					<th scope="col" class="menuDepth">Depth4</th>
+					<th scope="col" class="menuDepth">Depth5</th>
+					<th scope="col" class="fileName url">File Name/ID</th>
+					<th scope="col" class="owner">담당자<br><select class="js-owner"></select></th>
+					<th scope="col" class="dueDate day-date">완료예정일<br><select class="js-day-date"></select></th>
+					<th scope="col" class="ed-date">완료일<br><select class="js-ed-date"></select></th>
+					<th scope="col" class="md-date">수정일<br><select class="js-md-date"></select></th>
+					<th scope="col" class="issueMemo">Issue/Memo</th>
+					<th scope="col" class="checkTask">Task</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="menuDepth">가이드</td>
+					<td class="menuDepth">팝업 가이드</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">popup.html</td>
+					<td class=""><span>아무개</span></td>
+					<td class="dueDate"><span>25-11-11</span></td>
+					<td><span>25-11-11</span></td>
+					<td><span>26-11-12</span></td>
+					<td class="issueMemo"></td>
+					<td class="checkTask"></td>
+				</tr>
+				<tr>
+					<td class="menuDepth"></td>
+					<td class="menuDepth">메인, MY보험, 변액 레이아웃</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">layout.html</td>
+					<td class=""><span>아무개2</span></td>
+					<td class="dueDate"><span>25-11-11</span></td>
+					<td><span>26-11-11</span></td>
+					<td><span></span></td>
+					<td class="issueMemo">
+					</td>
+					<td class="checkTask"></td>
+				</tr>
+				<tr>
+					<td class="menuDepth"></td>
+					<td class="menuDepth">기본 레이아웃</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">layout2.html</td>
+					<td class=""><span>아무개2</span></td>
+					<td class="dueDate"><span>25-12-16</span></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td class="issueMemo">
+					</td>
+					<td class="checkTask"></td>
+				</tr>
+				<tr>
+					<td class="menuDepth"></td>
+					<td class="menuDepth">보험금 청구 레이아웃</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">layout3.html</td>
+					<td class=""><span>아무개2</span></td>
+					<td class="dueDate"><span>26-11-11</span></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td class="issueMemo">
+					</td>
+					<td class="checkTask"></td>
+				</tr>
+				<tr>
+					<td class="menuDepth"></td>
+					<td class="menuDepth">컴퍼넌트</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">guide.html</td>
+					<td class=""><span>아무개2</span></td>
+					<td class="dueDate"><span>25-11-11</span></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td class="issueMemo"></td>
+					<td class="checkTask"></td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<h3>PIST MAIN</h3>
+		<table class="js-menu-table">
+			<!-- caption : 경로입력 -->
+			<caption>./html</caption>
+			<thead>
+				<tr>
+					<th scope="col" class="menuDepth depth1">Depth1<select class="js-depth1"></select></th>
+					<th scope="col" class="menuDepth depth2">Depth2<select class="js-depth2"></select></th>
+					<th scope="col" class="menuDepth depth3">Depth3</th>
+					<th scope="col" class="menuDepth">Depth4</th>
+					<th scope="col" class="menuDepth">popup</th>
+					<th scope="col" class="fileName url">File Name/ID</th>
+					<th scope="col" class="owner">담당자<br><select class="js-owner"></select></th>
+					<th scope="col" class="dueDate day-date">완료예정일<br><select class="js-day-date"></select></th>
+					<th scope="col" class="ed-date">완료일<br><select class="js-ed-date"></select></th>
+					<th scope="col" class="md-date">수정일<br><select class="js-md-date"></select></th>
+					<th scope="col" class="issueMemo">Issue/Memo</th>
+					<th scope="col" class="checkTask">Task</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="menuDepth">메인</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">index.html</td>
+					<td><span></span></td>
+					<td class="dueDate"><span></span></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td class="issueMemo">
+						<ul>
+							<li>20241014 - 이지모드랑 합체</li>
+						</ul>
+					</td>
+					<td class="checkTask">3</td>
+				</tr>
+				<tr>
+					<td class="menuDepth">easy 메인</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">PR2024020_100.html</td>
+					<td><span></span></td>
+					<td class="dueDate"><span></span></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td class="issueMemo">
+						<ul>
+							<li>20240820 - 메인 롤링, 하단 버튼 수정</li>
+							<li>20240823 - 문구 수정</li>
+							<li>20240902 - 위치 변경 수정</li>
+							<li>20240927 - 배너 추가 수정</li>
+						</ul>
+					</td>
+					<td class="checkTask">2</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h3>CYBER MAIN</h3>
+		<table class="js-menu-table">
+			<!-- caption : 경로입력 -->
+			<caption>./pist/contractInfo</caption>
+			<thead>
+				<tr>
+					<th scope="col" class="menuDepth">Depth1</th>
+					<th scope="col" class="menuDepth">Depth2</th>
+					<th scope="col" class="menuDepth">Depth3</th>
+					<th scope="col" class="menuDepth">Depth4</th>
+					<th scope="col" class="menuDepth">popup</th>
+					<th scope="col" class="fileName">File Name/ID</th>
+					<th scope="col" class="owner">담당자<br><select class="js-owner"></select></th>
+					<th scope="col" class="dueDate day-date">완료예정일<br><select class="js-day-date"></select></th>
+					<th scope="col" class="ed-date">완료일<br><select class="js-ed-date"></select></th>
+					<th scope="col" class="md-date">수정일<br><select class="js-md-date"></select></th>
+					<th scope="col" class="issueMemo">Issue/Memo</th>
+					<th scope="col" class="checkTask">Task</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="menuDepth">메인</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">mypage.html</td>
+					<td><span></span></td>
+					<td class="dueDate"><span></span></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td class="issueMemo">
+						<ul>
+							<li></li>
+						</ul>
+					</td>
+					<td class="checkTask">2</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>moblie</h3>
+		<table class="js-menu-table">
+			<!-- caption : 경로입력 -->
+			<caption>./html</caption>
+			<thead>
+				<tr>
+					<th scope="col" class="menuDepth">Depth1</th>
+					<th scope="col" class="menuDepth">Depth2</th>
+					<th scope="col" class="menuDepth">Depth3</th>
+					<th scope="col" class="menuDepth">Depth4</th>
+					<th scope="col" class="menuDepth">popup</th>
+					<th scope="col" class="fileName">File Name/ID</th>
+					<th scope="col" class="owner">담당자<br><select class="js-owner"></select></th>
+					<th scope="col" class="dueDate day-date">완료예정일<br><select class="js-day-date"></select></th>
+					<th scope="col" class="ed-date">완료일<br><select class="js-ed-date"></select></th>
+					<th scope="col" class="md-date">수정일<br><select class="js-md-date"></select></th>
+					<th scope="col" class="issueMemo">Issue/Memo</th>
+					<th scope="col" class="checkTask">Task</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="menuDepth">메인</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName delete">PR2024020_100.html</td>
+					<td><span></span></td>
+					<td class="dueDate"><span></span></td>
+					<td>
+						<span>25-08-12</span>
+					</td>
+					<td>
+						<span>25-08-12</span>
+						<span>25-08-11</span>
+					</td>
+					<td class="issueMemo">
+						<ul>
+							<li></li>
+						</ul>
+					</td>
+					<td class="checkTask">4</td>
+				</tr>
+				<tr>
+					<td class="menuDepth">MY보험</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">PR2024020_200.html</td>
+					<td><span></span></td>
+					<td class="dueDate"><span></span></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td class="issueMemo">
+						<ul>
+							<li>20240902 - class명 변경</li>
+						</ul>
+					</td>
+					<td class="checkTask">2</td>
+				</tr>
+				<tr>
+					<td class="menuDepth">보험계약조회</td>
+					<td class="menuDepth">보험조회목록</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">PR2024020_300.html</td>
+					<td><span></span></td>
+					<td class="dueDate"><span></span></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td class="issueMemo">
+						<ul>
+							<li>20240820 - 탭태그, 구조, 정렬, no-data수정</li>
+							<li>20240827 - 더보기 추가</li>
+							<li>20241016 - 계약 유지 상태 표시 추가</li>
+						</ul>
+					</td>
+					<td class="checkTask">3</td>
+				</tr>
+				<tr>
+					<td class="menuDepth"></td>
+					<td class="menuDepth">보험상세조회</td>
+					<td class="menuDepth">계약자</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">PR2024020_301.html</td>
+					<td><span></span></td>
+					<td class="dueDate"><span></span></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td class="issueMemo">
+						<ul>
+							<li>20240820 - 탭태그, 제목, 정렬 수정</li>
+							<li>20240827 - 로딩 추가</li>
+							<li>20240930 - 기존 팝업 텍스트 크기 수정</li>
+							<li>20241021 - 기존 팝업 텍스트 크기 수정</li>
+						</ul>
+					</td>
+					<td class="checkTask">2</td>
+				</tr>
+				<tr>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth">피보험자</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">PR2024020_302.html</td>
+					<td><span></span></td>
+					<td class="dueDate"><span></span></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td class="issueMemo">
+						<ul>
+							<li>20240820 - 탭태그, 제목 수정</li>
+							<li>20240827 - class 추가</li>
+							<li>20240905 - class 추가</li>
+						</ul>
+					</td>
+					<td class="checkTask">2</td>
+				</tr>
+				<tr>
+					<td class="menuDepth">보험료 납입</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">PR2024020_400.html</td>
+					<td><span></span></td>
+					<td class="dueDate"><span></span></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td class="issueMemo">
+						<ul>
+							<li>20240820 - 구조, 정렬, no-data수정</li>
+							<li>20240827 - 더보기 추가</li>
+						</ul>
+					</td>
+					<td class="checkTask">2</td>
+				</tr>
+				<tr>
+					<td class="menuDepth"></td>
+					<td class="menuDepth">납입신청</td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="menuDepth"></td>
+					<td class="fileName">PR2024020_401.html</td>
+					<td><span></span></td>
+					<td class="dueDate"><span></span></td>
+					<td><span></span></td>
+					<td><span></span></td>
+					<td class="issueMemo">
+						<ul>
+							<li>20240820 - 제목, 타이틀 수정, class삭제, 은행 iunput type 추가</li>
+							<li>20240823 - 은행팝업 호출 방식 변경, 문구, 팝업 수정, 삭제</li>
+							<li>20240902 - div 닫는 위치 변경</li>
+							<li>20240927 - 셀렉트 키보드 이동 수정</li>
+							<li>20240930 - 은행 접근성 스크립트 수정(텍스트 추가)</li>
+						</ul>
+					</td>
+					<td class="checkTask">3</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+	</section>
+	<!-- //Worksheet -->
+    <style>
+        nav a {
+            letter-spacing: -1px;
+        }
+        .design {
+            text-align: center;
+        }
+        .previewIframe {
+            display:none;
+            position:fixed;  
+            top:0;
+            left:0; 
+            width:360px; 
+            height:100%;
+            background:#fff; 
+            border:1px solid #000; 
+            z-index:999; 
+        }
+        .delete{
+            text-decoration:line-through;
+        }
+        table tr td ul {
+            margin-block: 0; 
+            padding-inline-start: 20px;
+        }
+        select {
+            display: block;
+            margin: 4px auto 0;
+            padding: 4px;
+            min-width: 60px;
+            line-height: 28px;
+            height: 28px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+	<script>
+		/* User script(setting) */
+		$(function() {
+			$('body').feWorksheet({
+				// Options
+			});			
+			$('.delete a').removeAttr('href').attr('disabled');
+		});
+	</script>
+{{/ layout/guide }}

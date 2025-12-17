@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+        {{> layout/head}}
+        
+        {{#if indexList }}
+        <link rel="stylesheet" href="/guide/css/libs/_feWorksheet.min.css">
+        <script src="/guide/js/libs/feWorksheet.js"></script>
+        {{/if}}
+        <script src="/guide/js/guide.js"></script>
+        {{#if guide }}
+        <link rel="stylesheet" href="/css/guide.css">
+        {{/if}}
+	</head>
+  <body>
+    {{> @partial-block }}
+  </body>
+</html>

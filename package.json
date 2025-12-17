@@ -1,0 +1,24 @@
+{
+  "name": "handle-markup",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.4.38",
+    "postcss-pxtorem": "^6.1.0",
+    "sass": "^1.75.0",
+    "vite": "^5.4.2",
+    "vite-plugin-full-reload": "^1.2.0",
+    "vite-plugin-handlebars": "^2.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "Firefox ESR"
+  ]
+}
