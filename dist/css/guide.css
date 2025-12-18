@@ -31,15 +31,18 @@
   background: #ddd;
 }
 .guide_location a {
-  font-size: 1.25rem;
+  font-size: 1rem;
+}
+.section {
+  padding: 2rem 1.25rem 0;
 }
 .section + * {
   margin-top: 2.5rem;
+  border-top: 0.0625rem solid #ddd;
 }
 .tit01 {
   font-size: 2.25rem;
   font-weight: 700;
-  color: #00a2ff;
 }
 .compWrap h2 {
   display: -webkit-box;
