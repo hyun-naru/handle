@@ -81,7 +81,6 @@ const replaceMap = {
 export default defineConfig({
   root: 'src',                    // 개발 소스 루트 경로
   publicDir: '../public',         // 정적 파일 경로 (파빌릭 에셋들 위치)
-
   build: {
     outDir: '../dist',            // 빌드 출력 경로 (프로젝트 루트 기준)
     emptyOutDir: true,            // 빌드 전 dist 비우기
