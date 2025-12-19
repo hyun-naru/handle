@@ -1,63 +1,62 @@
 {{#> layout/guide guide=true }}
-    <div class="guide_location"></div>
-    <div class="section" id="titleGuide">
-        <h1 class="tit01">title Guide</h1>
-    </div>
-    <div class="section" id="formGuide">
-        <h1 class="tit01">Form Guide</h1>
-
-        <h2 class="tit02">input - Basic</h2>
-        <div class="guideComponent">
-            <input type="text" class="ipt" placeholder="placeholder">
-            <input type="text" class="ipt noCopy" value="value">
-            <input type="text" class="ipt noCopy" readonly value="readonly">
-            <input type="text" class="ipt noCopy" disabled value="disabled">
+    <div class="guide_wrap">
+        <div class="guide_location">
+            <a href="../../index.html">Index</a>
         </div>
-        
-        <h2 class="tit02">Phone - Telecom + Number </h2>
-        <div class="guideComponent all">
-            <select class="ipt" title="통신사 선택">
-                <option selected disabled>통신사 선택</option>
-                <option>SK</option>
-                <option>KT</option>
-                <option>LGU+</option>
-                <option>알뜰폰 SK</option>
-                <option>알뜰폰 KT</option>
-                <option>알뜰폰 LGU+</option>
-            </select>
-            <div class="setPhone">
-                <select class="ipt" title="휴대폰번호">
-                    <option>010</option>
-                    <option>011</option>
+        <div class="section" id="titleGuide">
+            <h1 class="tit01">title Guide</h1>
+        </div>
+        <div class="section" id="formGuide">
+            <h1 class="tit01">Form Guide</h1>
+
+            <h2 class="tit02">input - Basic</h2>
+            <div class="guideComponent">
+                {{> cp/input inpId="1-1" tit="title01" }}
+            </div>
+            
+            <h2 class="tit02">Phone - Telecom + Number </h2>
+            <div class="guideComponent all">
+                <select class="ipt" title="통신사 선택">
+                    <option selected disabled>통신사 선택</option>
+                    <option>SK</option>
+                    <option>KT</option>
+                    <option>LGU+</option>
+                    <option>알뜰폰 SK</option>
+                    <option>알뜰폰 KT</option>
+                    <option>알뜰폰 LGU+</option>
                 </select>
-                <input type="tel" class="ipt" maxlength="8" placeholder="숫자만 입력">
+                <div class="setPhone">
+                    <select class="ipt" title="휴대폰번호">
+                        <option>010</option>
+                        <option>011</option>
+                    </select>
+                    <input type="tel" class="ipt" maxlength="8" placeholder="숫자만 입력">
+                </div>
             </div>
         </div>
+        <div class="section" id="checkboxGuide">
+            <h1 class="tit01">checkbox Guide</h1>
+        </div>
+        <div class="section" id="radioGuide">
+            <h1 class="tit01">radio Guide</h1>
+        </div>
+        <div class="section" id="buttonGuide">
+            <h1 class="tit01">button Guide</h1>
+        </div>
+        <div class="section" id="listGuide">
+            <h1 class="tit01">list Guide</h1>
+        </div>
+        <div class="section" id="infoGuide">
+            <h1 class="tit01">info Guide</h1>
+        </div>
+        <div class="section" id="tabGuide">
+            <h1 class="tit01">tab Guide</h1>
+        </div>
+        <div class="section" id="accordianGuide">
+            <h1 class="tit01">accordian Guide</h1>
+        </div>
+        <div class="section" id="tableGuide">
+            <h1 class="tit01">table Guide</h1>
+        </div>
     </div>
-    <div class="section" id="checkboxGuide">
-        <h1 class="tit01">checkbox Guide</h1>
-    </div>
-    <div class="section" id="radioGuide">
-        <h1 class="tit01">radio Guide</h1>
-    </div>
-    <div class="section" id="buttonGuide">
-        <h1 class="tit01">button Guide</h1>
-    </div>
-    <div class="section" id="listGuide">
-        <h1 class="tit01">list Guide</h1>
-    </div>
-    <div class="section" id="infoGuide">
-        <h1 class="tit01">info Guide</h1>
-    </div>
-    <div class="section" id="tabGuide">
-        <h1 class="tit01">tab Guide</h1>
-    </div>
-    <div class="section" id="accordianGuide">
-        <h1 class="tit01">accordian Guide</h1>
-    </div>
-    <div class="section" id="tableGuide">
-        <h1 class="tit01">table Guide</h1>
-    </div>
-    <style>
-    </style>
 {{/ layout/guide }}

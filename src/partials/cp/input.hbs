@@ -1,0 +1,41 @@
+<div class="inp_wrap{{#if class}}{{class}}{{/if}}{{#if search}} search{{/if}}{{#if day}} calendar{{/if}}{{#if month}} calendar{{/if}}">
+  {{#unless noLabel}}
+    <label for="inp{{#if inpId}}{{inpId}}{{/if}}">{{#if tit}}{{tit}}{{/if}}</label>
+  {{/unless}}
+  {{#if topTit}}
+    <div class="inp_tit">{{topTit}}</div>
+  {{/if}}
+  <div class="inp_item">
+    {{#if lTxt}}<div class="inp_txt l_txt">{{lTxt}}</div>{{/if}}
+    <div class="inp">
+      <input 
+        {{#if type}} 
+          type="{{type}}" 
+        {{else}} 
+          {{#if tel}} 
+            type="tel" 
+          {{else}} 
+            {{#if cal}} 
+              type="tel" 
+            {{else}} 
+              {{#if search}} 
+                type="search" 
+              {{else}} 
+                type="text" 
+              {{/if}} 
+            {{/if}} 
+          {{/if}} 
+        {{/if}}
+        id="inp{{#if inpId}}{{inpId}}{{/if}}"
+        {{#if placeholder}} placeholder="{{placeholder}}"{{/if}}
+        {{#if value}} value="{{value}}"{{/if}}
+        {{#if minlength}} minlength="{{minlength}}"{{/if}}
+        {{#if maxlength}} maxlength="{{maxlength}}"{{/if}}
+        {{#if disabled}} disabled{{/if}}
+        {{#if readonly}} readonly{{/if}}
+        {{#if inpTitle}} title="{{inpTitle}}"{{/if}}
+      >
+    </div>
+    {{#if rTxt}}<div class="inp_txt r_txt">{{rTxt}}</div>{{/if}}
+  </div>
+</div>

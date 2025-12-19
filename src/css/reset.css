@@ -2,6 +2,6 @@
 @import "layout/fonts.scss";
 @import "layout/reset.scss";
 @import "layout/grid.scss";
-@import "components/header.scss";
-@import "components/footer.scss";
+@import "layout/header.scss";
+@import "layout/footer.scss";
 

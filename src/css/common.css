@@ -1,5 +1,4 @@
 
 /* layout / components / pages */
-@use "pages/index";
-@use "pages/index2";
+@import "components/common.scss";
 

@@ -6,9 +6,9 @@
 // - CSS 실시간 반영 대응
 // ================================
 
+import { defineConfig } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
 import fullReload from 'vite-plugin-full-reload';
-import { defineConfig } from 'vite';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';

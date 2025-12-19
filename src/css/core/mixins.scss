@@ -1,3 +1,6 @@
+@mixin bold {
+  font-weight: 700;
+}
 @mixin flex-center {
   display: flex;
   justify-content: center;

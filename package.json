@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.22",
+    "handlebars": "^4.7.8",
     "postcss": "^8.4.38",
     "postcss-pxtorem": "^6.1.0",
     "sass": "^1.75.0",
