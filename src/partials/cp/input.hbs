@@ -1,44 +1,86 @@
-<div class="inp_wrap{{#if class}} {{class}}{{/if}}{{#if search}} search{{/if}}{{#if day}} calendar{{/if}}{{#if month}} calendar{{/if}}">
-  {{#unless noLabel}}
-    <label for="inp{{#if inpId}}{{inpId}}{{/if}}">{{#if tit}}{{tit}}{{/if}}</label>
-  {{/unless}}
-  {{#if topTit}}
-    <div class="inp_tit">{{topTit}}</div>
-  {{/if}}
-  <div class="inp_item">
-    <div class="inp{{#if rTxt}} t_right{{/if}}{{#if disabled}} disabled{{/if}}{{#if readonly}} readonly{{/if}}">
+
+  <div class="inp_item{{#if class}} {{class}}{{/if}}{{#if search}} search{{/if}}{{#if day}} calendar{{/if}}{{#if month}} calendar{{/if}}">
+    {{#unless noLabel}}
+      <label {{#if inpId}}for="id{{inpId}}"{{/if}}>{{#if tit}}{{tit}}{{/if}}</label>
+    {{/unless}}
+    {{#if topTit}}
+      <div class="inp_tit">{{topTit}}</div>
+    {{/if}}
+    <div class="inp{{#if select}} select{{/if}}{{#if rTxt}} t_right{{/if}}{{#if disabled}} disabled{{/if}}{{#if readonly}} readonly{{/if}}">
     {{#if lTxt}}<div class="inp_txt l_txt">{{lTxt}}</div>{{/if}}
-      <input 
-        {{#if type}} 
-          type="{{type}}" 
-        {{else}} 
-          {{#if tel}} 
-            type="tel" 
+      {{#if select}}
+        <select 
+          {{#if name}} name="inp{{name}}"{{/if}} 
+          {{#if inpId}} id="id{{inpId}}"{{/if}}
+          {{#if disabled}} disabled{{/if}}
+          {{#if formTitle}} title="{{formTitle}}"{{/if}} required>
+          {{#if sb-ph}}
+          <option value="" disabled selected>{{sb-ph}}</option>
+          {{else}}
+          <option value="" disabled selected>선택</option>
+          {{/if}}
+          {{> @partial-block }}
+        </select>
+        {{else}}
+        {{#if textarea}}
+          <textarea 
+            {{#if name}} name="inp{{name}}"{{/if}} 
+            {{#if inpId}} id="id{{inpId}}"{{/if}} 
+            {{#if rows}} rows="{{rows}}"{{/if}}
+            {{#if cols}} cols="{{cols}}"{{/if}}
+            {{#if place}} placeholder="{{place}}"{{/if}}
+            {{#if min}} minlength="{{min}}"{{/if}}
+            {{#if max}} maxlength="{{max}}"{{/if}}
+            {{#if disabled}} disabled{{/if}}
+            {{#if readonly}} readonly{{/if}}
+            {{#if formTitle}} title="{{formTitle}}"{{/if}}
+          >{{#if val}}{{val}}{{/if}}</textarea>
+        {{else}}
+        <input 
+          {{#if type}} 
+            type="{{type}}" 
           {{else}} 
-            {{#if cal}} 
+            {{#if tel}} 
               type="tel" 
             {{else}} 
-              {{#if search}} 
-                type="search" 
+              {{#if cal}} 
+                type="tel" 
               {{else}} 
-                type="text" 
+                {{#if search}} 
+                  type="search" 
+                {{else}} 
+                  type="text" 
+                {{/if}} 
               {{/if}} 
             {{/if}} 
-          {{/if}} 
-        {{/if}}
-        id="inp{{#if inpId}}{{inpId}}{{/if}}"
-        {{#if place}} placeholder="{{place}}"{{/if}}
-        {{#if val}} value="{{val}}"{{/if}}
-        {{#if min}} minlength="{{min}}"{{/if}}
-        {{#if max}} maxlength="{{max}}"{{/if}}
-        {{#if disabled}} disabled{{/if}}
-        {{#if readonly}} readonly{{/if}}
-        {{#if inpTitle}} title="{{inpTitle}}"{{/if}}
-      >
-      {{#if cal}}<button type="button" class="btn calendar" title="날짜 선택"></button>{{/if}}
-      {{#if month}}<button type="button" class="btn calendar month" title="월 선택"></button>{{/if}}
-      {{#if search}}<button type="button" class="btn search" title="검색"></button>{{/if}}
-      {{#if rTxt}}<div class="inp_txt r_txt">{{rTxt}}</div>{{/if}}
+          {{/if}}
+          {{#if name}} name="inp{{name}}"{{/if}}
+          {{#if inpId}} id="id{{inpId}}"{{/if}}
+          {{#if place}} placeholder="{{place}}"{{/if}}
+          {{#if val}} value="{{val}}"{{/if}}
+          {{#if min}} minlength="{{min}}"{{/if}}
+          {{#if max}} maxlength="{{max}}"{{/if}}
+          {{#if disabled}} disabled{{/if}}
+          {{#if readonly}} readonly{{/if}}
+          {{#if formTitle}} title="{{formTitle}}"{{/if}}
+        >
+        {{#if cal}}<button type="button" class="btn calendar" title="날짜 선택"></button>{{/if}}
+        {{#if month}}<button type="button" class="btn calendar month" title="월 선택"></button>{{/if}}
+        {{#if search}}<button type="button" class="btn search" title="검색"></button>{{/if}}
+        {{#if rTxt}}<div class="inp_txt r_txt">{{rTxt}}</div>{{/if}}
+      {{/if}}
+      {{/if}}
     </div>
+    {{#if textarea}}
+      {{#if counter_tp1}}
+        <div class="counter byte">
+          <em>0</em> / <span class="max">{{#if textlength}}{{{textlength}}}{{/if}}</span> <span>byte</span>
+        </div>
+      {{/if}}
+      {{#if counter_tp2}}
+        <div class="counter length">
+          <em>0</em> / <span class="max">{{#if textlength}}{{{textlength}}}{{/if}}</span> <span>글자</span>
+        </div>
+      {{/if}}
+    {{/if}}
   </div>
-</div>

@@ -1,10 +1,10 @@
 .inp_wrap {
-    position: relative;
-    label {
-        font-size: var(--font-body-s);
-        color: var(--grey-color-900);
-    }
     .inp_item {
+        position: relative;
+        label {
+            font-size: var(--font-body-s);
+            color: var(--grey-color-900);
+        }
         .inp {
             display: flex;
             justify-content: space-between;
@@ -13,20 +13,21 @@
             padding: 0 var(--px-4);
             border: 1px solid var(--grey-color-300);
             border-radius: var(--radius-m);
-            input {
+            input,
+            select {
+                height: var(--px-16);
                 line-height: var(--px-16);
                 width: 100%;
                 &:focus {
                     outline: none;
                 }
             }
+            select {
+                border: 0;
+            }
             &:focus-within {
 		        border-color: var(--primary);
-                .btn {
-                    &.del {
-                        display: block;
-                    }
-                }
+                
 	        }
             &.readonly {
                 background: var(--grey-color-200);
@@ -40,8 +41,8 @@
                     text-align: right;
                 }
             }
-            .btn {
-                width: 40px;
+            button.btn {
+                width: 30px;
                 height: 48px;
                 background-position: center center;
                 background-repeat: no-repeat;
@@ -59,6 +60,28 @@
                         display: block;
                     }
                 }
+            }
+            select {
+                &::-ms-expand { display: none; }
+                padding-right: 30px;
+                background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%23666666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A") no-repeat center right/20px auto;
+                -o-appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                &:required:invalid {
+                    color: var(--grey-color-500);
+                }
+
+                &:required:valid {
+                    color: var(--grey-color-600);
+                }
+            }
+            textarea {
+                padding: var(--px-4);
+                width: 100%;
+                min-height: 120px;
+                border: none;
             }
         }
     }
@@ -86,4 +109,10 @@
     & + * {
         margin-top: var(--px-13);
     }
+    &.phone {
+        display: flex;
+        align-items: end;
+        gap: var(--px-3);
+    }
+
 }

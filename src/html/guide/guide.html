@@ -11,61 +11,120 @@
 
             <h2 class="tit02">input - Basic</h2>
             <div class="guideComponent">
-                {{> cp/input inpId="1_1" tit="text+label" place="ex01" }}
-                {{> cp/input inpId="1_2" tit="text+label" place="ex01" val="ex1" }}
-                {{> cp/input inpId="1_3" tit="text+label" place="ex01" val="ex2" readonly=true }}
-                {{> cp/input inpId="1_4" tit="text+label" place="ex01" val="ex3" disabled=true }}
+                <div class="inp_wrap">{{> cp/input inpId="1_1" tit="text+label" place="ex01" }}
+                </div>
+                <div class="inp_wrap">{{> cp/input inpId="1_2" tit="text+label" place="ex01" val="ex1" }}
+                </div>
+                <div class="inp_wrap">{{> cp/input inpId="1_3" tit="text+label" place="ex01" val="ex2" readonly=true }}
+                </div>
+                <div class="inp_wrap">{{> cp/input inpId="1_4" tit="text+label" place="ex01" val="ex3" disabled=true }}</div>
+                
             </div>
             <h2 class="tit02">input - tel</h2>
             <div class="guideComponent">
-                {{> cp/input tel=true inpId="2_1" tit="tel" place="ex01" }}
-                {{> cp/input tel=true inpId="2_2" tit="tel" place="ex02" lTxt="약" }}
-                {{> cp/input tel=true inpId="2_3" tit="tel" place="ex03" rTxt="원" }}
-                {{> cp/input tel=true inpId="2_4" tit="tel" place="ex04" lTxt="약" rTxt="원" }}
+                <div class="inp_wrap">
+                {{> cp/input tel=true inpId="2_1" tit="tel" place="ex01" }}</div>
+                <div class="inp_wrap">
+                {{> cp/input tel=true inpId="2_2" tit="tel" place="ex02" lTxt="약" }}</div>
+                <div class="inp_wrap">
+                {{> cp/input tel=true inpId="2_3" tit="tel" place="ex03" rTxt="원" }}</div>
+                <div class="inp_wrap">
+                {{> cp/input tel=true inpId="2_4" tit="tel" place="ex04" lTxt="약" rTxt="원" }}</div>
             </div>
             <h2 class="tit02">input - Basic2</h2>
             <div class="guideComponent">
-                {{> cp/input class="ty2" inpId="3_1" tit="text+label mix" place="ex01" }}
-                {{> cp/input class="ty2" inpId="3_2" tit="text+label mix" place="ex01" val="ex1" }}
-                {{> cp/input class="ty2" inpId="3_3" tit="text+label mix" place="ex01" val="ex2" readonly=true }}
-                {{> cp/input class="ty2" inpId="3_4" tit="text+label mix" place="ex01" val="ex3" disabled=true }}
+                <div class="inp_wrap">
+                {{> cp/input class="ty2" inpId="3_1" tit="text+label mix" place="ex01" }}</div>
+                <div class="inp_wrap">
+                {{> cp/input class="ty2" inpId="3_2" tit="text+label mix" place="ex01" val="ex1" }}</div>
+                <div class="inp_wrap">
+                {{> cp/input class="ty2" inpId="3_3" tit="text+label mix" place="ex01" val="ex2" readonly=true }}</div>
+                <div class="inp_wrap">
+                {{> cp/input class="ty2" inpId="3_4" tit="text+label mix" place="ex01" val="ex3" disabled=true }}</div>
             </div>
             <h2 class="tit02">input - search</h2>
             <div class="guideComponent">
-                {{> cp/input search=true inpId="4_1" tit="calendar" place="ex01" }}
-                {{> cp/input search=true inpId="4_2" tit="calendar" place="ex01" val="ex1" }}
-                {{> cp/input search=true inpId="4_3" tit="calendar" place="ex01" val="ex2" readonly=true }}
-                {{> cp/input search=true inpId="4_4" tit="calendar" place="ex01" val="ex3" disabled=true }}
+                <div class="inp_wrap">{{> cp/input search=true inpId="4_1" tit="calendar" place="ex01" }}</div>
+                <div class="inp_wrap">
+                {{> cp/input search=true inpId="4_2" tit="calendar" place="ex01" val="ex1" }}</div>
+                <div class="inp_wrap">
+                {{> cp/input search=true inpId="4_3" tit="calendar" place="ex01" val="ex2" readonly=true }}</div>
+                <div class="inp_wrap">
+                {{> cp/input search=true inpId="4_4" tit="calendar" place="ex01" val="ex3" disabled=true }}</div>
             </div>
             <h2 class="tit02">input - calendar</h2>
             <div class="guideComponent">
-                {{> cp/input cal=true inpId="5_1" tit="calendar" place="ex01" }}
-                {{> cp/input cal=true inpId="5_2" tit="calendar" place="ex01" val="ex1" }}
-                {{> cp/input cal=true inpId="5_3" tit="calendar" place="ex01" val="ex2" readonly=true }}
-                {{> cp/input cal=true inpId="5_4" tit="calendar" place="ex01" val="ex3" disabled=true }}
+                <div class="inp_wrap">
+                {{> cp/input cal=true inpId="5_1" tit="calendar" place="ex01" }}</div>
+                <div class="inp_wrap">
+                {{> cp/input cal=true inpId="5_2" tit="calendar" place="ex01" val="ex1" }}</div>
+                <div class="inp_wrap">
+                {{> cp/input cal=true inpId="5_3" tit="calendar" place="ex01" val="ex2" readonly=true }}</div>
+                <div class="inp_wrap">
+                {{> cp/input cal=true inpId="5_4" tit="calendar" place="ex01" val="ex3" disabled=true }}</div>
             </div>
             <h2 class="tit02">Phone - Telecom + Number </h2>
-            <div class="guideComponent all">
-                <select class="ipt" title="통신사 선택">
-                    <option selected disabled>통신사 선택</option>
-                    <option>SK</option>
-                    <option>KT</option>
-                    <option>LGU+</option>
-                    <option>알뜰폰 SK</option>
-                    <option>알뜰폰 KT</option>
-                    <option>알뜰폰 LGU+</option>
-                </select>
-                <div class="setPhone">
-                    <select class="ipt" title="휴대폰번호">
-                        <option>010</option>
-                        <option>011</option>
-                    </select>
-                    <input type="tel" class="ipt" maxlength="8" placeholder="숫자만 입력">
+            <div class="guideComponent">
+                <div class="inp_wrap phone">
+                    {{#> cp/input select=true inpId="6_1" tit="휴대폰번호" sb-ph="통신사"}}
+                        <option value="1">SK</option>
+                        <option value="2">KT</option>
+                        <option value="3">LGU+</option>
+                        <option value="4">알뜰폰 SK</option>
+                        <option value="5">알뜰폰 KT</option>
+                        <option value="6">알뜰폰 LGU+</option>
+                    {{/ cp/input}}
+                    {{#> cp/input select=true formTitle="휴대폰번호 앞자리 선택" }}
+                        <option value="1">010</option>
+                        <option value="2">011</option>
+                    {{/ cp/input}}
+                    {{> cp/input tel=true place="ex01" formTitle="휴대폰번호 뒷자리 입력" }}
                 </div>
+                <div class="inp_wrap phone">
+                    {{#> cp/input select=true inpId="6_4" tit="휴대폰번호 disabled" sb-ph="통신사" disabled=true}}
+                        <option value="1">SK</option>
+                        <option value="2">KT</option>
+                        <option value="3">LGU+</option>
+                        <option value="4">알뜰폰 SK</option>
+                        <option value="5">알뜰폰 KT</option>
+                        <option value="6">알뜰폰 LGU+</option>
+                    {{/ cp/input}}
+                    {{#> cp/input select=true formTitle="휴대폰번호 앞자리 선택"  disabled=true}}
+                        <option value="1">010</option>
+                        <option value="2">011</option>
+                    {{/ cp/input}}
+                    {{> cp/input tel=true place="ex01" formTitle="휴대폰번호 뒷자리 입력"  disabled=true}}
+                </div>
+            </div>
+            <h2 class="tit02">textarea - calendar</h2>
+            <div class="guideComponent column">
+                <div class="inp_wrap">
+                {{> cp/input inpId="7_1" tit="textarea" place="ex01" textarea=true counter_tp1=true textlength=200 }}</div>
+                <div class="inp_wrap">
+                {{> cp/input inpId="7_2" tit="textarea" place="ex01" textarea=true counter_tp2=true textlength=300 }}</div>
+                <div class="inp_wrap">
+                {{> cp/input inpId="7_3" tit="textarea" place="ex01" textarea=true val="ex2" readonly=true }}</div>
+                <div class="inp_wrap">
+                {{> cp/input inpId="7_4" tit="textarea" place="ex01" textarea=true textarea=true val="ex3" disabled=true }}</div>
             </div>
         </div>
         <div class="section" id="checkboxGuide">
             <h1 class="tit01">checkbox Guide</h1>
+            <div class="guideComponent">
+                <div class="group_wrap">
+                    {{> cp/checkbox id="checkbox1" labelname="라벨명 Default" }}
+	                {{> cp/checkbox id="checkbox2" labelname="라벨명 checked" checked=true }}
+	                {{> cp/checkbox id="checkbox3" labelname="라벨명 disabled" disabled=true }}
+	                {{> cp/checkbox id="checkbox4" labelname="라벨명 checked disabled" checked=true disabled=true }}
+	                {{> cp/checkbox labelname="더보기" ag_more=true id="more_case1" }}
+                </div>
+                <div class="group_wrap">
+                    {{> cp/checkbox id="checkbox21" label_class="chk_label_ty2" labelname="라벨명 Default" }}
+	                {{> cp/checkbox id="checkbox22" label_class="chk_label_ty2" labelname="라벨명 checked" checked=true }}
+	                {{> cp/checkbox id="checkbox23" label_class="chk_label_ty2" labelname="라벨명 disabled" disabled=true }}
+	                {{> cp/checkbox id="checkbox24" label_class="chk_label_ty2" labelname="라벨명 checked disabled" checked=true disabled=true }}
+                </div>
+            </div>
         </div>
         <div class="section" id="radioGuide">
             <h1 class="tit01">radio Guide</h1>

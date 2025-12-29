@@ -1,0 +1,27 @@
+{{!-- 
+	id : id 배정
+	labelname : label 배정
+--}}
+<div class="inp_checkbox{{#if checkbox_class}} {{checkbox_class}}{{/if}}">
+	<input type="checkbox"
+		id="{{id}}"
+		{{#if chk_class}}class="{{chk_class}}"{{/if}}
+		{{#if name}}name="{{name}}"{{/if}}
+		{{!-- {{#if cb_title}}title="{{cb_title}}"{{/if}} --}}
+		{{#if checked}}checked{{/if}}
+		{{#if disabled}}disabled{{/if}}
+		{{#if role}}role="{{{role}}}"{{/if}}{{!-- swich --}}
+		{{#if aria-checked}}aria-checked="{{{aria-checked}}}"{{/if}}{{!-- swich --}}
+	>
+	<label for="{{id}}" class="chk_label{{#if label_class}} {{label_class}}{{/if}}{{#if ag_more}} more_add{{/if}}">
+		<span class="label_cont">
+			{{#if cb_title}}{{cb_title}}{{/if}}
+			{{#if ess}}<strong class="ess ess_t1">필수</strong>{{/if}}
+			{{{labelname}}}
+			{{#if labelcont}}<span class="sub_g_txt">{{{labelcont}}}</span>{{/if}}
+		</span>
+	</label>
+	{{#if @partial-block}}{{> @partial-block }}{{/if}}
+	{{#if cardmode}}<i></i>{{/if}}
+	{{#if ag_more}}<button type="button" class="ag_more_btn" aria-label="{{labelname}} 자세히 보기"{{#if pop_open}} onclick="openHDPopup(this,'{{#if pop_id}}{{{pop_id}}}{{/if}}');"{{/if}}>자세히</button>{{/if}}
+</div>

@@ -2,5 +2,6 @@
 /* layout / components / pages */
 @import "components/common.scss";
 @import "components/input.scss";
+@import "components/checkbox.scss";
 
 
