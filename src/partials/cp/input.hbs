@@ -1,4 +1,4 @@
-<div class="inp_wrap{{#if class}}{{class}}{{/if}}{{#if search}} search{{/if}}{{#if day}} calendar{{/if}}{{#if month}} calendar{{/if}}">
+<div class="inp_wrap{{#if class}} {{class}}{{/if}}{{#if search}} search{{/if}}{{#if day}} calendar{{/if}}{{#if month}} calendar{{/if}}">
   {{#unless noLabel}}
     <label for="inp{{#if inpId}}{{inpId}}{{/if}}">{{#if tit}}{{tit}}{{/if}}</label>
   {{/unless}}
@@ -6,8 +6,8 @@
     <div class="inp_tit">{{topTit}}</div>
   {{/if}}
   <div class="inp_item">
+    <div class="inp{{#if rTxt}} t_right{{/if}}{{#if disabled}} disabled{{/if}}{{#if readonly}} readonly{{/if}}">
     {{#if lTxt}}<div class="inp_txt l_txt">{{lTxt}}</div>{{/if}}
-    <div class="inp">
       <input 
         {{#if type}} 
           type="{{type}}" 
@@ -27,15 +27,18 @@
           {{/if}} 
         {{/if}}
         id="inp{{#if inpId}}{{inpId}}{{/if}}"
-        {{#if placeholder}} placeholder="{{placeholder}}"{{/if}}
-        {{#if value}} value="{{value}}"{{/if}}
-        {{#if minlength}} minlength="{{minlength}}"{{/if}}
-        {{#if maxlength}} maxlength="{{maxlength}}"{{/if}}
+        {{#if place}} placeholder="{{place}}"{{/if}}
+        {{#if val}} value="{{val}}"{{/if}}
+        {{#if min}} minlength="{{min}}"{{/if}}
+        {{#if max}} maxlength="{{max}}"{{/if}}
         {{#if disabled}} disabled{{/if}}
         {{#if readonly}} readonly{{/if}}
         {{#if inpTitle}} title="{{inpTitle}}"{{/if}}
       >
+      {{#if cal}}<button type="button" class="btn calendar" title="날짜 선택"></button>{{/if}}
+      {{#if month}}<button type="button" class="btn calendar month" title="월 선택"></button>{{/if}}
+      {{#if search}}<button type="button" class="btn search" title="검색"></button>{{/if}}
+      {{#if rTxt}}<div class="inp_txt r_txt">{{rTxt}}</div>{{/if}}
     </div>
-    {{#if rTxt}}<div class="inp_txt r_txt">{{rTxt}}</div>{{/if}}
   </div>
 </div>

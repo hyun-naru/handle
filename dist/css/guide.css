@@ -1,5 +1,85 @@
+:root {
+  --px-0: 0;
+  --px-1: 0.125rem;
+  --px-2: 0.25rem;
+  --px-3: 0.375rem;
+  --px-4: 0.5rem;
+  --px-5: 0.625rem;
+  --px-6: 0.75rem;
+  --px-7: 0.875rem;
+  --px-8: 1rem;
+  --px-9: 1.125rem;
+  --px-10: 1.25rem;
+  --px-11: 1.5rem;
+  --px-12: 1.75rem;
+  --px-13: 2rem;
+  --px-14: 2.25rem;
+  --px-15: 2.5rem;
+  --px-16: 3rem;
+  --px-17: 3.25rem;
+  --px-18: 3.5rem;
+  --px-19: 4rem;
+  --white-color: #FFFFFF;
+  --grey-color-100: #F9FAFB;
+  --grey-color-200: #F4F6F8;
+  --grey-color-300: #DFE3E8;
+  --grey-color-400: #C4CDD5;
+  --grey-color-500: #919EAB;
+  --grey-color-600: #637381;
+  --grey-color-700: #454F5B;
+  --grey-color-800: #212B36;
+  --grey-color-900: #161C24;
+  --black-color: #000000;
+  --primary-lighter: #C8FACD;
+  --primary-light: #5BE584;
+  --primary: #00AB55;
+  --primary-dark: #007B55;
+  --primary-darker: #005249;
+  --secondary-lighter: #D6E4FF;
+  --secondary-light: #84A9FF;
+  --secondary: #3366FF;
+  --secondary-dark: #1939B7;
+  --secondary-darker: #091A7A;
+  --info-lighter: #CAFDF5;
+  --info-light: #61F3F3;
+  --info: #00B8D9;
+  --info-dark: #006C9C;
+  --info-darker: #003768;
+  --success-lighter: #D8FBDE;
+  --success-light: #86E8AB;
+  --success: #36B37E;
+  --success-dark: #1B806A;
+  --success-darker: #0A5554;
+  --warning-lighter: #FFF5CC;
+  --warning-light: #FFD666;
+  --warning: #FFAB00;
+  --warning-dark: #B76E00;
+  --warning-darker: #7A4100;
+  --error-lighter: #FDE7E7;
+  --error-light: #FAB8B8;
+  --error: #EF2B2A;
+  --error-dark: #D51110;
+  --error-darker: #A60D0C;
+  --font-h1: var(--px-15);
+  --font-h2: var(--px-14);
+  --font-h3: var(--px-13);
+  --font-h4: var(--px-12);
+  --font-h5: var(--px-10);
+  --font-body-xs: var(--px-6);
+  --font-body-s: var(--px-7);
+  --font-body-m: var(--px-8);
+  --font-body-l: var(--px-9);
+  --font-body-xl: var(--px-10);
+  --radius-xs: var(--px-1);
+  --radius-s: var(--px-2);
+  --radius-m: var(--px-4);
+  --radius-l: var(--px-6);
+  --radius-xl: var(--px-8);
+  --radius-max: 50%;
+}
+
 .guide_wrap {
-  padding: 1.25rem;
+  padding: VAR(--px-10);
 }
 
 .guide_location {
@@ -14,8 +94,8 @@
           align-items: center;
   gap: 0.5rem;
   height: 3.125rem;
-  background: #FFFFFF;
-  border-bottom: 0.1875rem solid #000000;
+  background: var(--white-color);
+  border-bottom: 0.1875rem solid var(--black-color);
 }
 
 .guide_location div {
@@ -34,7 +114,7 @@
   display: inline-block;
   height: 0.625rem;
   width: 0.0625rem;
-  background: #ddd;
+  background: var(--grey-color-300);
 }
 
 .guide_location a {
@@ -49,7 +129,7 @@
 
 .section + * {
   margin-top: 2.5rem;
-  border-top: 0.25rem double #ddd;
+  border-top: 0.25rem double var(--grey-color-300);
 }
 
 .tit01 {
@@ -72,8 +152,8 @@
 .compWrap h2 .guideCopyBtn {
   width: 1.875rem;
   height: 1.875rem;
-  border: 0.0625rem solid #ddd;
-  background-color: #efefef;
+  border: 0.0625rem solid var(--grey-color-300);
+  background-color: var(--grey-color-100);
   background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 1.33301C9.14134 1.33301 9.27696 1.38938 9.37695 1.48926L13.1768 5.29004C13.2766 5.39003 13.333 5.52567 13.333 5.66699V13.4668C13.333 14.1295 12.7956 14.667 12.1328 14.667H3.86621C3.20368 14.6667 2.66699 14.1294 2.66699 13.4668V2.5332C2.66706 1.87067 3.20372 1.33325 3.86621 1.33301H9ZM3.86621 2.40039C3.79283 2.40064 3.73347 2.45978 3.7334 2.5332V13.4668C3.7334 13.5403 3.79278 13.6003 3.86621 13.6006H12.1328C12.2064 13.6006 12.2666 13.5404 12.2666 13.4668V6.2002H9.66699C9.00425 6.2002 8.4668 5.66274 8.4668 5V2.40039H3.86621ZM9.99902 10.667C10.2936 10.667 10.5332 10.9056 10.5332 11.2002C10.5331 11.4947 10.2935 11.7334 9.99902 11.7334H5.33301C5.03852 11.7334 4.79991 11.4947 4.7998 11.2002C4.7998 10.9056 5.03846 10.667 5.33301 10.667H9.99902ZM7.99902 8.40039C8.29358 8.40039 8.5332 8.63904 8.5332 8.93359C8.5331 9.22806 8.29351 9.4668 7.99902 9.4668H5.33301C5.03852 9.4668 4.79991 9.22806 4.7998 8.93359C4.7998 8.63904 5.03846 8.40039 5.33301 8.40039H7.99902ZM9.5332 5C9.5332 5.07364 9.59335 5.13379 9.66699 5.13379H11.5117L9.5332 3.1543V5Z' fill='%23666666'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;

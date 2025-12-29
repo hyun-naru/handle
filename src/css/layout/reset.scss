@@ -7,7 +7,7 @@ html {
 
 body {
 	position: relative;
-	font-family: $font;
+	font-family: "Pretendard", Dotum, Helvetica, "Apple SD Gothic Neo", sans-serif;
 	line-height: 1.5;
 	// overflow: hidden;
 }
@@ -121,7 +121,7 @@ input,
 textarea,
 button,
 label {
-	font: inherit;
+	font-size: inherit;
 	color: inherit;
 	background-color: transparent;
 	-webkit-tap-highlight-color: transparent;
@@ -155,6 +155,7 @@ button:focus {
 	outline: none;
 }
 input {
+    border: none;
 	// opacity: 1 !important;
 }
 
@@ -253,7 +254,8 @@ caption {
 }
 /* 모바일 디바이스 분기 */
 
-.sr_only {
+.sr_only,
+.blind {
 	position: absolute;
 	width: 1px;
 	height: 1px;

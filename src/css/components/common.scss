@@ -1,20 +1,20 @@
 h1 {
-    font-size: $font-h1;
+    font-size: var(--font-h1);
     @include bold;
 }
 h2 {
-    font-size: $font-h2;
+    font-size: var(--font-h2);
     @include bold;
 }
 h3 {
-    font-size: $font-h3;
+    font-size: var(--font-h3);
     @include bold;
 }
 h4 {
-    font-size: $font-h4;
+    font-size: var(--font-h4);
     @include bold;
 }
 h5 {
-    font-size: $font-h5;
+    font-size: var(--font-h5);
     @include bold;
 }

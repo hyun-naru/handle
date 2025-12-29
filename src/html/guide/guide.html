@@ -6,14 +6,44 @@
         <div class="section" id="titleGuide">
             <h1 class="tit01">title Guide</h1>
         </div>
-        <div class="section" id="formGuide">
+        <div class="section row" id="formGuide">
             <h1 class="tit01">Form Guide</h1>
 
             <h2 class="tit02">input - Basic</h2>
             <div class="guideComponent">
-                {{> cp/input inpId="1-1" tit="title01" }}
+                {{> cp/input inpId="1_1" tit="text+label" place="ex01" }}
+                {{> cp/input inpId="1_2" tit="text+label" place="ex01" val="ex1" }}
+                {{> cp/input inpId="1_3" tit="text+label" place="ex01" val="ex2" readonly=true }}
+                {{> cp/input inpId="1_4" tit="text+label" place="ex01" val="ex3" disabled=true }}
             </div>
-            
+            <h2 class="tit02">input - tel</h2>
+            <div class="guideComponent">
+                {{> cp/input tel=true inpId="2_1" tit="tel" place="ex01" }}
+                {{> cp/input tel=true inpId="2_2" tit="tel" place="ex02" lTxt="약" }}
+                {{> cp/input tel=true inpId="2_3" tit="tel" place="ex03" rTxt="원" }}
+                {{> cp/input tel=true inpId="2_4" tit="tel" place="ex04" lTxt="약" rTxt="원" }}
+            </div>
+            <h2 class="tit02">input - Basic2</h2>
+            <div class="guideComponent">
+                {{> cp/input class="ty2" inpId="3_1" tit="text+label mix" place="ex01" }}
+                {{> cp/input class="ty2" inpId="3_2" tit="text+label mix" place="ex01" val="ex1" }}
+                {{> cp/input class="ty2" inpId="3_3" tit="text+label mix" place="ex01" val="ex2" readonly=true }}
+                {{> cp/input class="ty2" inpId="3_4" tit="text+label mix" place="ex01" val="ex3" disabled=true }}
+            </div>
+            <h2 class="tit02">input - search</h2>
+            <div class="guideComponent">
+                {{> cp/input search=true inpId="4_1" tit="calendar" place="ex01" }}
+                {{> cp/input search=true inpId="4_2" tit="calendar" place="ex01" val="ex1" }}
+                {{> cp/input search=true inpId="4_3" tit="calendar" place="ex01" val="ex2" readonly=true }}
+                {{> cp/input search=true inpId="4_4" tit="calendar" place="ex01" val="ex3" disabled=true }}
+            </div>
+            <h2 class="tit02">input - calendar</h2>
+            <div class="guideComponent">
+                {{> cp/input cal=true inpId="5_1" tit="calendar" place="ex01" }}
+                {{> cp/input cal=true inpId="5_2" tit="calendar" place="ex01" val="ex1" }}
+                {{> cp/input cal=true inpId="5_3" tit="calendar" place="ex01" val="ex2" readonly=true }}
+                {{> cp/input cal=true inpId="5_4" tit="calendar" place="ex01" val="ex3" disabled=true }}
+            </div>
             <h2 class="tit02">Phone - Telecom + Number </h2>
             <div class="guideComponent all">
                 <select class="ipt" title="통신사 선택">
