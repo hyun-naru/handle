@@ -1,0 +1,206 @@
+// Accordiaon
+
+// default
+.acd_item {
+	.acd_head {
+		.acd_btn {
+			&[class*=acd_ico_]{
+				padding-left: var(--px-9);
+				background-repeat: no-repeat;
+				background-position: left center;
+				background-size: 24px auto;
+			}
+		}
+
+	}
+	.acd_cont {
+		.inner {
+			display: none;
+			
+		}
+	}
+
+	&.ty1 {
+		border-radius: var(--radius-l);
+		border: 1px solid var(--grey-color-400);
+
+		.cont_text {
+			font-size: var(--font-body-m);
+		}
+		.cont_text_sub {
+			color: var(--grey-color-600);
+			font-size: var(--font-body-s);
+			+ .chk_lby2,
+			+ .price_btn {
+				margin-top: var(--px-2);
+			}
+		}
+
+		.acd_head {
+			position: relative;
+			padding: var(--px-8) var(--px-8);
+
+			.acd_btn {
+				position: relative;
+				width: 100%;
+				min-height: 32px;
+				padding-right: 36px;
+				background-color: transparent;
+				font-weight: 700;
+				font-size: var(--font-h5);
+				color: var(--grey-color-800);
+				&:after {
+					position: absolute;
+					top: calc(50% - 16px);
+					right:0;
+					content: '';
+					width: 32px;
+					height: 32px;
+					background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%23666666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A") no-repeat center /24px auto;
+					box-sizing: border-box;
+					transition: all 0.3s;
+					}
+
+				&[aria-expanded="true"] {
+					&:after {
+						transform: rotate(180deg);
+					}
+				}
+
+				.hd_badge,
+				.cont_text_sub {
+					font-weight: 400;
+				}
+
+				.sub_g_txt {
+					display: block;
+					padding-top: var(--px-1);
+					font-size: var(--font-body-xs);
+					font-weight: 400;
+					color: var(--grey-color-600);
+				}
+
+			}
+		
+		}
+
+		.acd_cont {
+			position: relative;
+			transition: all 0.3s;
+			padding: 0 16px;
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 16px;
+				width: calc(100% - 32px);
+				border-bottom: 1px solid var(--grey-color-400);
+				opacity: 0;
+				transition: all 0.3s;
+			}
+		}
+	}
+
+	&.ty2 {
+		.acd_head {
+			position: relative;
+			border-bottom: 1px solid var(--grey-color-400);
+			.acd_btn {
+				position: relative;
+				width: 100%;
+				padding: 12px 32px 12px 0;
+				background-color: var(--white-color);
+				font-weight: 700;
+				font-size: var(--font-h5);
+				color: var(--grey-color-800);
+				&::before {
+					content: '';
+					position: absolute;
+					top: 50%;
+					right: 0;
+					width: 32px;
+					height: 32px;
+					background: transparent url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%23666666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A") no-repeat center / 32px auto;
+					transition: all 0.3s;
+					transform: translateY(-50%);
+				}
+			}
+		}
+		.acd_cont {
+			position: relative;
+			transition: all 0.3s;
+		}
+		& + .acd_item_ty3 {
+			margin-top: var(--px-11);
+		}
+	}
+
+	&.active {
+		.acd_btn {
+			&::before {
+				transform: translateY(-50%) rotate(180deg);
+			}
+		}
+		.acd_cont {
+			padding: var(--px-5) var(--px-8) var(--px-8);
+			&::before {
+				opacity: 1;
+			}
+		}
+		&.ty1 {
+			.acd_head {
+				padding-bottom: var(--px-6);
+			}
+		}
+		&.ty2 {
+			.acd_head {
+				border: none;
+				.acd_btn {
+					background-color: var(--grey-color-200);
+				}
+			}
+			.acd_cont {
+				border-top: 1px solid var(--grey-color-900);
+			}
+		}
+	}
+
+	.sub_txt_area {
+		display: flex;
+		gap: var(--px-3);
+		line-height: 28px;
+		//padding-top: 4px;
+		color: var(--grey-color-600);
+		font-size: var(--font-body-s);
+
+		& > .hd_badge {
+			line-height: 20px;
+		}
+	}
+		
+	&.disabled {
+		.acd_head {
+			.acd_btn {
+				.title {
+					color: var(--grey-color-400);
+				}
+			}
+		}
+		.acd_cont {
+			.file_attach_box {
+				.file_thumbnail {
+					&:after {
+						position: absolute;
+						top: 0;
+						left: 0;
+						content:'';
+						width: 100%;
+						height: 100%;
+						background: rgba(255, 255, 255, 0.75);
+						border-radius: var(--radius-medium3);
+					}
+				}
+			}
+		}
+	}
+}

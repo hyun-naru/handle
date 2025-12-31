@@ -1,5 +1,5 @@
 <div class="inp_check{{#if check_class}} {{check_class}}{{/if}}">
-	<input type="checkbox"
+	<input type="radio"
 		id="{{id}}"
 		{{#if chk_class}}class="{{chk_class}}"{{/if}}
 		{{#if name}}name="{{name}}"{{/if}}
@@ -14,6 +14,7 @@
 			{{#if labelcont}}<span class="sub_g_txt">{{{labelcont}}}</span>{{/if}}
 		</span>
 	</label>
+	<i></i>
 	{{#if @partial-block}}{{> @partial-block }}{{/if}}
 	{{#if ag_more}}<button type="button" class="ag_more_btn" aria-label="{{labelname}} 자세히 보기"{{#if pop_open}} onclick="openHDPopup(this,'{{#if pop_id}}{{{pop_id}}}{{/if}}');"{{/if}}>자세히</button>{{/if}}
 </div>

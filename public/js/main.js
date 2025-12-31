@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // DOM이 완전히 로드되면 삭제 버튼 초기화 실행
   initInputClearButtons();
   initTextareaLimit();// .inp_item textarea 기준 자동 적용
+  toggle();
 });
 
 /**
@@ -168,4 +169,36 @@ function initTextareaLimit(selector = '.inp_item textarea') {
       em.textContent = count;
     });
   });
+}
+
+
+
+
+function toggle() {
+    // Accordion 객체를 정의하는 생성자 함수
+    var Accordion = function (el, multiple) {
+        this.el = el || {}; // 아코디언 리스트의 요소를 저장
+        this.multiple = multiple || false; // 다중 열림을 허용할지 여부를 저장
+
+        // 아코디언의 각 버튼 요소(.acd_btn)를 선택하고, aria-label 속성을 "열기"로 설정
+        var links = this.el.find('.acd_btn');
+        links.off().on('click', {el: this.el, multiple: this.multiple}, this.dropdown); // 클릭 이벤트 핸들러 설정
+    };
+
+    // 아코디언의 드롭다운 기능을 처리하는 메서드
+    Accordion.prototype.dropdown = function (e) {
+        var $el = e.data.el; // 아코디언 리스트의 요소
+        ($this = $(this)), ($next = $this.next()); // 클릭된 버튼($this)과 다음 요소($next)를 저장
+
+        $next.slideToggle(100); // 패널을 슬라이드 방식으로 열고 닫기
+        $this.parent().toggleClass('active'); // 부모 요소에 active 클래스 토글
+
+        // 다중 열림이 허용되지 않은 경우, 다른 패널을 닫기
+        if (!e.data.multiple) {
+            $el.find('.acd_cont').not($next).slideUp(100).parent().removeClass('active');
+        }
+    };
+
+    // 아코디언 객체를 생성하고 초기화
+    var accordion = new Accordion($('.acd_wrap'), true); // 다중 열림 허용
 }
