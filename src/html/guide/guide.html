@@ -275,12 +275,20 @@
         <div class="section" id="accordianGuide">
             <h1 class="tit01">accordian Guide</h1>
             <div class="guideComponent">
+                <div class="acd_wrap">
                 {{#> cp/accordion ac-class="ty1" ac-title="샘플 타이틀" ac-desc="보조설명" cont-class="" ac-active=true }}
                 내용
                 {{/ cp/accordion }}
+                {{#> cp/accordion ac-class="ty1" ac-title="샘플 타이틀" ac-desc="보조설명" cont-class="" }}
+                내용
+                {{/ cp/accordion }}
+                </div>
+                <div class="acd_wrap">
                 {{#> cp/accordion ac-class="ty2" ac-title="샘플 타이틀" cont-class="" ac-active=true }}
                 내용
                 {{/ cp/accordion }}
+                    
+                </div>
             </div>
         </div>
         <div class="section" id="tableGuide">

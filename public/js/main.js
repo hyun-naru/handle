@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // DOM이 완전히 로드되면 삭제 버튼 초기화 실행
   initInputClearButtons();
   initTextareaLimit();// .inp_item textarea 기준 자동 적용
-  toggle();
+  toggleAccordion('.acd_wrap', true); // 두 번째 인자를 false로 하면 단일 열림만 허용
 });
 
 /**
@@ -123,82 +123,107 @@ function setupDeleteButton(input) {
       setTimeout(() => input.focus(), 50);
     };
 
-    // 모바일 / 데스크탑 모두 안정적으로 동작하도록
+    // 모바일, 데스크탑 모두 안정적으로 동작하도록
     delBtn.addEventListener('mousedown', clearInput);
     delBtn.addEventListener('click', clearInput);
   }
 }
 
+/**
+ * 텍스트영역에 글자 수 또는 바이트 수 제한 및 실시간 카운터 표시
+ * 
+ * @param {string} selector - 대상 textarea 선택자 (기본값: '.inp_item textarea')
+ */
 function initTextareaLimit(selector = '.inp_item textarea') {
+  // 선택한 textarea 요소들을 모두 가져옴
   const textareas = document.querySelectorAll(selector);
 
   textareas.forEach(textarea => {
+    // textarea와 같은 .inp_item 내에 있는 .counter 요소 찾기
     const counterWrap = textarea.closest('.inp_item')?.querySelector('.counter');
-    const em = counterWrap?.querySelector('em');
-    const max = parseInt(counterWrap?.querySelector('.max')?.textContent || '0', 10);
+    const em = counterWrap?.querySelector('em'); // 실시간 카운트 표시할 <em>
+    const max = parseInt(counterWrap?.querySelector('.max')?.textContent || '0', 10); // 최대 글자/바이트 수
 
+    // counter 관련 요소가 없거나 max가 유효하지 않으면 무시
     if (!counterWrap || !em || !max) return;
 
+    // .byte 클래스가 있으면 바이트 단위 체크, 없으면 글자 수 체크
     const isByte = counterWrap.classList.contains('byte');
 
+    // textarea 입력 이벤트 감지
     textarea.addEventListener('input', () => {
       let value = textarea.value;
       let count = 0;
 
       if (isByte) {
-        // 바이트 체크 (2바이트 문자 포함)
+        // ✅ 바이트 수 체크 로직 (한글, 이모지 등 2바이트 문자 포함)
         let total = 0, len = 0;
         for (let i = 0; i < value.length; i++) {
+          // escape로 인코딩했을 때 길이가 4 초과면 2바이트, 아니면 1바이트
           const byte = escape(value[i]).length > 4 ? 2 : 1;
-          if (total + byte > max) break;
+          if (total + byte > max) break; // 최대값 초과 시 중단
           total += byte;
           len++;
         }
-        value = value.slice(0, len);
-        textarea.value = value;
-        count = total;
+        value = value.slice(0, len);     // 허용 범위 내로 잘라냄
+        textarea.value = value;          // 잘라낸 값을 다시 설정
+        count = total;                   // 실제 바이트 수
       } else {
-        // 글자 수 체크
+        // ✅ 글자 수 체크
         if (value.length > max) {
-          value = value.slice(0, max);
+          value = value.slice(0, max);   // 최대 글자 수 초과 시 자름
           textarea.value = value;
         }
-        count = value.length;
+        count = value.length;            // 현재 글자 수
       }
 
+      // 카운터 숫자 업데이트
       em.textContent = count;
     });
   });
 }
 
 
+/**
+ * 아코디언 토글 기능을 여러 래퍼에 적용하는 함수
+ * @param {string} wrapperSelector - 아코디언을 감싸는 래퍼 선택자 (기본값: '.acd_wrap')
+ * @param {boolean} allowMultiple - 다중 아코디언 열림 허용 여부 (기본값: true)
+ */
+function toggleAccordion(wrapperSelector = '.acd_wrap', allowMultiple = true) {
+  // 지정한 선택자에 해당하는 모든 아코디언 래퍼를 찾음
+  const wrappers = document.querySelectorAll(wrapperSelector);
+  if (!wrappers.length) return; // 래퍼가 없으면 종료
 
+  // 각 아코디언 래퍼마다 개별 처리
+  wrappers.forEach(wrapper => {
+    // 아코디언 버튼(.acd_btn)을 모두 선택
+    const buttons = wrapper.querySelectorAll('.acd_btn');
 
-function toggle() {
-    // Accordion 객체를 정의하는 생성자 함수
-    var Accordion = function (el, multiple) {
-        this.el = el || {}; // 아코디언 리스트의 요소를 저장
-        this.multiple = multiple || false; // 다중 열림을 허용할지 여부를 저장
+    buttons.forEach((btn) => {
+      // 버튼 클릭 시 동작할 이벤트 리스너 등록
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.acd_item'); // 클릭된 버튼이 속한 아코디언 항목
+        const inner = item.querySelector('.acd_cont'); // 아코디언 내용 영역
+        const isActive = item.classList.contains('active'); // 현재 열려 있는 상태인지 확인
 
-        // 아코디언의 각 버튼 요소(.acd_btn)를 선택하고, aria-label 속성을 "열기"로 설정
-        var links = this.el.find('.acd_btn');
-        links.off().on('click', {el: this.el, multiple: this.multiple}, this.dropdown); // 클릭 이벤트 핸들러 설정
-    };
+        // aria-expanded 속성 업데이트 (접근성 대응)
+        btn.setAttribute('aria-expanded', isActive ? 'false' : 'true');
 
-    // 아코디언의 드롭다운 기능을 처리하는 메서드
-    Accordion.prototype.dropdown = function (e) {
-        var $el = e.data.el; // 아코디언 리스트의 요소
-        ($this = $(this)), ($next = $this.next()); // 클릭된 버튼($this)과 다음 요소($next)를 저장
-
-        $next.slideToggle(100); // 패널을 슬라이드 방식으로 열고 닫기
-        $this.parent().toggleClass('active'); // 부모 요소에 active 클래스 토글
-
-        // 다중 열림이 허용되지 않은 경우, 다른 패널을 닫기
-        if (!e.data.multiple) {
-            $el.find('.acd_cont').not($next).slideUp(100).parent().removeClass('active');
+        // 다중 열림 비허용 설정일 경우
+        if (!allowMultiple) {
+          // 현재 클릭된 항목을 제외한 모든 열려있는 아코디언 닫기
+          wrapper.querySelectorAll('.acd_item.active').forEach((activeItem) => {
+            if (activeItem !== item) {
+              activeItem.classList.remove('active'); // active 클래스 제거
+              const otherBtn = activeItem.querySelector('.acd_btn'); // 해당 항목의 버튼
+              if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false'); // aria-expanded 갱신
+            }
+          });
         }
-    };
 
-    // 아코디언 객체를 생성하고 초기화
-    var accordion = new Accordion($('.acd_wrap'), true); // 다중 열림 허용
+        // 현재 아코디언 항목을 토글 (열기/닫기)
+        item.classList.toggle('active');
+      });
+    });
+  });
 }

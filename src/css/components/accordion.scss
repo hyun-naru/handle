@@ -14,10 +14,7 @@
 
 	}
 	.acd_cont {
-		.inner {
-			display: none;
-			
-		}
+		display: none;
 	}
 
 	&.ty1 {
@@ -143,6 +140,7 @@
 		}
 		.acd_cont {
 			padding: var(--px-5) var(--px-8) var(--px-8);
+			display: block;
 			&::before {
 				opacity: 1;
 			}
