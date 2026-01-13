@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initInputClearButtons();
   initTextareaLimit();// .inp_item textarea 기준 자동 적용
   toggleAccordion('.acd_wrap', true); // 두 번째 인자를 false로 하면 단일 열림만 허용
-  initAccessibleTabs();
+  initAllAccessibleTabs(); // 모든 .tab_wrap 적용
 });
 
 /**
@@ -183,33 +183,54 @@ function initTextareaLimit(selector = '.inp_item textarea') {
     });
   });
 }
-function initAccessibleTabs(containerSelector = '.tab_wrap') {
-  const container = document.querySelector(containerSelector);
-  if (!container) return;
 
+/**
+ * 문서 내 모든 .tab_wrap 요소에 접근성 탭 기능을 초기화합니다.
+ * @param {string} wrapperSelector - 탭 그룹을 감싸는 컨테이너 선택자
+ */
+function initAllAccessibleTabs(wrapperSelector = '.tab_wrap') {
+  const tabGroups = document.querySelectorAll(wrapperSelector);
+  if (!tabGroups.length) return;
+
+  // 각 탭 그룹마다 초기화
+  tabGroups.forEach(initSingleTabGroup);
+}
+
+/**
+ * 단일 .tab_wrap 내에서 접근성 탭 기능을 적용합니다.
+ * @param {HTMLElement} container - 단일 탭 그룹 요소
+ */
+function initSingleTabGroup(container) {
   const tabs = container.querySelectorAll('[role="tab"]');
   const panels = container.querySelectorAll('[role="tabpanel"]');
 
-  // ✅ 탭 활성화 함수
+  /**
+   * 특정 탭을 활성화하고 나머지를 비활성화합니다.
+   * @param {HTMLElement} tab - 활성화할 탭 버튼
+   */
   function activateTab(tab) {
     const targetId = tab.getAttribute('aria-controls');
 
+    // 모든 탭 비활성화 처리
     tabs.forEach(t => {
       t.setAttribute('aria-selected', 'false');
       t.setAttribute('tabindex', '-1');
       t.classList.remove('active');
     });
 
+    // 모든 패널 숨기기
     panels.forEach(p => {
       p.classList.remove('active');
       p.setAttribute('hidden', 'true');
     });
 
+    // 클릭한 탭 활성화
     tab.setAttribute('aria-selected', 'true');
     tab.setAttribute('tabindex', '0');
     tab.classList.add('active');
     tab.focus();
 
+    // 연결된 패널 표시
     const targetPanel = container.querySelector(`#${targetId}`);
     if (targetPanel) {
       targetPanel.classList.add('active');
@@ -217,12 +238,16 @@ function initAccessibleTabs(containerSelector = '.tab_wrap') {
     }
   }
 
-  // ✅ 클릭 이벤트 핸들러
+  /**
+   * 마우스 클릭 시 탭 활성화 이벤트 핸들러
+   */
   function handleClick(event) {
     activateTab(event.currentTarget);
   }
 
-  // ✅ 키보드 이벤트 핸들러
+  /**
+   * 키보드 화살표로 탭 이동 지원 (접근성 고려)
+   */
   function handleKeydown(event) {
     const tab = event.currentTarget;
     const tabsArray = Array.from(tabs);
@@ -233,20 +258,20 @@ function initAccessibleTabs(containerSelector = '.tab_wrap') {
     } else if (event.key === 'ArrowLeft') {
       newIndex = (newIndex - 1 + tabsArray.length) % tabsArray.length;
     } else {
-      return;
+      return; // 다른 키는 무시
     }
 
     event.preventDefault();
     activateTab(tabsArray[newIndex]);
   }
 
-  // ✅ 이벤트 등록
+  // 각 탭에 이벤트 바인딩
   tabs.forEach(tab => {
     tab.addEventListener('click', handleClick);
     tab.addEventListener('keydown', handleKeydown);
   });
 
-  // ✅ 초기 활성화 탭이 없을 경우 첫 번째 탭 활성화
+  // 초기 활성화된 탭이 없다면 첫 번째 탭을 기본으로 활성화
   const selected = Array.from(tabs).find(t => t.getAttribute('aria-selected') === 'true');
   activateTab(selected || tabs[0]);
 }

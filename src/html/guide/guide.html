@@ -520,6 +520,28 @@
                     </div>
                 </div>
             </div>
+            <h2 class="tit02">tab_wrap</h2>
+            <div class="guideComponent">
+                <div class="tab_wrap">
+                    <div class="tab_list" role="tablist">
+                        {{> cp/tab-btn tb-text="1번 탭" tb-id="04" tb-active=true}}
+                        {{> cp/tab-btn tb-text="2번 탭" tb-id="05"}}
+                        {{> cp/tab-btn tb-text="3번 탭" tb-id="06" }}
+                    </div>
+                    <div class="tab_content active" role="tabpanel" aria-labelledby="tab04" id="tabPanel04">
+                        tab inner 1 <br>
+                        tabpanel tabindex="0" - 적용 상태
+                    </div>
+                    <div class="tab_content" role="tabpanel" aria-labelledby="tab05" id="tabPanel05">
+                        tab inner 2 <br>
+                        tabpanel tabindex="0" - 적용 상태
+                    </div>
+                    <div class="tab_content" role="tabpanel" aria-labelledby="tab06" id="tabPanel06">
+                        tab inner 3 <br>
+                        tabpanel tabindex="0" - 적용 상태
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="section" id="accordianGuide">
             <h1 class="tit01">accordian Guide</h1>
