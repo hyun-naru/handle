@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initInputClearButtons();
   initTextareaLimit();// .inp_item textarea 기준 자동 적용
   toggleAccordion('.acd_wrap', true); // 두 번째 인자를 false로 하면 단일 열림만 허용
+  initAccessibleTabs();
 });
 
 /**
@@ -181,6 +182,73 @@ function initTextareaLimit(selector = '.inp_item textarea') {
       em.textContent = count;
     });
   });
+}
+function initAccessibleTabs(containerSelector = '.tab_wrap') {
+  const container = document.querySelector(containerSelector);
+  if (!container) return;
+
+  const tabs = container.querySelectorAll('[role="tab"]');
+  const panels = container.querySelectorAll('[role="tabpanel"]');
+
+  // ✅ 탭 활성화 함수
+  function activateTab(tab) {
+    const targetId = tab.getAttribute('aria-controls');
+
+    tabs.forEach(t => {
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+      t.classList.remove('active');
+    });
+
+    panels.forEach(p => {
+      p.classList.remove('active');
+      p.setAttribute('hidden', 'true');
+    });
+
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+    tab.classList.add('active');
+    tab.focus();
+
+    const targetPanel = container.querySelector(`#${targetId}`);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+      targetPanel.removeAttribute('hidden');
+    }
+  }
+
+  // ✅ 클릭 이벤트 핸들러
+  function handleClick(event) {
+    activateTab(event.currentTarget);
+  }
+
+  // ✅ 키보드 이벤트 핸들러
+  function handleKeydown(event) {
+    const tab = event.currentTarget;
+    const tabsArray = Array.from(tabs);
+    let newIndex = tabsArray.indexOf(tab);
+
+    if (event.key === 'ArrowRight') {
+      newIndex = (newIndex + 1) % tabsArray.length;
+    } else if (event.key === 'ArrowLeft') {
+      newIndex = (newIndex - 1 + tabsArray.length) % tabsArray.length;
+    } else {
+      return;
+    }
+
+    event.preventDefault();
+    activateTab(tabsArray[newIndex]);
+  }
+
+  // ✅ 이벤트 등록
+  tabs.forEach(tab => {
+    tab.addEventListener('click', handleClick);
+    tab.addEventListener('keydown', handleKeydown);
+  });
+
+  // ✅ 초기 활성화 탭이 없을 경우 첫 번째 탭 활성화
+  const selected = Array.from(tabs).find(t => t.getAttribute('aria-selected') === 'true');
+  activateTab(selected || tabs[0]);
 }
 
 

@@ -1,3 +1,18 @@
+{{!-- /**
+ * @name : 아코디언
+ * @description : 아코디언 컴포넌트
+ * @property
+ *  - ac-class : 아코디언 전체 추가 class
+ *  - ac-active : 아코디언 활성화 여부
+ *  - head-class : 아코디언 헤드 추가 class
+ *  - cont-class : 아코디언 컨텐츠 추가 class
+ *  - ico-class : 아코디언 아이콘 타입 class
+ *  - ac-title : 아코디언 타이틀 텍스트
+ *  - ac-desc : 아코디언 서브 타이틀 텍스트
+ *  - ac-linkBtn : 아코디언 헤드 우측 링크 버튼 텍스트
+ *  - ac-linkBtn-popup : 아코디언 헤드 우측 링크 버튼 팝업 ID
+ */
+ --}}
 <div class="acd_item {{#if ac-class}}{{ac-class}}{{/if}}{{#if ac-active}} active{{/if}}">
 	<div class="acd_head{{#if head-class}} {{head-class}}{{/if}}">
 		<button type="button" class="acd_btn{{#if ico-class}} acd_ico_{{ico-class}}{{/if}}" {{#if ac-active}}aria-expanded="true"{{else}}aria-expanded="false"{{/if}}>{{#if ac-title}}<span>{{{ac-title}}}</span>{{#if ac-desc}}<span class='sub_g_txt'>{{ac-desc}}</span>{{/if}}{{/if}}</button>

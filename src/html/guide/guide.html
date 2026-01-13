@@ -110,6 +110,7 @@
         </div>
         <div class="section" id="checkboxGuide">
             <h1 class="tit01">checkbox Guide</h1>
+            <h2 class="tit02">checkbox - 기본</h2>
             <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/checkbox id="checkbox1" labelname="라벨명 Default" }}
@@ -118,6 +119,9 @@
 	                {{> cp/checkbox id="checkbox4" labelname="라벨명 checked disabled" checked=true disabled=true }}
 	                {{> cp/checkbox id="checkbox5" labelname="더보기" ag_more=true pop_open=true pop_id="more_case1" }}
                 </div>
+            </div>
+            <h2 class="tit02">checkbox - 기본 + 추가설명</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/checkbox id="checkbox11" labelname="라벨명 Default" labelcont="추가설명"}}
 	                {{> cp/checkbox id="checkbox12" labelname="라벨명 checked" labelcont="추가설명" checked=true }}
@@ -125,66 +129,63 @@
 	                {{> cp/checkbox id="checkbox14" labelname="라벨명 checked disabled" labelcont="추가설명" checked=true disabled=true }}
 	                {{> cp/checkbox id="checkbox15" labelname="더보기" labelcont="추가설명" ag_more=true pop_open=true pop_id="more_case1" }}
                 </div>
+            </div>
+            <h2 class="tit02">checkbox - 기본 check + 추가설명 hide</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/checkbox id="checkbox21" label_class="check_hide" labelname="라벨명 Default" labelcont="추가설명"}}
 	                {{> cp/checkbox id="checkbox22" label_class="check_hide" labelname="라벨명 checked" labelcont="추가설명" checked=true }}
 	                {{> cp/checkbox id="checkbox23" label_class="check_hide" labelname="라벨명 disabled" labelcont="추가설명" disabled=true }}
 	                {{> cp/checkbox id="checkbox24" label_class="check_hide" labelname="라벨명 checked disabled" labelcont="추가설명" checked=true disabled=true }}
                 </div>
+            </div>
+            <h2 class="tit02">checkbox - 기본 check:right</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/checkbox id="checkbox31" chk_class="right" labelname="라벨명 Default" }}
 	                {{> cp/checkbox id="checkbox32" chk_class="right" labelname="라벨명 checked" checked=true }}
 	                {{> cp/checkbox id="checkbox33" chk_class="right" labelname="라벨명 disabled" disabled=true }}
 	                {{> cp/checkbox id="checkbox34" chk_class="right" labelname="라벨명 checked disabled" checked=true disabled=true }}
                 </div>
+            </div>
+            <h2 class="tit02">checkbox - lg</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/checkbox id="checkbox41" label_class="chk_label_lg" labelname="라벨명 Default" }}
 	                {{> cp/checkbox id="checkbox42" label_class="chk_label_lg" labelname="라벨명 checked" checked=true }}
 	                {{> cp/checkbox id="checkbox43" label_class="chk_label_lg" labelname="라벨명 disabled" disabled=true }}
 	                {{> cp/checkbox id="checkbox44" label_class="chk_label_lg" labelname="라벨명 checked disabled" checked=true disabled=true }}
                 </div>
+            </div>
+            <h2 class="tit02">checkbox - lg + 추가설명</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/checkbox id="checkbox51" label_class="chk_label_lg" labelname="라벨명 Default" labelcont="추가설명" }}
 	                {{> cp/checkbox id="checkbox52" label_class="chk_label_lg" labelname="라벨명 checked" labelcont="추가설명" checked=true }}
 	                {{> cp/checkbox id="checkbox53" label_class="chk_label_lg" labelname="라벨명 disabled" labelcont="추가설명" disabled=true }}
 	                {{> cp/checkbox id="checkbox54" label_class="chk_label_lg" labelname="라벨명 checked disabled" labelcont="추가설명" checked=true disabled=true }}
                 </div>
+            </div>
+            <h2 class="tit02">checkbox - lg check + 추가설명 hide</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/checkbox id="checkbox61" label_class="chk_label_lg check_hide" labelname="라벨명 Default" labelcont="추가설명" }}
 	                {{> cp/checkbox id="checkbox62" label_class="chk_label_lg check_hide" labelname="라벨명 checked" labelcont="추가설명" checked=true }}
 	                {{> cp/checkbox id="checkbox63" label_class="chk_label_lg check_hide" labelname="라벨명 disabled" labelcont="추가설명" disabled=true }}
 	                {{> cp/checkbox id="checkbox64" label_class="chk_label_lg check_hide" labelname="라벨명 checked disabled" labelcont="추가설명" checked=true disabled=true }}
                 </div>
+            </div>
+            <h2 class="tit02">checkbox - lg check:right</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/checkbox id="checkbox71" chk_class="right" label_class="chk_label_lg" labelname="라벨명 Default" }}
 	                {{> cp/checkbox id="checkbox72" chk_class="right" label_class="chk_label_lg" labelname="라벨명 checked" checked=true }}
 	                {{> cp/checkbox id="checkbox73" chk_class="right" label_class="chk_label_lg" labelname="라벨명 disabled" disabled=true }}
 	                {{> cp/checkbox id="checkbox74" chk_class="right" label_class="chk_label_lg" labelname="라벨명 checked disabled" checked=true disabled=true }}
                 </div>
-                <div class="group_wrap">
-                    {{> cp/checkbox id="checkbox81" label_class="switch_check" labelname="라벨명 Default" }}
-	                {{> cp/checkbox id="checkbox82" label_class="switch_check" labelname="라벨명 checked" checked=true }}
-	                {{> cp/checkbox id="checkbox83" label_class="switch_check" labelname="라벨명 disabled" disabled=true }}
-	                {{> cp/checkbox id="checkbox84" label_class="switch_check" labelname="라벨명 checked disabled" checked=true disabled=true }}
-                </div>
-                <div class="group_wrap">
-                    {{> cp/checkbox id="checkbox91" chk_class="right" label_class="switch_check" labelname="라벨명 Default" }}
-	                {{> cp/checkbox id="checkbox92" chk_class="right" label_class="switch_check" labelname="라벨명 checked" checked=true }}
-	                {{> cp/checkbox id="checkbox93" chk_class="right" label_class="switch_check" labelname="라벨명 disabled" disabled=true }}
-	                {{> cp/checkbox id="checkbox94" chk_class="right" label_class="switch_check" labelname="라벨명 checked disabled" checked=true disabled=true }}
-                </div>
-                <div class="group_wrap">
-                    {{> cp/checkbox id="checkbox101" label_class="switch_check lg" labelname="라벨명 Default" }}
-	                {{> cp/checkbox id="checkbox102" label_class="switch_check lg" labelname="라벨명 checked" checked=true }}
-	                {{> cp/checkbox id="checkbox103" label_class="switch_check lg" labelname="라벨명 disabled" disabled=true }}
-	                {{> cp/checkbox id="checkbox104" label_class="switch_check lg" labelname="라벨명 checked disabled" checked=true disabled=true }}
-                </div>
-                <div class="group_wrap">
-                    {{> cp/checkbox id="checkbox111" chk_class="right" label_class="switch_check lg" labelname="라벨명 Default" }}
-	                {{> cp/checkbox id="checkbox112" chk_class="right" label_class="switch_check lg" labelname="라벨명 checked" checked=true }}
-	                {{> cp/checkbox id="checkbox113" chk_class="right" label_class="switch_check lg" labelname="라벨명 disabled" disabled=true }}
-	                {{> cp/checkbox id="checkbox114" chk_class="right" label_class="switch_check lg" labelname="라벨명 checked disabled" checked=true disabled=true }}
-                </div>
+            </div>
+            <h2 class="tit02">checkbox - check + roundBox</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/checkbox id="checkbox121" check_class="rd_box" label_class="" labelname="라벨명 Default" }}
 	                {{> cp/checkbox id="checkbox122" check_class="rd_box" label_class="" labelname="라벨명 checked" checked=true }}
@@ -193,8 +194,48 @@
                 </div>
             </div>
         </div>
+        <div class="section" id="swiperGuide">
+            <h1 class="tit01">switch Guide</h1>
+            <h2 class="tit02">checkbox - switch</h2>
+            <div class="guideComponent">
+                <div class="group_wrap">
+                    {{> cp/checkbox id="checkbox81" label_class="switch_check" labelname="라벨명 Default" }}
+	                {{> cp/checkbox id="checkbox82" label_class="switch_check" labelname="라벨명 checked" checked=true }}
+	                {{> cp/checkbox id="checkbox83" label_class="switch_check" labelname="라벨명 disabled" disabled=true }}
+	                {{> cp/checkbox id="checkbox84" label_class="switch_check" labelname="라벨명 checked disabled" checked=true disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">checkbox - switch:right</h2>
+            <div class="guideComponent">
+                <div class="group_wrap">
+                    {{> cp/checkbox id="checkbox91" chk_class="right" label_class="switch_check" labelname="라벨명 Default" }}
+	                {{> cp/checkbox id="checkbox92" chk_class="right" label_class="switch_check" labelname="라벨명 checked" checked=true }}
+	                {{> cp/checkbox id="checkbox93" chk_class="right" label_class="switch_check" labelname="라벨명 disabled" disabled=true }}
+	                {{> cp/checkbox id="checkbox94" chk_class="right" label_class="switch_check" labelname="라벨명 checked disabled" checked=true disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">checkbox - switch lg</h2>
+            <div class="guideComponent">
+                <div class="group_wrap">
+                    {{> cp/checkbox id="checkbox101" label_class="switch_check lg" labelname="라벨명 Default" }}
+	                {{> cp/checkbox id="checkbox102" label_class="switch_check lg" labelname="라벨명 checked" checked=true }}
+	                {{> cp/checkbox id="checkbox103" label_class="switch_check lg" labelname="라벨명 disabled" disabled=true }}
+	                {{> cp/checkbox id="checkbox104" label_class="switch_check lg" labelname="라벨명 checked disabled" checked=true disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">checkbox - switch lg:right</h2>
+            <div class="guideComponent">
+                <div class="group_wrap">
+                    {{> cp/checkbox id="checkbox111" chk_class="right" label_class="switch_check lg" labelname="라벨명 Default" }}
+	                {{> cp/checkbox id="checkbox112" chk_class="right" label_class="switch_check lg" labelname="라벨명 checked" checked=true }}
+	                {{> cp/checkbox id="checkbox113" chk_class="right" label_class="switch_check lg" labelname="라벨명 disabled" disabled=true }}
+	                {{> cp/checkbox id="checkbox114" chk_class="right" label_class="switch_check lg" labelname="라벨명 checked disabled" checked=true disabled=true }}
+                </div>
+            </div>
+        </div>
         <div class="section" id="radioGuide">
             <h1 class="tit01">radio Guide</h1>
+            <h2 class="tit02">radio - 기본</h2>
             <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/radio id="radio1" name="radio" labelname="라벨명 Default" }}
@@ -203,6 +244,9 @@
 	                {{> cp/radio id="radio4" name="radio0" labelname="라벨명 checked disabled" checked=true disabled=true }}
 	                {{> cp/radio id="radio5" name="radio0" labelname="더보기" ag_more=true pop_open=true pop_id="more_case1" }}
                 </div>
+            </div>
+            <h2 class="tit02">radio - 기본 + 추가설명</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/radio id="radio11" name="radio1" labelname="라벨명 Default" labelcont="추가설명"}}
 	                {{> cp/radio id="radio12" name="radio1" labelname="라벨명 checked" labelcont="추가설명" checked=true }}
@@ -210,48 +254,72 @@
 	                {{> cp/radio id="radio14" name="radio10" labelname="라벨명 checked disabled" labelcont="추가설명" checked=true disabled=true }}
 	                {{> cp/radio id="radio15" name="radio10" labelname="더보기" labelcont="추가설명" ag_more=true pop_open=true pop_id="more_case1" }}
                 </div>
+            </div>
+            <h2 class="tit02">radio - 선택시 + 추가설명 hide</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/radio id="radio21" name="radio2" label_class="check_hide" labelname="라벨명 Default" labelcont="추가설명"}}
 	                {{> cp/radio id="radio22" name="radio2" label_class="check_hide" labelname="라벨명 checked" labelcont="추가설명" checked=true }}
 	                {{> cp/radio id="radio23" name="radio20" label_class="check_hide" labelname="라벨명 disabled" labelcont="추가설명" disabled=true }}
 	                {{> cp/radio id="radio24" name="radio20" label_class="check_hide" labelname="라벨명 checked disabled" labelcont="추가설명" checked=true disabled=true }}
                 </div>
+            </div>
+            <h2 class="tit02">radio - 기본:right</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/radio id="radio31" name="radio3" chk_class="right" labelname="라벨명 Default" }}
 	                {{> cp/radio id="radio32" name="radio3" chk_class="right" labelname="라벨명 checked" checked=true }}
 	                {{> cp/radio id="radio33" name="radio30" chk_class="right" labelname="라벨명 disabled" disabled=true }}
 	                {{> cp/radio id="radio34" name="radio30" chk_class="right" labelname="라벨명 checked disabled" checked=true disabled=true }}
                 </div>
+            </div>
+            <h2 class="tit02">radio - lg</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/radio id="radio41" name="radio4" label_class="chk_label_lg" labelname="라벨명 Default" }}
 	                {{> cp/radio id="radio42" name="radio4" label_class="chk_label_lg" labelname="라벨명 checked" checked=true }}
 	                {{> cp/radio id="radio43" name="radio40" label_class="chk_label_lg" labelname="라벨명 disabled" disabled=true }}
 	                {{> cp/radio id="radio44" name="radio40" label_class="chk_label_lg" labelname="라벨명 checked disabled" checked=true disabled=true }}
                 </div>
+            </div>
+            <h2 class="tit02">radio - lg + 추가설명</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/radio id="radio51" name="radio5" label_class="chk_label_lg" labelname="라벨명 Default" labelcont="추가설명" }}
 	                {{> cp/radio id="radio52" name="radio5" label_class="chk_label_lg" labelname="라벨명 checked" labelcont="추가설명" checked=true }}
 	                {{> cp/radio id="radio53" name="radio50" label_class="chk_label_lg" labelname="라벨명 disabled" labelcont="추가설명" disabled=true }}
 	                {{> cp/radio id="radio54" name="radio50" label_class="chk_label_lg" labelname="라벨명 checked disabled" labelcont="추가설명" checked=true disabled=true }}
                 </div>
+            </div>
+            <h2 class="tit02">radio - lg 선택시 + 추가설명 hide</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/radio id="radio61" name="radio6" label_class="chk_label_lg check_hide" labelname="라벨명 Default" labelcont="추가설명" }}
 	                {{> cp/radio id="radio62" name="radio6" label_class="chk_label_lg check_hide" labelname="라벨명 checked" labelcont="추가설명" checked=true }}
 	                {{> cp/radio id="radio63" name="radio60" label_class="chk_label_lg check_hide" labelname="라벨명 disabled" labelcont="추가설명" disabled=true }}
 	                {{> cp/radio id="radio64" name="radio60" label_class="chk_label_lg check_hide" labelname="라벨명 checked disabled" labelcont="추가설명" checked=true disabled=true }}
                 </div>
+            </div>
+            <h2 class="tit02">radio - lg:right</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/radio id="radio71" name="radio7" chk_class="right" label_class="chk_label_lg" labelname="라벨명 Default" }}
 	                {{> cp/radio id="radio72" name="radio7" chk_class="right" label_class="chk_label_lg" labelname="라벨명 checked" checked=true }}
 	                {{> cp/radio id="radio73" name="radio70" chk_class="right" label_class="chk_label_lg" labelname="라벨명 disabled" disabled=true }}
 	                {{> cp/radio id="radio74" name="radio70" chk_class="right" label_class="chk_label_lg" labelname="라벨명 checked disabled" checked=true disabled=true }}
                 </div>
+            </div>
+            <h2 class="tit02">radio - roundBox</h2>
+            <div class="guideComponent">
                 <div class="group_wrap">
                     {{> cp/radio id="radio81" name="radio8" check_class="rd_box" label_class="" labelname="라벨명 Default" }}
 	                {{> cp/radio id="radio82" name="radio8" check_class="rd_box" label_class="" labelname="라벨명 checked" checked=true }}
 	                {{> cp/radio id="radio83" name="radio80" check_class="rd_box" label_class="" labelname="라벨명 disabled" disabled=true }}
 	                {{> cp/radio id="radio84" name="radio80" check_class="rd_box" label_class="" labelname="라벨명 checked disabled" checked=true disabled=true }}
                 </div>
+            </div>
+            <h2 class="tit02">radio - button type</h2>
+            <div class="guideComponent">
                 <div class="group_wrap ty2">
                     {{> cp/radio id="radio91" name="radio9" chk_class="rd_check" label_class="" labelname="라벨명 Default" }}
 	                {{> cp/radio id="radio92" name="radio9" chk_class="rd_check" label_class="" labelname="라벨명 checked" checked=true }}
@@ -262,6 +330,165 @@
         </div>
         <div class="section" id="buttonGuide">
             <h1 class="tit01">button Guide</h1>
+            <h2 class="tit02">btn_area - Default + xsmall</h2>
+            <div class="guideComponent">
+                <div class="btn_area">
+                    {{> cp/btn color="1" size="1" b-text="Primary Button" }}
+                    {{> cp/btn color="2" size="1" b-text="Secondary Button" }}
+                    {{> cp/btn color="3" size="1" b-text="Tertiary Button" }}
+                    {{> cp/btn color="4" size="1" b-text="Success Button" }}
+                    {{> cp/btn color="5" size="1" b-text="Warning Button" }}
+                    {{> cp/btn color="6" size="1" b-text="Error Button" }}
+                    {{> cp/btn color="6" size="1" b-text="Error Button" disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">btn_area - Default + small</h2>
+            <div class="guideComponent">
+                <div class="btn_area">
+                    {{> cp/btn color="1" size="2" b-text="Primary Button" }}
+                    {{> cp/btn color="2" size="2" b-text="Secondary Button" }}
+                    {{> cp/btn color="3" size="2" b-text="Tertiary Button" }}
+                    {{> cp/btn color="4" size="2" b-text="Success Button" }}
+                    {{> cp/btn color="5" size="2" b-text="Warning Button" }}
+                    {{> cp/btn color="6" size="2" b-text="Error Button" }}
+                    {{> cp/btn color="6" size="2" b-text="Error Button" disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">btn_area - Default + midium</h2>
+            <div class="guideComponent">
+                <div class="btn_area">
+                    {{> cp/btn color="1" size="3" b-text="Primary Button" }}
+                    {{> cp/btn color="2" size="3" b-text="Secondary Button" }}
+                    {{> cp/btn color="3" size="3" b-text="Tertiary Button" }}
+                    {{> cp/btn color="4" size="3" b-text="Success Button" }}
+                    {{> cp/btn color="5" size="3" b-text="Warning Button" }}
+                    {{> cp/btn color="6" size="3" b-text="Error Button" }}
+                    {{> cp/btn color="6" size="3" b-text="Error Button" disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">btn_area - Default + large</h2>
+            <div class="guideComponent">
+                <div class="btn_area">
+                    {{> cp/btn color="1" size="4" b-text="Primary Button" }}
+                    {{> cp/btn color="2" size="4" b-text="Secondary Button" }}
+                    {{> cp/btn color="3" size="4" b-text="Tertiary Button" }}
+                    {{> cp/btn color="4" size="4" b-text="Success Button" }}
+                    {{> cp/btn color="5" size="4" b-text="Warning Button" }}
+                    {{> cp/btn color="6" size="4" b-text="Error Button" }}
+                    {{> cp/btn color="6" size="4" b-text="Error Button" disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">btn_area - Default + xlarge</h2>
+            <div class="guideComponent">
+                <div class="btn_area">
+                    {{> cp/btn color="1" size="5" b-text="Primary Button" }}
+                    {{> cp/btn color="2" size="5" b-text="Secondary Button" }}
+                    {{> cp/btn color="3" size="5" b-text="Tertiary Button" }}
+                    {{> cp/btn color="4" size="5" b-text="Success Button" }}
+                    {{> cp/btn color="5" size="5" b-text="Warning Button" }}
+                    {{> cp/btn color="6" size="5" b-text="Error Button" }}
+                    {{> cp/btn color="6" size="5" b-text="Error Button" disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">btn_area - borderLine + xsmall</h2>
+            <div class="guideComponent">
+                <div class="btn_area">
+                    {{> cp/btn type="2" color="1" size="1" b-text="Primary Button" }}
+                    {{> cp/btn type="2" color="2" size="1" b-text="Secondary Button" }}
+                    {{> cp/btn type="2" color="3" size="1" b-text="Tertiary Button" }}
+                    {{> cp/btn type="2" color="4" size="1" b-text="Success Button" }}
+                    {{> cp/btn type="2" color="5" size="1" b-text="Warning Button" }}
+                    {{> cp/btn type="2" color="6" size="1" b-text="Error Button" }}
+                    {{> cp/btn type="2" color="6" size="1" b-text="Error Button" disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">btn_area - borderLine + small</h2>
+            <div class="guideComponent">
+                <div class="btn_area">
+                    {{> cp/btn type="2" color="1" size="2" b-text="Primary Button" }}
+                    {{> cp/btn type="2" color="2" size="2" b-text="Secondary Button" }}
+                    {{> cp/btn type="2" color="3" size="2" b-text="Tertiary Button" }}
+                    {{> cp/btn type="2" color="4" size="2" b-text="Success Button" }}
+                    {{> cp/btn type="2" color="5" size="2" b-text="Warning Button" }}
+                    {{> cp/btn type="2" color="6" size="2" b-text="Error Button" }}
+                    {{> cp/btn type="2" color="6" size="2" b-text="Error Button" disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">btn_area - borderLine + midium</h2>
+            <div class="guideComponent">
+                <div class="btn_area">
+                    {{> cp/btn type="2" color="1" size="3" b-text="Primary Button" }}
+                    {{> cp/btn type="2" color="2" size="3" b-text="Secondary Button" }}
+                    {{> cp/btn type="2" color="3" size="3" b-text="Tertiary Button" }}
+                    {{> cp/btn type="2" color="4" size="3" b-text="Success Button" }}
+                    {{> cp/btn type="2" color="5" size="3" b-text="Warning Button" }}
+                    {{> cp/btn type="2" color="6" size="3" b-text="Error Button" }}
+                    {{> cp/btn type="2" color="6" size="3" b-text="Error Button" disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">btn_area - borderLine + large</h2>
+            <div class="guideComponent">
+                <div class="btn_area">
+                    {{> cp/btn type="2" color="1" size="4" b-text="Primary Button" }}
+                    {{> cp/btn type="2" color="2" size="4" b-text="Secondary Button" }}
+                    {{> cp/btn type="2" color="3" size="4" b-text="Tertiary Button" }}
+                    {{> cp/btn type="2" color="4" size="4" b-text="Success Button" }}
+                    {{> cp/btn type="2" color="5" size="4" b-text="Warning Button" }}
+                    {{> cp/btn type="2" color="6" size="4" b-text="Error Button" }}
+                    {{> cp/btn type="2" color="6" size="4" b-text="Error Button" disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">btn_area - borderLine + xlarge</h2>
+            <div class="guideComponent">
+                <div class="btn_area">
+                    {{> cp/btn type="2" color="1" size="5" b-text="Primary Button" }}
+                    {{> cp/btn type="2" color="2" size="5" b-text="Secondary Button" }}
+                    {{> cp/btn type="2" color="3" size="5" b-text="Tertiary Button" }}
+                    {{> cp/btn type="2" color="4" size="5" b-text="Success Button" }}
+                    {{> cp/btn type="2" color="5" size="5" b-text="Warning Button" }}
+                    {{> cp/btn type="2" color="6" size="5" b-text="Error Button" }}
+                    {{> cp/btn type="2" color="6" size="5" b-text="Error Button" disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">btn_area & flex</h2>
+            <div class="guideComponent">
+                <div class="btn_area flex">
+                    {{> cp/btn color="1" size="6" b-text="Primary Button" }}
+                </div>
+                <div class="btn_area flex">
+                    {{> cp/btn color="2" size="6" b-text="Secondary Button" }}
+                    {{> cp/btn color="3" size="6" b-text="Tertiary Button" }}
+                </div>
+                <div class="btn_area flex">
+                    {{> cp/btn color="4" size="6" b-text="Success Button" }}
+                    {{> cp/btn color="5" size="6" b-text="Warning Button" }}
+                    {{> cp/btn color="6" size="6" b-text="Error Button" }}
+                </div>
+            </div>
+            <h2 class="tit02">btn_area & column</h2>
+            <div class="guideComponent">
+                <div class="btn_area column">
+                    {{> cp/btn type="2" color="1" size="5" b-text="Primary Button" }}
+                    {{> cp/btn type="2" color="2" size="5" b-text="Secondary Button" }}
+                    {{> cp/btn type="2" color="3" size="5" b-text="Tertiary Button" }}
+                    {{> cp/btn type="2" color="4" size="5" b-text="Success Button" }}
+                    {{> cp/btn type="2" color="5" size="5" b-text="Warning Button" }}
+                    {{> cp/btn type="2" color="6" size="5" b-text="Error Button" }}
+                    {{> cp/btn type="2" color="6" size="5" b-text="Error Button" disabled=true }}
+                </div>
+            </div>
+            <h2 class="tit02">btn_area & wrap</h2>
+            <div class="guideComponent">
+                <div class="btn_area wrap">
+                    {{> cp/btn type="2" color="1" size="5" b-text="Primary Button" }}
+                    {{> cp/btn type="2" color="2" size="5" b-text="Secondary Button" }}
+                    {{> cp/btn type="2" color="3" size="5" b-text="Tertiary Button" }}
+                    {{> cp/btn type="2" color="4" size="5" b-text="Success Button" }}
+                    {{> cp/btn type="2" color="5" size="5" b-text="Warning Button" }}
+                    {{> cp/btn type="2" color="6" size="5" b-text="Error Button" }}
+                    {{> cp/btn type="2" color="6" size="5" b-text="Error Button" disabled=true }}
+                </div>
+            </div>
         </div>
         <div class="section" id="listGuide">
             <h1 class="tit01">list Guide</h1>
@@ -271,28 +498,134 @@
         </div>
         <div class="section" id="tabGuide">
             <h1 class="tit01">tab Guide</h1>
+            <h2 class="tit02">tab_wrap</h2>
+            <div class="guideComponent">
+                <div class="tab_wrap">
+                    <div class="tab_list" role="tablist">
+                        {{> cp/tab-btn tb-text="1번 탭" tb-id="01" tb-active=true}}
+                        {{> cp/tab-btn tb-text="2번 탭" tb-id="02"}}
+                        {{> cp/tab-btn tb-text="3번 탭" tb-id="03" }}
+                    </div>
+                    <div class="tab_content active" role="tabpanel" aria-labelledby="tab01" id="tabPanel01">
+                        tab inner 1 <br>
+                        tabpanel tabindex="0" - 적용 상태
+                    </div>
+                    <div class="tab_content" role="tabpanel" aria-labelledby="tab02" id="tabPanel02">
+                        tab inner 2 <br>
+                        tabpanel tabindex="0" - 적용 상태
+                    </div>
+                    <div class="tab_content" role="tabpanel" aria-labelledby="tab03" id="tabPanel03">
+                        tab inner 3 <br>
+                        tabpanel tabindex="0" - 적용 상태
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="section" id="accordianGuide">
             <h1 class="tit01">accordian Guide</h1>
+            <h2 class="tit02">acd_wrap - acd_item</h2>
             <div class="guideComponent">
                 <div class="acd_wrap">
-                {{#> cp/accordion ac-class="ty1" ac-title="샘플 타이틀" ac-desc="보조설명" cont-class="" ac-active=true }}
-                내용
-                {{/ cp/accordion }}
-                {{#> cp/accordion ac-class="ty1" ac-title="샘플 타이틀" ac-desc="보조설명" cont-class="" }}
-                내용
-                {{/ cp/accordion }}
+                    {{#> cp/accordion ac-class="ty1" ac-title="샘플 타이틀" ac-desc="보조설명" cont-class="" ac-active=true }}
+                    내용
+                    {{/ cp/accordion }}
+                    {{#> cp/accordion ac-class="ty1" ac-title="샘플 타이틀" ac-desc="보조설명" cont-class="" }}
+                    내용
+                    {{/ cp/accordion }}
                 </div>
+            </div>
+            <h2 class="tit02">acd_wrap - acd_item & ty2</h2>
+            <div class="guideComponent">
                 <div class="acd_wrap">
-                {{#> cp/accordion ac-class="ty2" ac-title="샘플 타이틀" cont-class="" ac-active=true }}
-                내용
-                {{/ cp/accordion }}
-                    
+                    {{#> cp/accordion ac-class="ty2" ac-title="샘플 타이틀" cont-class="" ac-active=true }}
+                    내용
+                    {{/ cp/accordion }}
                 </div>
             </div>
         </div>
         <div class="section" id="tableGuide">
             <h1 class="tit01">table Guide</h1>
+            <div class="guideComponent">
+                <div class="list_top_count">
+                    <p>검색결과 <strong class="point">7</strong>건</p>
+                </div>
+            </div>
+            <h2 class="tit02">Table_가로</h2>
+            <div class="guideComponent">
+                <div class="table_wrap">
+                    <h3>타이틀</h3>
+                    <table class="table">
+                        <caption>캡션값</caption>
+                        <colgroup>
+                            <col style="width:20%;">
+                            <col style="width:20%;">
+                            <col style="width:60%;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">제목1</th>
+                                <th scope="col">제목2</th>
+                                <th scope="col">제목3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>내용</td>
+                                <td>내용</td>
+                                <td>내용</td>
+                            </tr>
+                            <tr>
+                                <td>내용</td>
+                                <td>내용</td>
+                                <td>내용</td>
+                            </tr>
+                            <tr>
+                                <td>내용</td>
+                                <td>내용</td>
+                                <td>내용</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <h2 class="tit02">Table_세로</h2>
+            <div class="guideComponent">
+                <div class="table_wrap">
+                    <h3>타이틀</h3>
+                    <table class="table">
+                        <caption>캡션값</caption>
+                        <colgroup>
+                            <col style="width:20%;">
+                            <col style="width:30%;">
+                            <col style="width:20%;">
+                            <col style="width:30%;">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row">서브제목1</th>
+                                <td colspan="3">내용</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">서브제목1 강조 서브제목1 강조</th>
+                                <td colspan="3"><strong class="bold">내용</strong></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">서브제목2</th>
+                                <td>내용</td>
+                                <th scope="row">서브제목3</th>
+                                <td>내용</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">서브제목4</th>
+                                <td>내용</td>
+                                <th scope="row">서브제목5</th>
+                                <td>내용</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 {{/ layout/guide }}

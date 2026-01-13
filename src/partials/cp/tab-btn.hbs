@@ -1,0 +1,12 @@
+{{!-- /**
+ * @name : tab 버튼
+ * @description : tab 버튼 컴포넌트
+ * @property
+ *  - tb-class : tab 버튼 추가 class
+ *  - tb-active : 활성화 여부
+ *  - tb-id : tab 버튼 ID
+ *  - tb-text : tab 버튼 텍스트
+ *  - disabled : 비활성화 여부
+ */
+ --}}
+<button type="button" class="tab_btn{{#if tb-class}} {{tb-class}}{{/if}}{{#if tb-active}} active{{/if}}" role="tab" aria-selected="{{#if tb-active}}true{{else}}false{{/if}}" aria-controls="tabPanel{{#if tb-id}}{{tb-id}}{{/if}}" id="tab{{#if tb-id}}{{tb-id}}{{/if}}"{{#if disabled}} disabled{{/if}}>{{#if tb-text}}{{{tb-text}}}{{/if}}</button>

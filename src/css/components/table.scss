@@ -1,0 +1,26 @@
+.table_wrap {
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        th, td {
+            border: 1px solid var(--grey-color-300);
+            padding: var(--px-2) var(--px-3);
+            text-align: left;
+            font-size: var(--font-body-s);
+            color: var(--grey-color-900);
+        }
+        th {
+            background-color: var(--grey-color-100);
+            font-weight: 600;
+        }
+        td {
+            &.bold,
+            .bold {
+                @include bold;
+            }
+        }
+    }
+     + * {
+        margin-top: var(--px-13);
+    }
+}

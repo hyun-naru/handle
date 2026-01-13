@@ -1,4 +1,20 @@
-
+{{!-- /**
+  * @name : 인풋, 셀렉트, 텍스트에어리어
+  * @description : 인풋, 셀렉트, 텍스트에어리어 컴포넌트
+  * @property
+  *  - class : 인풋 전체 추가 class 
+  *  - inpId : 인풋 ID 
+  *  - name : 인풋 name
+  *  - type : 인풋 타입 (text, password, email, tel, number 등)
+  *  - place : 인풋 플레이스홀더
+  *  - val : 인풋 값
+  *  - min : 인풋 최소 글자수
+  *  - max : 인풋 최대 글자수
+  *  - disabled : 비활성화 여부
+  *  - readonly : 읽기전용 여부
+  *  - formTitle : 인풋 title 속성  
+ */
+ --}}
   <div class="inp_item{{#if class}} {{class}}{{/if}}{{#if search}} search{{/if}}{{#if day}} calendar{{/if}}{{#if month}} calendar{{/if}}">
     {{#unless noLabel}}
       <label {{#if inpId}}for="id{{inpId}}"{{/if}}>{{#if tit}}{{tit}}{{/if}}</label>

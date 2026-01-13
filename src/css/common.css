@@ -3,4 +3,7 @@
 @import "components/common.scss";
 @import "components/input.scss";
 @import "components/checkbox.scss";
+@import "components/btn.scss";
+@import "components/tab.scss";
 @import "components/accordion.scss";
+@import "components/table.scss";
