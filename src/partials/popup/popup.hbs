@@ -1,0 +1,31 @@
+{{!-- /**
+ * @name : 팝업
+ * @description : 팝업 컴포넌트
+ * @property
+ *  - pop-class : 팝업 전체 추가 class
+ *  - pop-active : 팝업 활성화 여부
+ *  - pop-id : 팝업 ID
+ 
+ *  - pop-title : 팝업 타이틀 텍스트
+ *  - pop-head : 팝업 헤드 추가 class
+ *  - in-class : 팝업 내부 추가 class
+ *  - close-btn : 팝업 닫기 버튼 숨김 여부
+ *  - no-header : 팝업 헤더 숨김 여부
+ */
+ --}}
+<article class="popup_wrap{{#if pop-class}} {{pop-class}}{{/if}}{{#if pop-active}} active{{/if}}" {{#if pop-id}} id="{{pop-id}}"{{/if}}{{#if close-btn}}{{/if}} role="dialog" {{#if popup-active}}aria-hidden="false"{{else}}aria-hidden="true"{{/if}}>
+	<div class="dim" aria-hidden="true"{{#if pop-id}} onclick="layerPopup.close('{{pop-id}}');"{{/if}}></div>
+	<div class="popup_layer">
+		<div class="pop{{#if in-class}} {{in-class}}{{/if}}">
+			{{#unless no-header}}
+			<div class="pop_head{{#if pop-head}} {{pop-head}}{{/if}}">
+				<h1 class="pop_tit">{{{pop-tit}}}</h1>
+			</div>
+			{{/unless}}
+			{{> @partial-block}}
+			{{#unless close-btn}}
+				<button type="button" class="pop_close"{{#if pop-id}} onclick="layerPopup.close('{{pop-id}}');"{{/if}}><span class="blind">팝업 닫기</span></button>
+			{{/unless}}
+		</div>
+	</div>
+</article>

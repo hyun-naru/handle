@@ -1,0 +1,239 @@
+.popup_wrap {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+
+    &.now_open {
+        display: block;
+    }
+
+    .dim {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 0;
+    }
+
+    .popup_layer {
+        height: 100svh;
+
+        &:not(.ty1, .ty2) {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+        }
+
+        .pop {
+            position: relative;
+            background: #fff;
+
+            .pop_head {
+                padding: 11px 52px 11px 20px;
+
+                h1 {
+                    font-size: var(--font-h5);
+                }
+            }
+
+            .pop_cont {
+                padding: var(--px-6);
+            }
+
+            .pop_close {
+                position: absolute;
+                right: 12px;
+                top: 7px;
+                display: block;
+                width: 36px;
+                height: 36px;
+                background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M17.0208 3.68558C17.2161 3.49032 17.2161 3.17374 17.0208 2.97848C16.8256 2.78322 16.509 2.78322 16.3137 2.97848L10.0001 9.29206L3.68656 2.97848C3.4913 2.78322 3.17472 2.78322 2.97945 2.97848C2.78419 3.17374 2.78419 3.49032 2.97945 3.68558L9.29304 9.99917L2.97945 16.3128C2.78419 16.508 2.78419 16.8246 2.97945 17.0199C3.17472 17.2151 3.4913 17.2151 3.68656 17.0199L10.0001 10.7063L16.3137 17.0199C16.509 17.2151 16.8256 17.2151 17.0208 17.0199C17.2161 16.8246 17.2161 16.508 17.0208 16.3128L10.7073 9.99917L17.0208 3.68558Z' fill='%23111111'/%3E%3Cpath d='M17.0208 2.97848L17.1976 2.8017L17.1976 2.8017L17.0208 2.97848ZM17.0208 3.68558L17.1976 3.86236V3.86236L17.0208 3.68558ZM16.3137 2.97848L16.137 2.8017L16.137 2.8017L16.3137 2.97848ZM10.0001 9.29206L9.82337 9.46884L10.0001 9.64561L10.1769 9.46884L10.0001 9.29206ZM3.68656 2.97848L3.86334 2.8017V2.8017L3.68656 2.97848ZM2.97945 3.68558L3.15623 3.50881L2.97945 3.68558ZM9.29304 9.99917L9.46981 10.1759L9.64659 9.99917L9.46981 9.82239L9.29304 9.99917ZM2.97945 16.3128L2.80268 16.136L2.80268 16.136L2.97945 16.3128ZM2.97945 17.0199L2.80268 17.1966L2.80268 17.1966L2.97945 17.0199ZM3.68656 17.0199L3.86334 17.1966L3.68656 17.0199ZM10.0001 10.7063L10.1769 10.5295L10.0001 10.3527L9.82337 10.5295L10.0001 10.7063ZM16.3137 17.0199L16.137 17.1966H16.137L16.3137 17.0199ZM17.0208 17.0199L17.1976 17.1966L17.1976 17.1966L17.0208 17.0199ZM17.0208 16.3128L17.1976 16.136V16.136L17.0208 16.3128ZM10.7073 9.99917L10.5305 9.82239L10.3537 9.99917L10.5305 10.1759L10.7073 9.99917ZM16.8441 3.15525C16.9417 3.25289 16.9417 3.41118 16.8441 3.50881L17.1976 3.86236C17.4905 3.56947 17.4905 3.09459 17.1976 2.8017L16.8441 3.15525ZM16.4905 3.15525C16.5881 3.05762 16.7464 3.05762 16.8441 3.15525L17.1976 2.8017C16.9047 2.50881 16.4298 2.50881 16.137 2.8017L16.4905 3.15525ZM10.1769 9.46884L16.4905 3.15525L16.137 2.8017L9.82337 9.11528L10.1769 9.46884ZM3.50978 3.15525L9.82337 9.46884L10.1769 9.11528L3.86334 2.8017L3.50978 3.15525ZM3.15623 3.15525C3.25386 3.05762 3.41215 3.05762 3.50978 3.15525L3.86334 2.8017C3.57044 2.50881 3.09557 2.50881 2.80268 2.8017L3.15623 3.15525ZM3.15623 3.50881C3.0586 3.41118 3.0586 3.25289 3.15623 3.15525L2.80268 2.8017C2.50978 3.09459 2.50978 3.56947 2.80268 3.86236L3.15623 3.50881ZM9.46981 9.82239L3.15623 3.50881L2.80268 3.86236L9.11626 10.1759L9.46981 9.82239ZM3.15623 16.4895L9.46981 10.1759L9.11626 9.82239L2.80268 16.136L3.15623 16.4895ZM3.15623 16.8431C3.0586 16.7455 3.0586 16.5872 3.15623 16.4895L2.80268 16.136C2.50978 16.4289 2.50978 16.9037 2.80268 17.1966L3.15623 16.8431ZM3.50978 16.8431C3.41215 16.9407 3.25386 16.9407 3.15623 16.8431L2.80268 17.1966C3.09557 17.4895 3.57044 17.4895 3.86334 17.1966L3.50978 16.8431ZM9.82337 10.5295L3.50978 16.8431L3.86334 17.1966L10.1769 10.8831L9.82337 10.5295ZM16.4905 16.8431L10.1769 10.5295L9.82337 10.8831L16.137 17.1966L16.4905 16.8431ZM16.8441 16.8431C16.7464 16.9407 16.5881 16.9407 16.4905 16.8431L16.137 17.1966C16.4298 17.4895 16.9047 17.4895 17.1976 17.1966L16.8441 16.8431ZM16.8441 16.4895C16.9417 16.5872 16.9417 16.7455 16.8441 16.8431L17.1976 17.1966C17.4905 16.9037 17.4905 16.4289 17.1976 16.136L16.8441 16.4895ZM10.5305 10.1759L16.8441 16.4895L17.1976 16.136L10.884 9.82239L10.5305 10.1759ZM16.8441 3.50881L10.5305 9.82239L10.884 10.1759L17.1976 3.86236L16.8441 3.50881Z' fill='%23111111'/%3E%3C/svg%3E%0A") no-repeat center;
+
+            }
+
+            .sel_close {
+                position: absolute;
+                top: -32px;
+                width: 100%;
+                height: 32px;
+                border-radius: 20px 20px 0 0;
+                background: #fff;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    margin: 8px auto;
+                    width: 32px;
+                    height: 3px;
+                    border-radius: 2px;
+                    background: #ccc;
+                }
+            }
+        }
+    }
+
+    &.ty1 {
+        .pop {
+            width: 100%;
+            height: 100vh;
+            height: 100svh;
+
+            .pop_head {
+                text-align: center;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .pop_cont {
+                height: calc(100vh - 116px);
+                height: calc(100svh - 116px);
+                overflow-y: auto;
+            }
+
+            >.btn_area {
+                padding: 0 var(--px-6) var(--px-6);
+            }
+        }
+    }
+
+    &.ty2 {
+        .pop {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            width: calc(100% - 40px);
+
+            .pop_head {
+                padding: 12px 16px;
+
+                +.pop_cont {
+                    padding: 4px 20px 12px;
+                }
+
+                +.sel_cont {
+                    padding: 4px 0 12px;
+                }
+            }
+
+            .pop_cont {
+                max-height: calc(75vh - 158px);
+                max-height: calc(75svh - 158px);
+                overflow-y: auto;
+                padding: 12px 20px;
+
+                +.btn_area {
+                    padding: 10px;
+                }
+            }
+        }
+    }
+    &.ty3 {
+        .popup_layer {
+            align-items: end;
+
+            .pop {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                width: 100%;
+
+                .pop_head {
+                    padding: 12px 16px;
+                    width: 100%;                    
+                }
+
+                .pop_cont {
+                    width: 100%;
+                    max-height: calc(75vh - 158px);
+                    max-height: calc(75svh - 158px);
+                    overflow-y: auto;                    
+                    +.btn_area {
+                        padding: 10px;
+                    }
+
+                }
+                &:has(.sel_cont) .pop_head {
+                    padding: 12px 16px 0;
+                }
+            }
+        }
+    }
+
+    &.alert {
+        .popup_layer {
+            .pop {
+                min-width: 200px;
+            }
+        }
+    }
+}
+
+@supports (-webkit-touch-callout: none) {
+    .popup_wrap {
+        .popup_layer {
+            height: -webkit-fill-available;
+
+        }
+
+        &.ty1 {
+            .popup_layer {
+
+                .pop,
+                .pop_cont {
+                    height: -webkit-fill-available;
+                }
+            }
+        }
+
+        .ty2 {
+            .pop_cont {
+                height: -webkit-fill-available;
+            }
+        }
+    }
+}
+
+
+.toast {
+    position: fixed;
+    bottom: 80px;
+    left: 0;
+    width: 100vw;
+    width: 100svw;
+    display: flex;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -moz-box-justify-content: center;
+    justify-content: center;
+    -moz-align-items: center;
+    align-items: center;
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 11001;
+
+    .toast_message {
+        padding: 8px 24px;
+        height: 42px;
+        color: #f6f8f9;
+        font-size: 1.125rem;
+        background-color: #555;
+        border-radius: 21px;
+    }
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+}

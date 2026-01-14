@@ -2,6 +2,7 @@
     display: flex;
     gap: var(--px-2);
     &.flex {
+        width: 100%;
         .btn {
             flex: 1;
         }
@@ -71,6 +72,14 @@
                 background-color: var(--error-dark);
             }
         }
+        &_c7 {
+            background-color: var(--black-color);
+            border-color: var(--black-color);
+            color: var(--white-color);
+            &:hover {
+                background-color: var(--grey-color-800);
+            }
+        }
         
         &:disabled {
             color: var(--white-color);
@@ -129,6 +138,14 @@
                 &:hover {
                     color: var(--white-color);
                     background-color: var(--error-light);
+                }
+            }
+            &.btn_c7 {
+                color: var(--black-color);
+                border: 2px solid var(--black-color);
+                &:hover {
+                    color: var(--black-color);
+                    background-color: var(--grey-color-300);
                 }
             }
             &:disabled {

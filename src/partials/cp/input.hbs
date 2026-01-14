@@ -25,18 +25,19 @@
     <div class="inp{{#if select}} select{{/if}}{{#if rTxt}} t_right{{/if}}{{#if disabled}} disabled{{/if}}{{#if readonly}} readonly{{/if}}">
     {{#if lTxt}}<div class="inp_txt l_txt">{{lTxt}}</div>{{/if}}
       {{#if select}}
-        <select 
-          {{#if name}} name="inp{{name}}"{{/if}} 
-          {{#if inpId}} id="id{{inpId}}"{{/if}}
-          {{#if disabled}} disabled{{/if}}
-          {{#if formTitle}} title="{{formTitle}}"{{/if}} required>
-          {{#if sb-ph}}
-          <option value="" disabled selected>{{sb-ph}}</option>
-          {{else}}
-          <option value="" disabled selected>선택</option>
-          {{/if}}
-          {{> @partial-block }}
-        </select>
+          <select 
+            {{#if name}} name="inp{{name}}"{{/if}} 
+            {{#if inpId}} id="id{{inpId}}"{{/if}}
+            {{#if disabled}} disabled{{/if}}
+            {{#if formTitle}} title="{{formTitle}}"{{/if}} required>
+            {{#if sb-ph}}
+            <option value="" disabled selected>{{sb-ph}}</option>
+            {{else}}
+            <option value="" disabled selected>선택</option>
+            {{/if}}
+            {{> @partial-block }}
+          </select>
+          <button type="button" class="btn_sel" aria-haspopup="listbox"><span class="blind">{{formTitle}}</span></button>
         {{else}}
         {{#if textarea}}
           <textarea 

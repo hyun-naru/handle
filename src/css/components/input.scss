@@ -61,6 +61,18 @@
                     }
                 }
             }
+            &.select {
+                position: relative;
+                .btn_sel {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                }
+            }
             select {
                 &::-ms-expand { display: none; }
                 padding-right: 30px;
@@ -69,12 +81,8 @@
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 appearance: none;
-                &:required:invalid {
+                &:required:required:invalid {
                     color: var(--grey-color-500);
-                }
-
-                &:required:valid {
-                    color: var(--grey-color-600);
                 }
             }
             textarea {
@@ -115,4 +123,22 @@
         gap: var(--px-3);
     }
 
+}
+
+/* select pop radio */
+.sel_group {
+    border-top: 1px solid var(--grey-color-300);
+    li {
+    border-bottom: 1px solid var(--grey-color-300);
+    input + label {
+        padding: var(--px-6) var(--px-11);
+        &::before {
+            top: calc(50% - 10px) !important;
+        }
+        &::after {
+            top: calc(50% - 5px) !important;
+        }
+
+    }
+}
 }

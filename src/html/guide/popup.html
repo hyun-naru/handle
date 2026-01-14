@@ -1,0 +1,70 @@
+{{#> layout/guide guide=true }}
+    <div class="wrap guide_wrap">
+        <div class="guide_location">
+            <a href="../../index.html">Index</a>
+        </div>
+        <div class="section" id="buttonGuide">
+            <h1 class="tit01">button Guide</h1>
+            <h2 class="tit02">btn_area - Default + midium</h2>
+            <div class="guideComponent">
+                <div class="btn_area">
+                    {{> cp/btn color="1" size="3" b-text="popup" pop-id="pop01" }}
+                    {{> cp/btn color="1" size="3" b-text="center" pop-id="pop02" }}
+                    {{> cp/btn color="1" size="3" b-text="bottom" pop-id="pop03" }}
+                    {{> cp/btn color="1" size="3" b-text="alt" alt="'강조문구자리', 'alert내용입니다.\n에헤이', function(){alert('예버튼콜백함수에요')}"}}
+                    {{> cp/btn color="1" size="3" b-text="confirm" confirm="'강조문구자리', 'alert내용입니다.\n에헤이', function(){alert('확인 튼콜백함수에요')}, function(){alert('취소 버튼콜백함수에요')}"}}
+                    {{> cp/btn color="1" size="3" b-text="confirm2" confirm2="'강조문구자리', 'alert내용입니다.\n에헤이', function(){alert('예 버튼콜백함수에요')}, function(){alert('아니오 버튼콜백함수에요')}"}}
+                    {{> cp/btn color="1" size="3" b-text="toast" toast-msg="내용 내용"}}
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- s: pop01(full팝업[.ty1]) -->
+	{{#> popup/popup pop-id="pop01" pop-class="ty1" pop-tit="팝업 타이틀" }}
+	<div class="pop_cont">
+		<div class="pop_content">		
+			팝업내용입니다.
+			<br />
+			팝업내용입니다.
+		</div>
+	</div>
+    <div class="btn_area flex">
+        <button type="button" class="btn btn_c1 btn_s5" onclick="layerPopup.close('pop01');">
+            <span class="text">확인</span>
+        </button>
+    </div>
+	{{/ popup/popup}}
+	<!-- e: pop01(full팝업) -->
+        <!-- s: pop02(center팝업[.ty2]) -->
+	{{#> popup/popup pop-id="pop02" pop-class="ty2" pop-tit="팝업 타이틀" no-header=false }}
+	<div class="pop_cont">
+		<div class="pop_content">		
+			팝업내용입니다.
+			<br />
+			팝업내용입니다.
+		</div>
+	</div>
+    <div class="btn_area flex">
+        <button type="button" class="btn btn_c1 btn_s5" onclick="layerPopup.close('pop02');">
+            <span class="text">확인</span>
+        </button>
+    </div>
+	{{/ popup/popup}}
+	<!-- e: pop02(center팝업[.ty2]) -->
+        <!-- s: pop03(bottom팝업[.ty3]) -->
+	{{#> popup/popup pop-id="pop03" pop-class="ty3" pop-tit="팝업 타이틀" }}
+	<div class="pop_cont">
+		<div class="pop_content">		
+			팝업내용입니다.
+			<br />
+			팝업내용입니다.
+		</div>
+	</div>
+    <div class="btn_area flex">
+        <button type="button" class="btn btn_c1 btn_s5" onclick="layerPopup.close('pop03');">
+            <span class="text">확인</span>
+        </button>
+    </div>
+	{{/ popup/popup}}
+	<!-- e: pop03(bottom팝업[.ty3]) -->
+{{/ layout/guide }}
