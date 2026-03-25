@@ -81,7 +81,7 @@ const replaceMap = {
 
 export default defineConfig({
   // 중요: 빌드된 파일들이 상대 경로(./)를 참조하도록 설정
-  base: './',
+  base: './dist',
   root: 'src',                    // 개발 소스 루트 경로
   publicDir: '../public',         // 정적 파일 경로 (파빌릭 에셋들 위치)
   build: {
