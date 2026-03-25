@@ -37,7 +37,8 @@ const getEntries = dir => {
       // 📄 파일인 경우
       if (fs.statSync(itemPath).isFile()) {
         // 확장자가 .html, .js, .css인 경우만 처리
-        if (path.extname(item) === '.html' || path.extname(item) === '.js' || path.extname(item) === '.css') {
+        const ext = path.extname(item);
+        if (['.html', '.js', '.css'].includes(ext)) {
           // 엔트리 객체에 추가 (키: 전체 경로, 값: resolve된 경로)
           htmlEntries[itemPath] = path.resolve(__dirname, itemPath);
         }

@@ -1,8 +1,8 @@
 /* Checkbox */
 .inp_check {
 	position: relative;
-	input[type='checkbox'],
-	input[type='radio']{
+	input[type="checkbox"],
+	input[type="radio"] {
 		position: absolute;
 		width: 20px;
 		height: 20px;
@@ -22,7 +22,7 @@
 				color: var(--grey-color-600);
 			}
 		}
-		
+
 		& + .chk_label {
 			position: relative;
 			display: block;
@@ -41,7 +41,7 @@
 			}
 
 			&::before {
-				content:'';
+				content: "";
 				position: absolute;
 				top: 1px;
 				left: 0;
@@ -110,7 +110,7 @@
 					}
 					&.txt_sm > .label_cont {
 						font-size: var(--font-body-xs);
-						color: var(--grey-color-600);       
+						color: var(--grey-color-600);
 					}
 					&::before {
 						width: 40px;
@@ -162,7 +162,7 @@
 					left: calc(100% - 20px);
 				}
 				&.chk_label_lg {
-					padding-right:var(--px-12);
+					padding-right: var(--px-12);
 					&::before {
 						left: calc(100% - 24px);
 					}
@@ -218,18 +218,16 @@
 					}
 				}
 			}
-
 		}
-
 
 		&:checked {
 			& + .chk_label {
 				&::before {
-					border-color:  var(--primary);
+					border-color: var(--primary);
 				}
 				&.switch_check {
 					&::before {
-						background:  var(--primary);
+						background: var(--primary);
 					}
 					&::after {
 						left: 14px;
@@ -261,7 +259,7 @@
 						}
 					}
 				}
-			};
+			}
 			&:disabled {
 				& + .chk_label {
 					& .label_cont {
@@ -281,7 +279,7 @@
 		}
 	}
 
-	input[type='checkbox'] {
+	input[type="checkbox"] {
 		+ .chk_label {
 			&::before {
 				border-radius: var(--radius-m);
@@ -291,7 +289,6 @@
 			& + .chk_label {
 				&::before {
 					background: var(--primary) url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.17505 4.45005L3.42505 6.70005L8.82505 1.30005' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A") no-repeat center / 12px auto;
-					
 				}
 				&.chk_label_lg {
 					&::before {
@@ -309,7 +306,7 @@
 			}
 		}
 	}
-	input[type='radio'] {
+	input[type="radio"] {
 		+ .chk_label {
 			&::before {
 				border-radius: var(--radius-full);
@@ -323,7 +320,7 @@
 		&:checked {
 			+ .chk_label {
 				&::after {
-					content: '';
+					content: "";
 					position: absolute;
 					top: 6px;
 					left: 5px;
@@ -370,14 +367,13 @@
 		border: 1px solid var(--grey-color-200);
 		border-radius: var(--radius-l);
 
-
-		input[type=checkbox] {
+		input[type="checkbox"] {
 			top: 18px;
 			left: 18px;
 			width: 20px;
 			height: 20px;
 
-			& + [class^=chk_label] {
+			& + [class^="chk_label"] {
 				position: static;
 				padding-left: calc(20px + 8px);
 				&::before {
@@ -392,9 +388,7 @@
 			top: 24px;
 			right: 24px;
 		}
-
 	}
-	
 
 	.ag_more_btn {
 		position: absolute;
@@ -422,7 +416,7 @@
 			flex: 0 1 calc(50% - 6px);
 			min-width: auto;
 		}
-	} 
+	}
 
 	& + * {
 		margin-top: var(--px-5);
@@ -431,7 +425,6 @@
 	& + .group_wrap {
 		margin-top: var(--px-8);
 	}
-	
 }
 
 .group_wrap {

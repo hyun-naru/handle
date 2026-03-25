@@ -1,29 +1,27 @@
-
-
 .blind {
 	@include blind;
 }
 h1 {
-    font-size: var(--font-h1);
-    @include bold;
+	font-size: var(--font-h1);
+	@include bold;
 }
 h2 {
-    font-size: var(--font-h2);
-    @include bold;
+	font-size: var(--font-h2);
+	@include bold;
 }
 h3 {
-    font-size: var(--font-h3);
-    @include bold;
+	font-size: var(--font-h3);
+	@include bold;
 }
 h4 {
-    font-size: var(--font-h4);
-    @include bold;
+	font-size: var(--font-h4);
+	@include bold;
 }
 h5 {
-    font-size: var(--font-h5);
-    @include bold;
+	font-size: var(--font-h5);
+	@include bold;
 }
 h6 {
-    font-size: var(--font-h6);
-    @include bold;
+	font-size: var(--font-h6);
+	@include bold;
 }

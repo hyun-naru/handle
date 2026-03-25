@@ -1,0 +1,6 @@
+# prettier ignore list
+**/css/libs/*.css
+*.js
+*.svg
+*.woff
+*.woff2

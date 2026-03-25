@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Guide</title>
+		<script src="../../js/libs/jquery-3.5.1.min.js"></script>
+		<script src="../../js/main.js"></script>
+		<script src="../../js/popup.js"></script>
+		<script src="../../js/guide.js"></script>
+
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/guide.css" />
+	</head>
+	<body>
+		<div class="wrap guide_wrap">
+			<div class="guide_location">
+				<a href="../../index.html">Index</a>
+			</div>
+			<div class="section" id="buttonGuide">
+				<h1 class="tit01">button Guide</h1>
+				<h2 class="tit02">btn_area - Default + midium</h2>
+				<div class="guideComponent">
+					<div class="btn_area">
+						<button type="button" class="btn btn_c1 btn_s3" onclick="layerPopup.open('pop01')">
+							<span class="text">popup</span>
+						</button>
+						<button type="button" class="btn btn_c1 btn_s3" onclick="layerPopup.open('pop02')">
+							<span class="text">center</span>
+						</button>
+						<button type="button" class="btn btn_c1 btn_s3" onclick="layerPopup.open('pop03')">
+							<span class="text">bottom</span>
+						</button>
+						<button type="button" class="btn btn_c1 btn_s3" onclick="layerInfo.alert(&#x27;강조문구자리&#x27;, &#x27;alert내용입니다.\n에헤이&#x27;, function(){alert(&#x27;예버튼콜백함수에요&#x27;)});">
+							<span class="text">alt</span>
+						</button>
+						<button type="button" class="btn btn_c1 btn_s3" onclick="layerInfo.confirm(&#x27;강조문구자리&#x27;, &#x27;alert내용입니다.\n에헤이&#x27;, function(){alert(&#x27;확인 튼콜백함수에요&#x27;)}, function(){alert(&#x27;취소 버튼콜백함수에요&#x27;)});">
+							<span class="text">confirm</span>
+						</button>
+						<button type="button" class="btn btn_c1 btn_s3" onclick="layerInfo.confirm2(&#x27;강조문구자리&#x27;, &#x27;alert내용입니다.\n에헤이&#x27;, function(){alert(&#x27;예 버튼콜백함수에요&#x27;)}, function(){alert(&#x27;아니오 버튼콜백함수에요&#x27;)});">
+							<span class="text">confirm2</span>
+						</button>
+						<button type="button" class="btn btn_c1 btn_s3" onclick="showToast('내용 내용')">
+							<span class="text">toast</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- s: pop01(full팝업[.ty1]) -->
+		<article class="popup_wrap ty1" id="pop01" role="dialog" aria-hidden="true">
+			<div class="dim" aria-hidden="true" onclick="layerPopup.close('pop01')"></div>
+			<div class="popup_layer">
+				<div class="pop">
+					<div class="pop_head">
+						<h1 class="pop_tit">팝업 타이틀</h1>
+					</div>
+					<div class="pop_cont">
+						<div class="pop_content">
+							팝업내용입니다.
+							<br />
+							팝업내용입니다.
+						</div>
+					</div>
+					<div class="btn_area flex">
+						<button type="button" class="btn btn_c1 btn_s5" onclick="layerPopup.close('pop01')">
+							<span class="text">확인</span>
+						</button>
+					</div>
+					<button type="button" class="pop_close" onclick="layerPopup.close('pop01')"><span class="blind">팝업 닫기</span></button>
+				</div>
+			</div>
+		</article>
+		<!-- e: pop01(full팝업) -->
+		<!-- s: pop02(center팝업[.ty2]) -->
+		<article class="popup_wrap ty2" id="pop02" role="dialog" aria-hidden="true">
+			<div class="dim" aria-hidden="true" onclick="layerPopup.close('pop02')"></div>
+			<div class="popup_layer">
+				<div class="pop">
+					<div class="pop_head">
+						<h1 class="pop_tit">팝업 타이틀</h1>
+					</div>
+					<div class="pop_cont">
+						<div class="pop_content">
+							팝업내용입니다.
+							<br />
+							팝업내용입니다.
+						</div>
+					</div>
+					<div class="btn_area flex">
+						<button type="button" class="btn btn_c1 btn_s5" onclick="layerPopup.close('pop02')">
+							<span class="text">확인</span>
+						</button>
+					</div>
+					<button type="button" class="pop_close" onclick="layerPopup.close('pop02')"><span class="blind">팝업 닫기</span></button>
+				</div>
+			</div>
+		</article>
+		<!-- e: pop02(center팝업[.ty2]) -->
+		<!-- s: pop03(bottom팝업[.ty3]) -->
+		<article class="popup_wrap ty3" id="pop03" role="dialog" aria-hidden="true">
+			<div class="dim" aria-hidden="true" onclick="layerPopup.close('pop03')"></div>
+			<div class="popup_layer">
+				<div class="pop">
+					<div class="pop_head">
+						<h1 class="pop_tit">팝업 타이틀</h1>
+					</div>
+					<div class="pop_cont">
+						<div class="pop_content">
+							팝업내용입니다.
+							<br />
+							팝업내용입니다.
+						</div>
+					</div>
+					<div class="btn_area flex">
+						<button type="button" class="btn btn_c1 btn_s5" onclick="layerPopup.close('pop03')">
+							<span class="text">확인</span>
+						</button>
+					</div>
+					<button type="button" class="pop_close" onclick="layerPopup.close('pop03')"><span class="blind">팝업 닫기</span></button>
+				</div>
+			</div>
+		</article>
+		<!-- e: pop03(bottom팝업[.ty3]) -->
+	</body>
+</html>

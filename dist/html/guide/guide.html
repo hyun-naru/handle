@@ -1,92 +1,1725 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-	<head>       
-    <meta charset="UTF-8" />
-    <title>Guide</title>
-    <script src="../../js/libs/jquery-3.5.1.min.js"></script> 
-    <script src="../../js/guide.js"></script>
-		<link rel="stylesheet" href="../../css/reset.css">
-		<link rel="stylesheet" href="../../css/guide.css">
-		<link rel="stylesheet" href="../../css/common.css">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Guide</title>
+		<script src="../../js/libs/jquery-3.5.1.min.js"></script>
+		<script src="../../js/main.js"></script>
+		<script src="../../js/popup.js"></script>
+		<script src="../../js/guide.js"></script>
+
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<link rel="stylesheet" href="../../css/common.css" />
+		<link rel="stylesheet" href="../../css/guide.css" />
 	</head>
-  <body>
-        <div class="guide_wrap">
-            <div class="guide_location">
-                <a href="../../index.html">Index</a>
-            </div>
-            <div class="section" id="titleGuide">
-                <h1 class="tit01">title Guide</h1>
-            </div>
-            <div class="section" id="formGuide">
-                <h1 class="tit01">Form Guide</h1>
-    
-                <h2 class="tit02">input - Basic</h2>
-                <div class="guideComponent">
-                    <div class="inp_wrap">
-                        <label for="inp1_1">title01</label>
-                      <div class="inp_item">
-                        <div class="inp">
-                        
-                          <input 
-                                    type="text" 
-                            id="inp1_1"
-                             placeholder="ex01"
-                            
-                            
-                            
-                            
-                            
-                            
-                          >
-                        
-                        </div>
-                      </div>
-                    </div>            </div>
-                
-                <h2 class="tit02">Phone - Telecom + Number </h2>
-                <div class="guideComponent all">
-                    <select class="ipt" title="통신사 선택">
-                        <option selected disabled>통신사 선택</option>
-                        <option>SK</option>
-                        <option>KT</option>
-                        <option>LGU+</option>
-                        <option>알뜰폰 SK</option>
-                        <option>알뜰폰 KT</option>
-                        <option>알뜰폰 LGU+</option>
-                    </select>
-                    <div class="setPhone">
-                        <select class="ipt" title="휴대폰번호">
-                            <option>010</option>
-                            <option>011</option>
-                        </select>
-                        <input type="tel" class="ipt" maxlength="8" placeholder="숫자만 입력">
-                    </div>
-                </div>
-            </div>
-            <div class="section" id="checkboxGuide">
-                <h1 class="tit01">checkbox Guide</h1>
-            </div>
-            <div class="section" id="radioGuide">
-                <h1 class="tit01">radio Guide</h1>
-            </div>
-            <div class="section" id="buttonGuide">
-                <h1 class="tit01">button Guide</h1>
-            </div>
-            <div class="section" id="listGuide">
-                <h1 class="tit01">list Guide</h1>
-            </div>
-            <div class="section" id="infoGuide">
-                <h1 class="tit01">info Guide</h1>
-            </div>
-            <div class="section" id="tabGuide">
-                <h1 class="tit01">tab Guide</h1>
-            </div>
-            <div class="section" id="accordianGuide">
-                <h1 class="tit01">accordian Guide</h1>
-            </div>
-            <div class="section" id="tableGuide">
-                <h1 class="tit01">table Guide</h1>
-            </div>
-        </div>
-  </body>
+	<body>
+		<div class="guide_wrap">
+			<div class="guide_location">
+				<a href="../../index.html">Index</a>
+			</div>
+			<div class="section" id="titleGuide">
+				<h1 class="tit01">title Guide</h1>
+			</div>
+			<div class="section row" id="formGuide">
+				<h1 class="tit01">Form Guide</h1>
+
+				<h2 class="tit02">input - Basic</h2>
+				<div class="guideComponent">
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id1_1">text+label</label>
+							<div class="inp">
+								<input type="text" id="id1_1" placeholder="ex01" />
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id1_2">text+label</label>
+							<div class="inp">
+								<input type="text" id="id1_2" placeholder="ex01" value="ex1" />
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id1_3">text+label</label>
+							<div class="inp readonly">
+								<input type="text" id="id1_3" placeholder="ex01" value="ex2" readonly />
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id1_4">text+label</label>
+							<div class="inp disabled">
+								<input type="text" id="id1_4" placeholder="ex01" value="ex3" disabled />
+							</div>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">input - tel</h2>
+				<div class="guideComponent">
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id2_1">tel</label>
+							<div class="inp">
+								<input type="tel" id="id2_1" placeholder="ex01" />
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id2_2">tel</label>
+							<div class="inp">
+								<div class="inp_txt l_txt">약</div>
+								<input type="tel" id="id2_2" placeholder="ex02" />
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id2_3">tel</label>
+							<div class="inp t_right">
+								<input type="tel" id="id2_3" placeholder="ex03" />
+
+								<div class="inp_txt r_txt">원</div>
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id2_4">tel</label>
+							<div class="inp t_right">
+								<div class="inp_txt l_txt">약</div>
+								<input type="tel" id="id2_4" placeholder="ex04" />
+
+								<div class="inp_txt r_txt">원</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">input - Basic2</h2>
+				<div class="guideComponent">
+					<div class="inp_wrap">
+						<div class="inp_item ty2">
+							<label for="id3_1">text+label mix</label>
+							<div class="inp">
+								<input type="text" id="id3_1" placeholder="ex01" />
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item ty2">
+							<label for="id3_2">text+label mix</label>
+							<div class="inp">
+								<input type="text" id="id3_2" placeholder="ex01" value="ex1" />
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item ty2">
+							<label for="id3_3">text+label mix</label>
+							<div class="inp readonly">
+								<input type="text" id="id3_3" placeholder="ex01" value="ex2" readonly />
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item ty2">
+							<label for="id3_4">text+label mix</label>
+							<div class="inp disabled">
+								<input type="text" id="id3_4" placeholder="ex01" value="ex3" disabled />
+							</div>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">input - search</h2>
+				<div class="guideComponent">
+					<div class="inp_wrap">
+						<div class="inp_item search">
+							<label for="id4_1">calendar</label>
+							<div class="inp">
+								<input type="search" id="id4_1" placeholder="ex01" />
+
+								<button type="button" class="btn search" title="검색"></button>
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item search">
+							<label for="id4_2">calendar</label>
+							<div class="inp">
+								<input type="search" id="id4_2" placeholder="ex01" value="ex1" />
+
+								<button type="button" class="btn search" title="검색"></button>
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item search">
+							<label for="id4_3">calendar</label>
+							<div class="inp readonly">
+								<input type="search" id="id4_3" placeholder="ex01" value="ex2" readonly />
+
+								<button type="button" class="btn search" title="검색"></button>
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item search">
+							<label for="id4_4">calendar</label>
+							<div class="inp disabled">
+								<input type="search" id="id4_4" placeholder="ex01" value="ex3" disabled />
+
+								<button type="button" class="btn search" title="검색"></button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">input - calendar</h2>
+				<div class="guideComponent">
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id5_1">calendar</label>
+							<div class="inp">
+								<input type="tel" id="id5_1" placeholder="ex01" />
+								<button type="button" class="btn calendar" title="날짜 선택"></button>
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id5_2">calendar</label>
+							<div class="inp">
+								<input type="tel" id="id5_2" placeholder="ex01" value="ex1" />
+								<button type="button" class="btn calendar" title="날짜 선택"></button>
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id5_3">calendar</label>
+							<div class="inp readonly">
+								<input type="tel" id="id5_3" placeholder="ex01" value="ex2" readonly />
+								<button type="button" class="btn calendar" title="날짜 선택"></button>
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id5_4">calendar</label>
+							<div class="inp disabled">
+								<input type="tel" id="id5_4" placeholder="ex01" value="ex3" disabled />
+								<button type="button" class="btn calendar" title="날짜 선택"></button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">Phone - Telecom + Number</h2>
+				<div class="guideComponent">
+					<div class="inp_wrap phone">
+						<div class="inp_item">
+							<label for="id6_1">휴대폰번호</label>
+							<div class="inp select">
+								<select id="id6_1" title="통신사 선택" required>
+									<option value="" disabled selected>통신사</option>
+									<option value="1">SK</option>
+									<option value="2">KT</option>
+									<option value="3">LGU+</option>
+									<option value="4">알뜰폰 SK</option>
+									<option value="5">알뜰폰 KT</option>
+									<option value="6">알뜰폰 LGU+</option>
+								</select>
+								<button type="button" class="btn_sel" aria-haspopup="listbox"><span class="blind">통신사 선택</span></button>
+							</div>
+						</div>
+						<div class="inp_item">
+							<label></label>
+							<div class="inp select">
+								<select title="휴대폰번호 앞자리 선택" required>
+									<option value="" disabled selected>선택</option>
+
+									<option value="1">010</option>
+									<option value="2">011</option>
+								</select>
+								<button type="button" class="btn_sel" aria-haspopup="listbox"><span class="blind">휴대폰번호 앞자리 선택</span></button>
+							</div>
+						</div>
+						<div class="inp_item">
+							<label></label>
+							<div class="inp">
+								<input type="tel" placeholder="ex01" title="휴대폰번호 뒷자리 입력" />
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap phone">
+						<div class="inp_item">
+							<label for="id6_4">휴대폰번호 disabled</label>
+							<div class="inp select disabled">
+								<select id="id6_4" disabled title="통신사 선택" required>
+									<option value="" disabled selected>통신사</option>
+									<option value="1">SK</option>
+									<option value="2">KT</option>
+									<option value="3">LGU+</option>
+									<option value="4">알뜰폰 SK</option>
+									<option value="5">알뜰폰 KT</option>
+									<option value="6">알뜰폰 LGU+</option>
+								</select>
+								<button type="button" class="btn_sel" aria-haspopup="listbox"><span class="blind">통신사 선택</span></button>
+							</div>
+						</div>
+						<div class="inp_item">
+							<label></label>
+							<div class="inp select disabled">
+								<select disabled title="휴대폰번호 앞자리 선택" required>
+									<option value="" disabled selected>선택</option>
+
+									<option value="1">010</option>
+									<option value="2">011</option>
+								</select>
+								<button type="button" class="btn_sel" aria-haspopup="listbox"><span class="blind">휴대폰번호 앞자리 선택</span></button>
+							</div>
+						</div>
+						<div class="inp_item">
+							<label></label>
+							<div class="inp disabled">
+								<input type="tel" placeholder="ex01" disabled title="휴대폰번호 뒷자리 입력" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">textarea - calendar</h2>
+				<div class="guideComponent column">
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id7_1">textarea</label>
+							<div class="inp">
+								<textarea id="id7_1" placeholder="ex01"></textarea>
+							</div>
+							<div class="counter byte"><em>0</em> / <span class="max">200</span> <span>byte</span></div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id7_2">textarea</label>
+							<div class="inp">
+								<textarea id="id7_2" placeholder="ex01"></textarea>
+							</div>
+							<div class="counter length"><em>0</em> / <span class="max">300</span> <span>글자</span></div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id7_3">textarea</label>
+							<div class="inp readonly">
+								<textarea id="id7_3" placeholder="ex01" readonly>ex2</textarea>
+							</div>
+						</div>
+					</div>
+					<div class="inp_wrap">
+						<div class="inp_item">
+							<label for="id7_4">textarea</label>
+							<div class="inp disabled">
+								<textarea id="id7_4" placeholder="ex01" disabled>ex3</textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section" id="checkboxGuide">
+				<h1 class="tit01">checkbox Guide</h1>
+				<h2 class="tit02">checkbox - 기본</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox1" />
+							<label for="checkbox1" class="chk_label">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox2" checked />
+							<label for="checkbox2" class="chk_label">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox3" disabled />
+							<label for="checkbox3" class="chk_label">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox4" checked disabled />
+							<label for="checkbox4" class="chk_label">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox5" />
+							<label for="checkbox5" class="chk_label more_add">
+								<span class="label_cont"> 더보기 </span>
+							</label>
+
+							<button type="button" class="ag_more_btn" aria-label="더보기 자세히 보기" onclick="openHDPopup(this, 'more_case1')">자세히</button>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">checkbox - 기본 + 추가설명</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox11" />
+							<label for="checkbox11" class="chk_label">
+								<span class="label_cont">
+									라벨명 Default
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox12" checked />
+							<label for="checkbox12" class="chk_label">
+								<span class="label_cont">
+									라벨명 checked
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox13" disabled />
+							<label for="checkbox13" class="chk_label">
+								<span class="label_cont">
+									라벨명 disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox14" checked disabled />
+							<label for="checkbox14" class="chk_label">
+								<span class="label_cont">
+									라벨명 checked disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox15" />
+							<label for="checkbox15" class="chk_label more_add">
+								<span class="label_cont">
+									더보기
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+
+							<button type="button" class="ag_more_btn" aria-label="더보기 자세히 보기" onclick="openHDPopup(this, 'more_case1')">자세히</button>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">checkbox - 기본 check + 추가설명 hide</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox21" />
+							<label for="checkbox21" class="chk_label check_hide">
+								<span class="label_cont">
+									라벨명 Default
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox22" checked />
+							<label for="checkbox22" class="chk_label check_hide">
+								<span class="label_cont">
+									라벨명 checked
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox23" disabled />
+							<label for="checkbox23" class="chk_label check_hide">
+								<span class="label_cont">
+									라벨명 disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox24" checked disabled />
+							<label for="checkbox24" class="chk_label check_hide">
+								<span class="label_cont">
+									라벨명 checked disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">checkbox - 기본 check:right</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox31" class="right" />
+							<label for="checkbox31" class="chk_label">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox32" class="right" checked />
+							<label for="checkbox32" class="chk_label">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox33" class="right" disabled />
+							<label for="checkbox33" class="chk_label">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox34" class="right" checked disabled />
+							<label for="checkbox34" class="chk_label">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">checkbox - lg</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox41" />
+							<label for="checkbox41" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox42" checked />
+							<label for="checkbox42" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox43" disabled />
+							<label for="checkbox43" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox44" checked disabled />
+							<label for="checkbox44" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">checkbox - lg + 추가설명</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox51" />
+							<label for="checkbox51" class="chk_label chk_label_lg">
+								<span class="label_cont">
+									라벨명 Default
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox52" checked />
+							<label for="checkbox52" class="chk_label chk_label_lg">
+								<span class="label_cont">
+									라벨명 checked
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox53" disabled />
+							<label for="checkbox53" class="chk_label chk_label_lg">
+								<span class="label_cont">
+									라벨명 disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox54" checked disabled />
+							<label for="checkbox54" class="chk_label chk_label_lg">
+								<span class="label_cont">
+									라벨명 checked disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">checkbox - lg check + 추가설명 hide</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox61" />
+							<label for="checkbox61" class="chk_label chk_label_lg check_hide">
+								<span class="label_cont">
+									라벨명 Default
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox62" checked />
+							<label for="checkbox62" class="chk_label chk_label_lg check_hide">
+								<span class="label_cont">
+									라벨명 checked
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox63" disabled />
+							<label for="checkbox63" class="chk_label chk_label_lg check_hide">
+								<span class="label_cont">
+									라벨명 disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox64" checked disabled />
+							<label for="checkbox64" class="chk_label chk_label_lg check_hide">
+								<span class="label_cont">
+									라벨명 checked disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">checkbox - lg check:right</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox71" class="right" />
+							<label for="checkbox71" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox72" class="right" checked />
+							<label for="checkbox72" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox73" class="right" disabled />
+							<label for="checkbox73" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox74" class="right" checked disabled />
+							<label for="checkbox74" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">checkbox - check + roundBox</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check rd_box">
+							<input type="checkbox" id="checkbox121" />
+							<label for="checkbox121" class="chk_label">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+						</div>
+						<div class="inp_check rd_box">
+							<input type="checkbox" id="checkbox122" checked />
+							<label for="checkbox122" class="chk_label">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+						</div>
+						<div class="inp_check rd_box">
+							<input type="checkbox" id="checkbox123" disabled />
+							<label for="checkbox123" class="chk_label">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+						</div>
+						<div class="inp_check rd_box">
+							<input type="checkbox" id="checkbox124" checked disabled />
+							<label for="checkbox124" class="chk_label">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section" id="swiperGuide">
+				<h1 class="tit01">switch Guide</h1>
+				<h2 class="tit02">checkbox - switch</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox81" />
+							<label for="checkbox81" class="chk_label switch_check">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox82" checked />
+							<label for="checkbox82" class="chk_label switch_check">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox83" disabled />
+							<label for="checkbox83" class="chk_label switch_check">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox84" checked disabled />
+							<label for="checkbox84" class="chk_label switch_check">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">checkbox - switch:right</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox91" class="right" />
+							<label for="checkbox91" class="chk_label switch_check">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox92" class="right" checked />
+							<label for="checkbox92" class="chk_label switch_check">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox93" class="right" disabled />
+							<label for="checkbox93" class="chk_label switch_check">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox94" class="right" checked disabled />
+							<label for="checkbox94" class="chk_label switch_check">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">checkbox - switch lg</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox101" />
+							<label for="checkbox101" class="chk_label switch_check lg">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox102" checked />
+							<label for="checkbox102" class="chk_label switch_check lg">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox103" disabled />
+							<label for="checkbox103" class="chk_label switch_check lg">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox104" checked disabled />
+							<label for="checkbox104" class="chk_label switch_check lg">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">checkbox - switch lg:right</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox111" class="right" />
+							<label for="checkbox111" class="chk_label switch_check lg">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox112" class="right" checked />
+							<label for="checkbox112" class="chk_label switch_check lg">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox113" class="right" disabled />
+							<label for="checkbox113" class="chk_label switch_check lg">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+						</div>
+						<div class="inp_check">
+							<input type="checkbox" id="checkbox114" class="right" checked disabled />
+							<label for="checkbox114" class="chk_label switch_check lg">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section" id="radioGuide">
+				<h1 class="tit01">radio Guide</h1>
+				<h2 class="tit02">radio - 기본</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="radio" id="radio1" name="radio" />
+							<label for="radio1" class="chk_label">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio2" name="radio" checked />
+							<label for="radio2" class="chk_label">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio3" name="radio0" disabled />
+							<label for="radio3" class="chk_label">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio4" name="radio0" checked disabled />
+							<label for="radio4" class="chk_label">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio5" name="radio0" />
+							<label for="radio5" class="chk_label more_add">
+								<span class="label_cont"> 더보기 </span>
+							</label>
+							<i></i>
+
+							<button type="button" class="ag_more_btn" aria-label="더보기 자세히 보기" onclick="openHDPopup(this, 'more_case1')">자세히</button>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">radio - 기본 + 추가설명</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="radio" id="radio11" name="radio1" />
+							<label for="radio11" class="chk_label">
+								<span class="label_cont">
+									라벨명 Default
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio12" name="radio1" checked />
+							<label for="radio12" class="chk_label">
+								<span class="label_cont">
+									라벨명 checked
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio13" name="radio10" disabled />
+							<label for="radio13" class="chk_label">
+								<span class="label_cont">
+									라벨명 disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio14" name="radio10" checked disabled />
+							<label for="radio14" class="chk_label">
+								<span class="label_cont">
+									라벨명 checked disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio15" name="radio10" />
+							<label for="radio15" class="chk_label more_add">
+								<span class="label_cont">
+									더보기
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+
+							<button type="button" class="ag_more_btn" aria-label="더보기 자세히 보기" onclick="openHDPopup(this, 'more_case1')">자세히</button>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">radio - 선택시 + 추가설명 hide</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="radio" id="radio21" name="radio2" />
+							<label for="radio21" class="chk_label check_hide">
+								<span class="label_cont">
+									라벨명 Default
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio22" name="radio2" checked />
+							<label for="radio22" class="chk_label check_hide">
+								<span class="label_cont">
+									라벨명 checked
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio23" name="radio20" disabled />
+							<label for="radio23" class="chk_label check_hide">
+								<span class="label_cont">
+									라벨명 disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio24" name="radio20" checked disabled />
+							<label for="radio24" class="chk_label check_hide">
+								<span class="label_cont">
+									라벨명 checked disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">radio - 기본:right</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="radio" id="radio31" class="right" name="radio3" />
+							<label for="radio31" class="chk_label">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio32" class="right" name="radio3" checked />
+							<label for="radio32" class="chk_label">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio33" class="right" name="radio30" disabled />
+							<label for="radio33" class="chk_label">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio34" class="right" name="radio30" checked disabled />
+							<label for="radio34" class="chk_label">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+							<i></i>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">radio - lg</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="radio" id="radio41" name="radio4" />
+							<label for="radio41" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio42" name="radio4" checked />
+							<label for="radio42" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio43" name="radio40" disabled />
+							<label for="radio43" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio44" name="radio40" checked disabled />
+							<label for="radio44" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+							<i></i>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">radio - lg + 추가설명</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="radio" id="radio51" name="radio5" />
+							<label for="radio51" class="chk_label chk_label_lg">
+								<span class="label_cont">
+									라벨명 Default
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio52" name="radio5" checked />
+							<label for="radio52" class="chk_label chk_label_lg">
+								<span class="label_cont">
+									라벨명 checked
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio53" name="radio50" disabled />
+							<label for="radio53" class="chk_label chk_label_lg">
+								<span class="label_cont">
+									라벨명 disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio54" name="radio50" checked disabled />
+							<label for="radio54" class="chk_label chk_label_lg">
+								<span class="label_cont">
+									라벨명 checked disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">radio - lg 선택시 + 추가설명 hide</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="radio" id="radio61" name="radio6" />
+							<label for="radio61" class="chk_label chk_label_lg check_hide">
+								<span class="label_cont">
+									라벨명 Default
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio62" name="radio6" checked />
+							<label for="radio62" class="chk_label chk_label_lg check_hide">
+								<span class="label_cont">
+									라벨명 checked
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio63" name="radio60" disabled />
+							<label for="radio63" class="chk_label chk_label_lg check_hide">
+								<span class="label_cont">
+									라벨명 disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio64" name="radio60" checked disabled />
+							<label for="radio64" class="chk_label chk_label_lg check_hide">
+								<span class="label_cont">
+									라벨명 checked disabled
+									<span class="sub_g_txt">추가설명</span>
+								</span>
+							</label>
+							<i></i>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">radio - lg:right</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check">
+							<input type="radio" id="radio71" class="right" name="radio7" />
+							<label for="radio71" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio72" class="right" name="radio7" checked />
+							<label for="radio72" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio73" class="right" name="radio70" disabled />
+							<label for="radio73" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio74" class="right" name="radio70" checked disabled />
+							<label for="radio74" class="chk_label chk_label_lg">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+							<i></i>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">radio - roundBox</h2>
+				<div class="guideComponent">
+					<div class="group_wrap">
+						<div class="inp_check rd_box">
+							<input type="radio" id="radio81" name="radio8" />
+							<label for="radio81" class="chk_label">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check rd_box">
+							<input type="radio" id="radio82" name="radio8" checked />
+							<label for="radio82" class="chk_label">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check rd_box">
+							<input type="radio" id="radio83" name="radio80" disabled />
+							<label for="radio83" class="chk_label">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check rd_box">
+							<input type="radio" id="radio84" name="radio80" checked disabled />
+							<label for="radio84" class="chk_label">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+							<i></i>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">radio - button type</h2>
+				<div class="guideComponent">
+					<div class="group_wrap ty2">
+						<div class="inp_check">
+							<input type="radio" id="radio91" class="rd_check" name="radio9" />
+							<label for="radio91" class="chk_label">
+								<span class="label_cont"> 라벨명 Default </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio92" class="rd_check" name="radio9" checked />
+							<label for="radio92" class="chk_label">
+								<span class="label_cont"> 라벨명 checked </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio93" class="rd_check" name="radio90" disabled />
+							<label for="radio93" class="chk_label">
+								<span class="label_cont"> 라벨명 disabled </span>
+							</label>
+							<i></i>
+						</div>
+						<div class="inp_check">
+							<input type="radio" id="radio94" class="rd_check" name="radio90" checked disabled />
+							<label for="radio94" class="chk_label">
+								<span class="label_cont"> 라벨명 checked disabled </span>
+							</label>
+							<i></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section" id="buttonGuide">
+				<h1 class="tit01">button Guide</h1>
+				<h2 class="tit02">btn_area - Default + xsmall</h2>
+				<div class="guideComponent">
+					<div class="btn_area">
+						<button type="button" class="btn btn_c1 btn_s1">
+							<span class="text">Primary Button</span>
+						</button>
+						<button type="button" class="btn btn_c2 btn_s1">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_s1">
+							<span class="text">Tertiary Button</span>
+						</button>
+						<button type="button" class="btn btn_c4 btn_s1">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_s1">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_s1">
+							<span class="text">Error Button</span>
+						</button>
+						<button type="button" class="btn btn_c7 btn_s1">
+							<span class="text">black Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_s1" disabled>
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+				<h2 class="tit02">btn_area - Default + small</h2>
+				<div class="guideComponent">
+					<div class="btn_area">
+						<button type="button" class="btn btn_c1 btn_s2">
+							<span class="text">Primary Button</span>
+						</button>
+						<button type="button" class="btn btn_c2 btn_s2">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_s2">
+							<span class="text">Tertiary Button</span>
+						</button>
+						<button type="button" class="btn btn_c4 btn_s2">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_s2">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_s2">
+							<span class="text">Error Button</span>
+						</button>
+						<button type="button" class="btn btn_c7 btn_s2">
+							<span class="text">black Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_s2" disabled>
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+				<h2 class="tit02">btn_area - Default + midium</h2>
+				<div class="guideComponent">
+					<div class="btn_area">
+						<button type="button" class="btn btn_c1 btn_s3">
+							<span class="text">Primary Button</span>
+						</button>
+						<button type="button" class="btn btn_c2 btn_s3">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_s3">
+							<span class="text">Tertiary Button</span>
+						</button>
+						<button type="button" class="btn btn_c4 btn_s3">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_s3">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_s3">
+							<span class="text">Error Button</span>
+						</button>
+						<button type="button" class="btn btn_c7 btn_s3">
+							<span class="text">black Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_s3" disabled>
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+				<h2 class="tit02">btn_area - Default + large</h2>
+				<div class="guideComponent">
+					<div class="btn_area">
+						<button type="button" class="btn btn_c1 btn_s4">
+							<span class="text">Primary Button</span>
+						</button>
+						<button type="button" class="btn btn_c2 btn_s4">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_s4">
+							<span class="text">Tertiary Button</span>
+						</button>
+						<button type="button" class="btn btn_c4 btn_s4">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_s4">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_s4">
+							<span class="text">Error Button</span>
+						</button>
+						<button type="button" class="btn btn_c7 btn_s4">
+							<span class="text">black Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_s4" disabled>
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+				<h2 class="tit02">btn_area - Default + xlarge</h2>
+				<div class="guideComponent">
+					<div class="btn_area">
+						<button type="button" class="btn btn_c1 btn_s5">
+							<span class="text">Primary Button</span>
+						</button>
+						<button type="button" class="btn btn_c2 btn_s5">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_s5">
+							<span class="text">Tertiary Button</span>
+						</button>
+						<button type="button" class="btn btn_c4 btn_s5">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_s5">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_s5">
+							<span class="text">Error Button</span>
+						</button>
+						<button type="button" class="btn btn_c7 btn_s5">
+							<span class="text">black Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_s5" disabled>
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+				<h2 class="tit02">btn_area - borderLine + xsmall</h2>
+				<div class="guideComponent">
+					<div class="btn_area">
+						<button type="button" class="btn btn_c1 btn_t2 btn_s1">
+							<span class="text">Primary Button</span>
+						</button>
+						<button type="button" class="btn btn_c2 btn_t2 btn_s1">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_t2 btn_s1">
+							<span class="text">Tertiary Button</span>
+						</button>
+						<button type="button" class="btn btn_c4 btn_t2 btn_s1">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_t2 btn_s1">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s1">
+							<span class="text">Error Button</span>
+						</button>
+						<button type="button" class="btn btn_c7 btn_t2 btn_s1">
+							<span class="text">black Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s1" disabled>
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+				<h2 class="tit02">btn_area - borderLine + small</h2>
+				<div class="guideComponent">
+					<div class="btn_area">
+						<button type="button" class="btn btn_c1 btn_t2 btn_s2">
+							<span class="text">Primary Button</span>
+						</button>
+						<button type="button" class="btn btn_c2 btn_t2 btn_s2">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_t2 btn_s2">
+							<span class="text">Tertiary Button</span>
+						</button>
+						<button type="button" class="btn btn_c4 btn_t2 btn_s2">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_t2 btn_s2">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s2">
+							<span class="text">Error Button</span>
+						</button>
+						<button type="button" class="btn btn_c7 btn_t2 btn_s2">
+							<span class="text">black Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s2" disabled>
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+				<h2 class="tit02">btn_area - borderLine + midium</h2>
+				<div class="guideComponent">
+					<div class="btn_area">
+						<button type="button" class="btn btn_c1 btn_t2 btn_s3">
+							<span class="text">Primary Button</span>
+						</button>
+						<button type="button" class="btn btn_c2 btn_t2 btn_s3">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_t2 btn_s3">
+							<span class="text">Tertiary Button</span>
+						</button>
+						<button type="button" class="btn btn_c4 btn_t2 btn_s3">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_t2 btn_s3">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s3">
+							<span class="text">Error Button</span>
+						</button>
+						<button type="button" class="btn btn_c7 btn_t2 btn_s3">
+							<span class="text">black Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s3" disabled>
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+				<h2 class="tit02">btn_area - borderLine + large</h2>
+				<div class="guideComponent">
+					<div class="btn_area">
+						<button type="button" class="btn btn_c1 btn_t2 btn_s4">
+							<span class="text">Primary Button</span>
+						</button>
+						<button type="button" class="btn btn_c2 btn_t2 btn_s4">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_t2 btn_s4">
+							<span class="text">Tertiary Button</span>
+						</button>
+						<button type="button" class="btn btn_c4 btn_t2 btn_s4">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_t2 btn_s4">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s4">
+							<span class="text">Error Button</span>
+						</button>
+						<button type="button" class="btn btn_c7 btn_t2 btn_s4">
+							<span class="text">black Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s4" disabled>
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+				<h2 class="tit02">btn_area - borderLine + xlarge</h2>
+				<div class="guideComponent">
+					<div class="btn_area">
+						<button type="button" class="btn btn_c1 btn_t2 btn_s5">
+							<span class="text">Primary Button</span>
+						</button>
+						<button type="button" class="btn btn_c2 btn_t2 btn_s5">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_t2 btn_s5">
+							<span class="text">Tertiary Button</span>
+						</button>
+						<button type="button" class="btn btn_c4 btn_t2 btn_s5">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_t2 btn_s5">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s5">
+							<span class="text">Error Button</span>
+						</button>
+						<button type="button" class="btn btn_c7 btn_t2 btn_s5">
+							<span class="text">black Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s5" disabled>
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+				<h2 class="tit02">btn_area & flex</h2>
+				<div class="guideComponent">
+					<div class="btn_area flex">
+						<button type="button" class="btn btn_c1 btn_s6">
+							<span class="text">Primary Button</span>
+						</button>
+					</div>
+					<div class="btn_area flex">
+						<button type="button" class="btn btn_c2 btn_s6">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_s6">
+							<span class="text">Tertiary Button</span>
+						</button>
+					</div>
+					<div class="btn_area flex">
+						<button type="button" class="btn btn_c4 btn_s6">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_s6">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_s6">
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+				<h2 class="tit02">btn_area & column</h2>
+				<div class="guideComponent">
+					<div class="btn_area column">
+						<button type="button" class="btn btn_c1 btn_t2 btn_s5">
+							<span class="text">Primary Button</span>
+						</button>
+						<button type="button" class="btn btn_c2 btn_t2 btn_s5">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_t2 btn_s5">
+							<span class="text">Tertiary Button</span>
+						</button>
+						<button type="button" class="btn btn_c4 btn_t2 btn_s5">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_t2 btn_s5">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s5">
+							<span class="text">Error Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s5" disabled>
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+				<h2 class="tit02">btn_area & wrap</h2>
+				<div class="guideComponent">
+					<div class="btn_area wrap">
+						<button type="button" class="btn btn_c1 btn_t2 btn_s5">
+							<span class="text">Primary Button</span>
+						</button>
+						<button type="button" class="btn btn_c2 btn_t2 btn_s5">
+							<span class="text">Secondary Button</span>
+						</button>
+						<button type="button" class="btn btn_c3 btn_t2 btn_s5">
+							<span class="text">Tertiary Button</span>
+						</button>
+						<button type="button" class="btn btn_c4 btn_t2 btn_s5">
+							<span class="text">Success Button</span>
+						</button>
+						<button type="button" class="btn btn_c5 btn_t2 btn_s5">
+							<span class="text">Warning Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s5">
+							<span class="text">Error Button</span>
+						</button>
+						<button type="button" class="btn btn_c6 btn_t2 btn_s5" disabled>
+							<span class="text">Error Button</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="section" id="listGuide">
+				<h1 class="tit01">list Guide</h1>
+			</div>
+			<div class="section" id="infoGuide">
+				<h1 class="tit01">info Guide</h1>
+			</div>
+			<div class="section" id="tabGuide">
+				<h1 class="tit01">tab Guide</h1>
+				<h2 class="tit02">tab_wrap</h2>
+				<div class="guideComponent">
+					<div class="tab_wrap">
+						<div class="tab_list" role="tablist"><button type="button" class="tab_btn active" role="tab" aria-selected="true" aria-controls="tabPanel01" id="tab01">1번 탭</button> <button type="button" class="tab_btn" role="tab" aria-selected="false" aria-controls="tabPanel02" id="tab02">2번 탭</button> <button type="button" class="tab_btn" role="tab" aria-selected="false" aria-controls="tabPanel03" id="tab03">3번 탭</button></div>
+						<div class="tab_content active" role="tabpanel" aria-labelledby="tab01" id="tabPanel01">
+							tab inner 1 <br />
+							tabpanel tabindex="0" - 적용 상태
+						</div>
+						<div class="tab_content" role="tabpanel" aria-labelledby="tab02" id="tabPanel02">
+							tab inner 2 <br />
+							tabpanel tabindex="0" - 적용 상태
+						</div>
+						<div class="tab_content" role="tabpanel" aria-labelledby="tab03" id="tabPanel03">
+							tab inner 3 <br />
+							tabpanel tabindex="0" - 적용 상태
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">tab_wrap</h2>
+				<div class="guideComponent">
+					<div class="tab_wrap">
+						<div class="tab_list" role="tablist"><button type="button" class="tab_btn active" role="tab" aria-selected="true" aria-controls="tabPanel04" id="tab04">1번 탭</button> <button type="button" class="tab_btn" role="tab" aria-selected="false" aria-controls="tabPanel05" id="tab05">2번 탭</button> <button type="button" class="tab_btn" role="tab" aria-selected="false" aria-controls="tabPanel06" id="tab06">3번 탭</button></div>
+						<div class="tab_content active" role="tabpanel" aria-labelledby="tab04" id="tabPanel04">
+							tab inner 1 <br />
+							tabpanel tabindex="0" - 적용 상태
+						</div>
+						<div class="tab_content" role="tabpanel" aria-labelledby="tab05" id="tabPanel05">
+							tab inner 2 <br />
+							tabpanel tabindex="0" - 적용 상태
+						</div>
+						<div class="tab_content" role="tabpanel" aria-labelledby="tab06" id="tabPanel06">
+							tab inner 3 <br />
+							tabpanel tabindex="0" - 적용 상태
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section" id="accordianGuide">
+				<h1 class="tit01">accordian Guide</h1>
+				<h2 class="tit02">acd_wrap - acd_item</h2>
+				<div class="guideComponent">
+					<div class="acd_wrap">
+						<div class="acd_item ty1 active">
+							<div class="acd_head">
+								<button type="button" class="acd_btn" aria-expanded="true"><span>샘플 타이틀</span><span class="sub_g_txt">보조설명</span></button>
+							</div>
+							<div class="acd_cont">
+								<div class="inner" style="display: block">내용</div>
+							</div>
+						</div>
+						<div class="acd_item ty1">
+							<div class="acd_head">
+								<button type="button" class="acd_btn" aria-expanded="false"><span>샘플 타이틀</span><span class="sub_g_txt">보조설명</span></button>
+							</div>
+							<div class="acd_cont">
+								<div class="inner">내용</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h2 class="tit02">acd_wrap - acd_item & ty2</h2>
+				<div class="guideComponent">
+					<div class="acd_wrap">
+						<div class="acd_item ty2 active">
+							<div class="acd_head">
+								<button type="button" class="acd_btn" aria-expanded="true"><span>샘플 타이틀</span></button>
+							</div>
+							<div class="acd_cont">
+								<div class="inner" style="display: block">내용</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section" id="tableGuide">
+				<h1 class="tit01">table Guide</h1>
+				<div class="guideComponent">
+					<div class="list_top_count">
+						<p>검색결과 <strong class="point">7</strong>건</p>
+					</div>
+				</div>
+				<h2 class="tit02">Table_가로</h2>
+				<div class="guideComponent">
+					<div class="table_wrap">
+						<h3>타이틀</h3>
+						<table class="table">
+							<caption>
+								캡션값
+							</caption>
+							<colgroup>
+								<col style="width: 20%" />
+								<col style="width: 20%" />
+								<col style="width: 60%" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">제목1</th>
+									<th scope="col">제목2</th>
+									<th scope="col">제목3</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>내용</td>
+									<td>내용</td>
+									<td>내용</td>
+								</tr>
+								<tr>
+									<td>내용</td>
+									<td>내용</td>
+									<td>내용</td>
+								</tr>
+								<tr>
+									<td>내용</td>
+									<td>내용</td>
+									<td>내용</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<h2 class="tit02">Table_세로</h2>
+				<div class="guideComponent">
+					<div class="table_wrap">
+						<h3>타이틀</h3>
+						<table class="table">
+							<caption>
+								캡션값
+							</caption>
+							<colgroup>
+								<col style="width: 20%" />
+								<col style="width: 30%" />
+								<col style="width: 20%" />
+								<col style="width: 30%" />
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">서브제목1</th>
+									<td colspan="3">내용</td>
+								</tr>
+								<tr>
+									<th scope="row">서브제목1 강조 서브제목1 강조</th>
+									<td colspan="3"><strong class="bold">내용</strong></td>
+								</tr>
+								<tr>
+									<th scope="row">서브제목2</th>
+									<td>내용</td>
+									<th scope="row">서브제목3</th>
+									<td>내용</td>
+								</tr>
+								<tr>
+									<th scope="row">서브제목4</th>
+									<td>내용</td>
+									<th scope="row">서브제목5</th>
+									<td>내용</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

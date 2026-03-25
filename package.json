@@ -1,25 +1,30 @@
 {
-  "name": "handle-markup",
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.22",
-    "handlebars": "^4.7.8",
-    "postcss": "^8.4.38",
-    "postcss-pxtorem": "^6.1.0",
-    "sass": "^1.75.0",
-    "vite": "^5.4.2",
-    "vite-plugin-full-reload": "^1.2.0",
-    "vite-plugin-handlebars": "^2.0.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "Firefox ESR"
-  ]
+	"name": "handle-markup",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build:clean": "rimraf dist",
+		"build:vite": "vite build",
+		"build:format": "prettier ./dist --write --ignore-path .prettierignore",
+		"build": "npm run build:clean && npm run build:vite && npm run build:format"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.22",
+		"handlebars": "^4.7.8",
+		"postcss": "^8.4.38",
+		"postcss-pxtorem": "^6.1.0",
+		"prettier": "^3.8.1",
+		"rimraf": "^6.1.3",
+		"sass": "^1.75.0",
+		"vite": "^5.4.2",
+		"vite-plugin-full-reload": "^1.2.0",
+		"vite-plugin-handlebars": "^2.0.0"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"Firefox ESR"
+	]
 }
