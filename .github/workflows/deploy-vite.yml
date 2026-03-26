@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm install
+      - run: npm install --legacy-peer-deps
       - run: npm run build  # 여기서 dist 폴더가 생성됨
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
