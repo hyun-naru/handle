@@ -85,11 +85,11 @@ export default defineConfig({
   root: 'src',                    // 개발 소스 루트 경로
   publicDir: '../public',         // 정적 파일 경로 (파빌릭 에셋들 위치)
   build: {
-    outDir: '../dist',            // 빌드 출력 경로 (프로젝트 루트 기준)
+    outDir: '../dist',            // 빌드 출력 경로 (프로젝트 루트 기준)// 상대 경로 대신 절대 경로가 Actions에서 안전
     emptyOutDir: true,            // 빌드 전 dist 비우기
-    assetsDir: './',              // 에셋(JS/CSS 등) 루트 위치 지정
+    assetsDir: 'assets',              // 에셋(JS/CSS 등) 루트 위치 지정
 
-    minify: false,                // 압축 비활성화 (개발용)
+    minify: false,                // 압축 비활성화 (개발용),
     overwrite: true,             // 기존 빌드 파일 덮어쓰기 허용
     terserOptions: {
       output: {
