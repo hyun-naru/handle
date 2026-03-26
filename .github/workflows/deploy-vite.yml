@@ -6,23 +6,28 @@ permissions:
   contents: read
   pages: write
   id-token: write
+
+# Node 24 강제 적용 옵션 추가 (경고 해결)
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24 # 최신 버전으로 상향
           cache: 'npm'
 
       - name: Install dependencies
         run: npm install
 
-      # ✅ 핵심 수정 부분: 
-      # npm run build를 호출하면 rimraf 때문에 127 에러가 납니다.
-      # 대신 npx를 사용하여 vite 빌드를 직접 수행합니다.
-      # 현재 root가 'src'로 설정되어 있으므로 경로를 명시합니다.
+      # 🚀 핵심: 'npm run build'를 쓰지 않고 직접 실행
+      # 127 에러(Command not found)의 주범인 rimraf를 완전히 우회합니다.
       - name: Build project
         run: npx vite build src --base /handle/
 
@@ -32,8 +37,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # vite.config.js에서 outDir을 ../dist로 잡았으므로 
-          # 루트 기준 ./dist 폴더가 배포 대상입니다.
+          # vite.config.js에서 outDir을 ../dist로 설정했으므로 
+          # 프로젝트 루트 기준 './dist' 폴더를 배포합니다.
           path: './dist'
 
       - name: Deploy to GitHub Pages
