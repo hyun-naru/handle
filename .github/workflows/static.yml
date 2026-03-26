@@ -1,47 +1,24 @@
 name: Deploy Vite site to Pages
-
 on:
   push:
     branches: ["main"]
-  workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build  # 여기서 dist 폴더가 생성됩니다.
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - run: npm install
+      - run: npm run build  # 여기서 dist 폴더가 생성됨
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
-          # 핵심: 전체 폴더('.')가 아니라 빌드된 결과물인 'dist' 폴더만 올립니다.
-          path: './dist'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          path: './dist'   # 👈 전체가 아닌 dist 폴더만 배포!
+      - uses: actions/deploy-pages@v4
