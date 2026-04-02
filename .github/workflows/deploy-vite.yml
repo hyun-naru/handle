@@ -26,12 +26,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # 🚀 [추가] 127 에러 및 Permission denied의 종지부를 찍을 권한 부여
+      # 🚀 127 에러 및 Permission denied의 종지부를 찍을 권한 부여
       - name: Give execution permission to all binaries
         run: chmod -R +x node_modules/.bin/
 
+      # 🛠️ [수정] Prettier 에러 방지를 위해 명령어를 분리하여 실행합니다.
       - name: Build project
-        run: npm run build -- --base /handle/
+        run: |
+          npm run build:clean
+          npx vite build --base /handle/
+          npm run build:format
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -39,6 +43,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # 프로젝트 루트 기준 './dist' 폴더를 배포합니다.
           path: './dist'
 
       - name: Deploy to GitHub Pages
