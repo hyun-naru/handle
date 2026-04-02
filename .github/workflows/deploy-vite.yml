@@ -29,7 +29,7 @@ jobs:
       # 🚀 핵심: 'npm run build'를 쓰지 않고 직접 실행
       # 127 에러(Command not found)의 주범인 rimraf를 완전히 우회합니다.
       - name: Build project
-        run: npx vite build src --base /handle/
+        run: npm run build -- --base /handle/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
