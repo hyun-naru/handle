@@ -31,13 +31,51 @@
 						<button type="button" class="btn btn_c1 btn_s3" onclick="layerPopup.open('pop03')">
 							<span class="text">bottom</span>
 						</button>
-						<button type="button" class="btn btn_c1 btn_s3" onclick="layerInfo.alert(&#x27;강조문구자리&#x27;, &#x27;alert내용입니다.\n에헤이&#x27;, function(){alert(&#x27;예버튼콜백함수에요&#x27;)});">
+						<button
+							type="button"
+							class="btn btn_c1 btn_s3"
+							onclick="
+								layerInfo.alert('강조문구자리', 'alert내용입니다.\n에헤이', function () {
+									alert('예버튼콜백함수에요');
+								})
+							"
+						>
 							<span class="text">alt</span>
 						</button>
-						<button type="button" class="btn btn_c1 btn_s3" onclick="layerInfo.confirm(&#x27;강조문구자리&#x27;, &#x27;alert내용입니다.\n에헤이&#x27;, function(){alert(&#x27;확인 튼콜백함수에요&#x27;)}, function(){alert(&#x27;취소 버튼콜백함수에요&#x27;)});">
+						<button
+							type="button"
+							class="btn btn_c1 btn_s3"
+							onclick="
+								layerInfo.confirm(
+									'강조문구자리',
+									'alert내용입니다.\n에헤이',
+									function () {
+										alert('확인 튼콜백함수에요');
+									},
+									function () {
+										alert('취소 버튼콜백함수에요');
+									},
+								)
+							"
+						>
 							<span class="text">confirm</span>
 						</button>
-						<button type="button" class="btn btn_c1 btn_s3" onclick="layerInfo.confirm2(&#x27;강조문구자리&#x27;, &#x27;alert내용입니다.\n에헤이&#x27;, function(){alert(&#x27;예 버튼콜백함수에요&#x27;)}, function(){alert(&#x27;아니오 버튼콜백함수에요&#x27;)});">
+						<button
+							type="button"
+							class="btn btn_c1 btn_s3"
+							onclick="
+								layerInfo.confirm2(
+									'강조문구자리',
+									'alert내용입니다.\n에헤이',
+									function () {
+										alert('예 버튼콜백함수에요');
+									},
+									function () {
+										alert('아니오 버튼콜백함수에요');
+									},
+								)
+							"
+						>
 							<span class="text">confirm2</span>
 						</button>
 						<button type="button" class="btn btn_c1 btn_s3" onclick="showToast('내용 내용')">

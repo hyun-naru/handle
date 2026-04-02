@@ -14,7 +14,7 @@
  */
  --}}
 <article class="popup_wrap{{#if pop-class}} {{pop-class}}{{/if}}{{#if pop-active}} active{{/if}}" {{#if pop-id}} id="{{pop-id}}"{{/if}}{{#if close-btn}}{{/if}} role="dialog" {{#if popup-active}}aria-hidden="false"{{else}}aria-hidden="true"{{/if}}>
-	<div class="dim" aria-hidden="true"{{#if pop-id}} onclick="layerPopup.close('{{pop-id}}');"{{/if}}></div>
+	<div class="dim" aria-hidden="true"{{#if pop-id}} onclick="layerPopup.close('{{{pop-id}}}');"{{/if}}></div>
 	<div class="popup_layer">
 		<div class="pop{{#if in-class}} {{in-class}}{{/if}}">
 			{{#unless no-header}}
@@ -24,7 +24,7 @@
 			{{/unless}}
 			{{> @partial-block}}
 			{{#unless close-btn}}
-				<button type="button" class="pop_close"{{#if pop-id}} onclick="layerPopup.close('{{pop-id}}');"{{/if}}><span class="blind">팝업 닫기</span></button>
+				<button type="button" class="pop_close"{{#if pop-id}} onclick="layerPopup.close('{{{pop-id}}}');"{{/if}}><span class="blind">팝업 닫기</span></button>
 			{{/unless}}
 		</div>
 	</div>

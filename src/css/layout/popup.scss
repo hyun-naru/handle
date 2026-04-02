@@ -169,7 +169,22 @@
 	&.alert {
 		.popup_layer {
 			.pop {
-				min-width: 200px;
+				padding: var(--px-6);
+				min-width: 220px;
+				border-radius: var(--radius-l);
+				.pop_cont {
+					display: flex;
+					flex-direction: column;
+					gap: var(--px-6);
+				}
+				.pop_txt_info {
+					display: flex;
+					flex-direction: column;
+					gap: var(--px-4);
+					strong {
+						font-weight: 700;
+					}
+				}
 			}
 		}
 	}

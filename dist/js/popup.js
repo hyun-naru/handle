@@ -261,8 +261,8 @@ var layerInfo = {
                     <div class="pop">
                         <div class="pop_cont">
                             <div class="pop_txt_info">
-                                <p>${contents}</p>
                                 <strong>${title}</strong>
+                                <p>${contents}</p>
                             </div>
                             <div class="btn_area flex">
                                 <button type="button" class="btn btn_c1 btn_s4 btn_alert">확인</button>
@@ -348,8 +348,8 @@ var layerInfo = {
                     <div class="pop">
                         <div class="pop_cont">
                             <div class="pop_txt_info">
-                                <p>${contents}</p>
                                 <strong>${title}</strong>
+                                <p>${contents}</p>
                             </div>
                             <div class="btn_area flex">
                                 ${buttons}
