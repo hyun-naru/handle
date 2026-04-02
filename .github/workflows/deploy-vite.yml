@@ -26,8 +26,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # 🚀 핵심: 'npm run build'를 쓰지 않고 직접 실행
-      # 127 에러(Command not found)의 주범인 rimraf를 완전히 우회합니다.
+      # 🚀 [추가] 127 에러 및 Permission denied의 종지부를 찍을 권한 부여
+      - name: Give execution permission to all binaries
+        run: chmod -R +x node_modules/.bin/
+
       - name: Build project
         run: npm run build -- --base /handle/
 
@@ -37,8 +39,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # vite.config.js에서 outDir을 ../dist로 설정했으므로 
-          # 프로젝트 루트 기준 './dist' 폴더를 배포합니다.
           path: './dist'
 
       - name: Deploy to GitHub Pages
