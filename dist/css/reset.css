@@ -87,8 +87,8 @@
 	font-display: swap;
 	src:
 		local("Pretendard Black"),
-		url("/handle/fonts/Pretendard-Black.woff2") format("woff2"),
-		url("/handle/fonts/Pretendard-Black.woff") format("woff");
+		url("/handle/dist/fonts/Pretendard-Black.woff2") format("woff2"),
+		url("/handle/dist/fonts/Pretendard-Black.woff") format("woff");
 }
 @font-face {
 	font-family: "Pretendard";
@@ -96,8 +96,8 @@
 	font-display: swap;
 	src:
 		local("Pretendard ExtraBold"),
-		url("/handle/fonts/Pretendard-ExtraBold.woff2") format("woff2"),
-		url("/handle/fonts/Pretendard-ExtraBold.woff") format("woff");
+		url("/handle/dist/fonts/Pretendard-ExtraBold.woff2") format("woff2"),
+		url("/handle/dist/fonts/Pretendard-ExtraBold.woff") format("woff");
 }
 @font-face {
 	font-family: "Pretendard";
@@ -105,8 +105,8 @@
 	font-display: swap;
 	src:
 		local("Pretendard Bold"),
-		url("/handle/fonts/Pretendard-Bold.woff2") format("woff2"),
-		url("/handle/fonts/Pretendard-Bold.woff") format("woff");
+		url("/handle/dist/fonts/Pretendard-Bold.woff2") format("woff2"),
+		url("/handle/dist/fonts/Pretendard-Bold.woff") format("woff");
 }
 @font-face {
 	font-family: "Pretendard";
@@ -114,8 +114,8 @@
 	font-display: swap;
 	src:
 		local("Pretendard SemiBold"),
-		url("/handle/fonts/Pretendard-SemiBold.woff2") format("woff2"),
-		url("/handle/fonts/Pretendard-SemiBold.woff") format("woff");
+		url("/handle/dist/fonts/Pretendard-SemiBold.woff2") format("woff2"),
+		url("/handle/dist/fonts/Pretendard-SemiBold.woff") format("woff");
 }
 @font-face {
 	font-family: "Pretendard";
@@ -123,8 +123,8 @@
 	font-display: swap;
 	src:
 		local("Pretendard Medium"),
-		url("/handle/fonts/Pretendard-Medium.woff2") format("woff2"),
-		url("/handle/fonts/Pretendard-Medium.woff") format("woff");
+		url("/handle/dist/fonts/Pretendard-Medium.woff2") format("woff2"),
+		url("/handle/dist/fonts/Pretendard-Medium.woff") format("woff");
 }
 @font-face {
 	font-family: "Pretendard";
@@ -132,8 +132,8 @@
 	font-display: swap;
 	src:
 		local("Pretendard Regular"),
-		url("/handle/fonts/Pretendard-Regular.woff2") format("woff2"),
-		url("/handle/fonts/Pretendard-Regular.woff") format("woff");
+		url("/handle/dist/fonts/Pretendard-Regular.woff2") format("woff2"),
+		url("/handle/dist/fonts/Pretendard-Regular.woff") format("woff");
 }
 @font-face {
 	font-family: "Pretendard";
@@ -141,8 +141,8 @@
 	font-display: swap;
 	src:
 		local("Pretendard Light"),
-		url("/handle/fonts/Pretendard-Light.woff2") format("woff2"),
-		url("/handle/fonts/Pretendard-Light.woff") format("woff");
+		url("/handle/dist/fonts/Pretendard-Light.woff2") format("woff2"),
+		url("/handle/dist/fonts/Pretendard-Light.woff") format("woff");
 }
 @font-face {
 	font-family: "Pretendard";
@@ -150,8 +150,8 @@
 	font-display: swap;
 	src:
 		local("Pretendard ExtraLight"),
-		url("/handle/fonts/Pretendard-ExtraLight.woff2") format("woff2"),
-		url("/handle/fonts/Pretendard-ExtraLight.woff") format("woff");
+		url("/handle/dist/fonts/Pretendard-ExtraLight.woff2") format("woff2"),
+		url("/handle/dist/fonts/Pretendard-ExtraLight.woff") format("woff");
 }
 @font-face {
 	font-family: "Pretendard";
@@ -159,8 +159,8 @@
 	font-display: swap;
 	src:
 		local("Pretendard Thin"),
-		url("/handle/fonts/Pretendard-Thin.woff2") format("woff2"),
-		url("/handle/fonts/Pretendard-Thin.woff") format("woff");
+		url("/handle/dist/fonts/Pretendard-Thin.woff2") format("woff2"),
+		url("/handle/dist/fonts/Pretendard-Thin.woff") format("woff");
 }
 :root {
 	--px-0: 0;
