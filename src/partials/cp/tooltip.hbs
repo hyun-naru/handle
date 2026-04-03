@@ -1,0 +1,29 @@
+{{!-- /**
+ * @name : 툴팁
+ * @description : 툴팁 컴포넌트
+ * @property
+ *  - tip-class : 팁타입 추가 class
+ *  - h-class : 팁버튼 추가 class
+ *  - title : content title
+ * 	- text : content 내용
+ */
+ --}}
+
+<div class="tip_wrap{{#if tip-class}} {{tip-class}}{{/if}}">
+	<div class="tip_head{{#if h-class}} {{h-class}}{{/if}}">
+		<button type="button" class="btn_tip" aria-expanded="false" aria-describedby="{{{tip-id}}}"><span class="blind">툴팁 열기</span></button>
+	</div>
+	<div class="tip_panel" role="tooltip" id="{{{tip-id}}}">
+		<div class="tip_cont">
+			<p class="tip_title">{{title}}</p>
+			<div class="tip_contents">
+			{{#if text}}
+				{{{text}}}
+			{{else}}
+				{{> @partial-block }}
+			{{/if}}
+			</div>
+			<button type="button" class="tip_close"><span class="blind">툴팁 닫기</span></button>
+		</div>
+	</div>
+</div>

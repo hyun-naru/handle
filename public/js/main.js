@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initTextareaLimit();// .inp_item textarea 기준 자동 적용
   toggleAccordion('.acd_wrap', true); // 두 번째 인자를 false로 하면 단일 열림만 허용
   initAllAccessibleTabs(); // 모든 .tab_wrap 적용
+  toolTip();
 });
 
 /**
@@ -318,5 +319,51 @@ function toggleAccordion(wrapperSelector = '.acd_wrap', allowMultiple = true) {
         item.classList.toggle('active');
       });
     });
+  });
+}
+
+function toolTip() {
+  const tooltips = document.querySelectorAll('.tip_wrap');
+  tooltips.forEach((toolTipWrap) => {
+    const tipBtn = toolTipWrap.querySelector('.btn_tip');
+    const tipClose = toolTipWrap.querySelector('.tip_close');
+
+    function openTooltip() {
+      // 다른 툴팁 전부 닫기
+      tooltips.forEach((el) => {
+        el.classList.remove('active');
+        el.querySelector('.btn_tip').setAttribute('aria-expanded', 'false');
+      });
+      toolTipWrap.classList.add('active');
+      tipBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeTooltip() {
+      toolTipWrap.classList.remove('active');
+      tipBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    tipBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // 바깥 클릭 방지
+      const isOpen = toolTipWrap.classList.contains('active');
+      isOpen ? closeTooltip() : openTooltip();
+    });
+
+    tipClose.addEventListener('click', closeTooltip);
+
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.tip_wrap').forEach((el) => {
+      el.classList.remove('active');
+      el.querySelector('.btn_tip').setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.tip_wrap').forEach((el) => {
+        el.classList.remove('active');
+        el.querySelector('.btn_tip').setAttribute('aria-expanded', 'false');
+      });
+    }
   });
 }

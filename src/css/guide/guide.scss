@@ -1,5 +1,5 @@
 .guide_wrap {
-	padding: VAR(--px-10);
+	padding: var(--px-10);
 }
 .guide_location {
 	position: sticky;
@@ -46,6 +46,16 @@
 					margin-top: 0;
 				}
 			}
+		}
+	}
+}
+.group_wrap {
+	
+	&.flex {
+		display: flex;
+		justify-content: space-around;
+		* {
+			flex: 1;
 		}
 	}
 }

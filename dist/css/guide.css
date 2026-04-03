@@ -82,7 +82,7 @@
 }
 
 .guide_wrap {
-	padding: VAR(--px-10);
+	padding: var(--px-10);
 }
 
 .guide_location {
@@ -145,6 +145,20 @@
 
 .section.row .guideComponent:not(.column) .inp_wrap {
 	margin-top: 0;
+}
+
+.group_wrap.flex {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
+}
+
+.group_wrap.flex * {
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
 }
 
 .tit01 {
