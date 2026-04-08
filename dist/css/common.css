@@ -1302,7 +1302,7 @@ h6 {
 .tip_wrap .tip_close {
 	position: absolute;
 	right: 0.75rem;
-	top: 0.625rem;
+	top: 1rem;
 	display: block;
 	width: 0.625rem;
 	height: 0.625rem;
