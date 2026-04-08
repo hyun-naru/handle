@@ -1,3 +1,159 @@
+// brawser media ----------------------------------------------------------
+$breakpoints: (
+    xs: 0,
+    ss: 320px,
+    sm: 360px,
+    md: 472px,
+    lg: 630px,
+    xl: 768px,
+    xxl: 1024px,
+);
+$breakpoints-next: (
+    xs: ss,
+    ss: sm,
+    sm: md,
+    md: lg,
+    lg: xl,
+    xl: xl,
+    xxl: '',
+);
+//최소크기지정
+@mixin media-breack-up($bp) {
+    $min-val: map-get($breakpoints, $bp);
+    @if $bp == xs {
+        @content;
+    } @else {
+        @media screen and (min-width: $min-val) {
+            @content;
+        }
+    }
+
+}
+//최대크기지정 
+@mixin media-breack-down($bp) {
+    $max-val: 0;
+    @if $bp == xs {
+        @error 'breakpoint';
+    } @else {
+        $max-val: map-get($breakpoints, $bp)- 0.02px;
+    }
+    @media screen and (max-width: $max-val) {
+        @content;
+    }
+}
+//지정구간 - 다음구간
+@mixin media-breack-only($bp) {
+    $min-val: map-get($breakpoints, $bp);
+    $max-val: 0;
+    @if $bp == xs {
+        $max-val: map-get($breakpoints, sm)- 0.02px;
+        @media screen and (max-width: $max-val) {
+            @content;
+        }
+    } @else if $bp == xxxl {
+        $min-val: map-get($breakpoints, xxl)- 0.02px;
+        @media screen and (min-width: $min-val) {
+            @content;
+        }
+    } @else {
+        $pb-next: map-get($breakpoints-next, $bp);
+        $min-val: map-get($breakpoints, $bp-next)- 0.02px;
+        @media screen and (min-width: $min-val) and (max-width: $max-val) {
+            @content;
+        }
+    }
+}
+//지정구간 - 지정구간
+@mixin media-breack-btween($bp-min, $bp-max) {
+    $min-val: map-get($breakpoints, $bp-min);
+    $max-val: map-get($breakpoints, $bp-max)- 0.02px;
+    @media screen and (min-width: $min-val) and (max-width: $max-val) {
+        @content;
+    }
+}
+
+
+// flex ---------------------------------------------------------------
+//정렬(가로,세로), 가로정렬(시작, 중간, 끝), 세로정렬(시작, 중간, 끝),
+@mixin flex($direction: true, $justify: '', $align: '', $gap: '0') {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    @if $direction == true {
+        -webkit-box-orient: horizontal;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+    } @else {
+        -webkit-box-orient: vertical;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    @if $justify == 'start' {
+        -webkit-box-pack: start;
+        -moz-box-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    } @else if $justify == 'center' {
+        -webkit-box-pack: center;
+        -moz-box-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    } @else if $justify == 'end' {
+        -webkit-box-pack: end;
+        -moz-box-justify-content: flex-end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+    } @else if $justify == 'around' {
+        -webkit-box-pack: justify;
+        justify-content: space-around;
+        -ms-flex-pack: justify;
+        justify-content: space-around;
+    } @else if $justify == 'between' {
+        -webkit-box-pack: justify;
+        -moz-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    } @else if $justify == 'evenly' {
+        justify-content: space-evenly;
+    } @else {
+        -webkit-box-pack: start;
+        -moz-box-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+    @if $align == 'start' {
+        -webkit-box-align: start;
+        -moz-align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+    } @else if $align == 'center' {
+        -webkit-box-align: center;
+        -moz-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+    } @else if $justify == 'end' {
+        -webkit-box-align: end;
+        -moz-align-items: flex-end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+    } @else if $justify == 'baseline' {
+        -webkit-box-align: baseline;
+        -moz-align-items: baseline;
+        -ms-flex-align: baseline;
+        align-items: baseline;
+    } @else {
+        -webkit-box-align: start;
+        -moz-align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+    }
+    gap: $gap;
+}
+
+
 @mixin blind {
 	position: absolute;
 	width: 1px;

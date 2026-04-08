@@ -151,11 +151,12 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	-ms-flex-pack: distribute;
-	justify-content: space-around;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
 }
 
-.group_wrap.flex * {
+.group_wrap.flex > div {
 	-webkit-box-flex: 1;
 	-ms-flex: 1;
 	flex: 1;

@@ -324,46 +324,108 @@ function toggleAccordion(wrapperSelector = '.acd_wrap', allowMultiple = true) {
 
 function toolTip() {
   const tooltips = document.querySelectorAll('.tip_wrap');
-  tooltips.forEach((toolTipWrap) => {
-    const tipBtn = toolTipWrap.querySelector('.btn_tip');
-    const tipClose = toolTipWrap.querySelector('.tip_close');
 
-    function openTooltip() {
-      // 다른 툴팁 전부 닫기
-      tooltips.forEach((el) => {
-        el.classList.remove('active');
-        el.querySelector('.btn_tip').setAttribute('aria-expanded', 'false');
+  tooltips.forEach((wrap) => {
+    const btn = wrap.querySelector('.btn_tip');
+    const panel = wrap.querySelector('.tip_panel');
+    const closeBtn = wrap.querySelector('.tip_close');
+
+    // id 연결 (없으면 자동 생성)
+    if (!panel.id) {
+      panel.id = 'tip_' + Math.random().toString(36).substr(2, 4);
+    }
+
+    btn.setAttribute('aria-controls', panel.id);
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      const isOpen = wrap.classList.contains('active');
+
+      // 전체 닫기
+      tooltips.forEach(w => {
+        w.classList.remove('active');
+        const b = w.querySelector('.btn_tip');
+        const p = w.querySelector('.tip_panel');
+        b.setAttribute('aria-expanded', 'false');
+        p.setAttribute('aria-hidden', 'true');
       });
-      toolTipWrap.classList.add('active');
-      tipBtn.setAttribute('aria-expanded', 'true');
-    }
 
-    function closeTooltip() {
-      toolTipWrap.classList.remove('active');
-      tipBtn.setAttribute('aria-expanded', 'false');
-    }
+      if (!isOpen) {
+        wrap.classList.add('active');
 
-    tipBtn.addEventListener('click', (e) => {
-      e.stopPropagation(); // 바깥 클릭 방지
-      const isOpen = toolTipWrap.classList.contains('active');
-      isOpen ? closeTooltip() : openTooltip();
+        // 상태 업데이트
+        btn.setAttribute('aria-expanded', 'true');
+        panel.setAttribute('aria-hidden', 'false');
+
+        const rect = btn.getBoundingClientRect();
+        // PC에서만 적용
+        if (window.innerWidth > 630) {
+          wrap.classList.remove('center', 'right');
+
+          const rect = btn.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const screenWidth = window.innerWidth;
+
+          if (centerX > screenWidth * 0.66) {
+            wrap.classList.add('right');
+          } else if (centerX > screenWidth * 0.33) {
+            wrap.classList.add('center');
+          }
+        }
+        // 높이 측정
+        panel.style.visibility = 'hidden';
+        panel.style.display = 'block';
+        const panelHeight = panel.offsetHeight + 50;
+
+        panel.style.display = '';
+        panel.style.visibility = '';
+
+        const spaceBelow = window.innerHeight - rect.bottom;
+        const spaceAbove = rect.top;
+
+        if (spaceBelow < panelHeight && spaceAbove > panelHeight) {
+          wrap.classList.add('top');
+        } else {
+          wrap.classList.remove('top');
+        }
+
+        // 👉 포커스 이동
+        setTimeout(() => {
+          panel.setAttribute('tabindex', '-1');
+          panel.focus();
+        }, 0);
+      }
     });
 
-    tipClose.addEventListener('click', closeTooltip);
+    // 닫기 버튼
+    closeBtn.addEventListener('click', () => {
+      closeTooltip(wrap, btn, panel);
+    });
 
+    // ESC 닫기
+    panel.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeTooltip(wrap, btn, panel);
+      }
+    });
   });
+
+  // 외부 클릭 닫기
   document.addEventListener('click', () => {
-    document.querySelectorAll('.tip_wrap').forEach((el) => {
-      el.classList.remove('active');
-      el.querySelector('.btn_tip').setAttribute('aria-expanded', 'false');
+    document.querySelectorAll('.tip_wrap.active').forEach((wrap) => {
+      const btn = wrap.querySelector('.btn_tip');
+      const panel = wrap.querySelector('.tip_panel');
+      closeTooltip(wrap, btn, panel);
     });
   });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.tip_wrap').forEach((el) => {
-        el.classList.remove('active');
-        el.querySelector('.btn_tip').setAttribute('aria-expanded', 'false');
-      });
-    }
-  });
+
+  function closeTooltip(wrap, btn, panel) {
+    wrap.classList.remove('active');
+    btn.setAttribute('aria-expanded', 'false');
+    panel.setAttribute('aria-hidden', 'true');
+
+    // 👉 포커스 복귀
+    btn.focus();
+  }
 }

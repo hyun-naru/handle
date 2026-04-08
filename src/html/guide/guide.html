@@ -528,12 +528,23 @@
 	
 	<div class="section" id="toolTip">
 		<h1 class="tit01">toolTip Guide</h1>
-		<h2 class="tit02">tip_wrap</h2>
-		<div class="group_wrap flex">
-			{{> cp/tooltip tip-id="tip01" title="title" text="내용내용내용내용내용내용내용내용" }}
-			{{> cp/tooltip tip-class="center" tip-id="tip02" title="title" text="내용내용내용내용내용내용내용내용" }}
-			{{> cp/tooltip tip-class="right" tip-id="tip03" title="title" text="내용내용내용내용내용내용내용내용" }}
+		<h2 class="tit02">tip_wrap-bottom</h2>
+		<div class="group_wrap">
+			{{> cp/tooltip tip-id="tip01" hash-h="left" title="title" text="내용내용내용내용내용내용내용내용" }}
+			{{> cp/tooltip tip-id="tip02" hash-tit="center" title="title" text="내용내용내용내용내용내용내용내용" }}
+			{{> cp/tooltip title="title" text="내용내용내용내용내용내용내용내용" }}			
 		</div>
+		<div class="group_wrap flex">
+			{{> cp/tooltip tip-id="tip01" hash-h="left" title="title" text="내용내용내용내용내용내용내용내용" }}
+			{{> cp/tooltip tip-id="tip02" hash-tit="center" title="title" text="내용내용내용내용내용내용내용내용" }}
+			{{> cp/tooltip title="title" text="내용내용내용내용내용내용내용내용" }}			
+		</div>
+		<!-- <h2 class="tit02">tip_wrap-top</h2>
+		<div class="group_wrap flex">
+			left {{> cp/tooltip tip-class="top" tip-id="tip01" title="title" text="내용내용내용내용내용내용내용내용" }}
+			center {{> cp/tooltip tip-class="top center" tip-id="tip02" title="title" text="내용내용내용내용내용내용내용내용" }}
+			right {{> cp/tooltip tip-class="top right" tip-id="tip03" title="title" text="내용내용내용내용내용내용내용내용" }}
+		</div> -->
 	</div>
 	<div class="section" id="listGuide">
 		<h1 class="tit01">list Guide</h1>

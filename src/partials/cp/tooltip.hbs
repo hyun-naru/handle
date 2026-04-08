@@ -9,21 +9,27 @@
  */
  --}}
 
-<div class="tip_wrap{{#if tip-class}} {{tip-class}}{{/if}}">
-	<div class="tip_head{{#if h-class}} {{h-class}}{{/if}}">
-		<button type="button" class="btn_tip" aria-expanded="false" aria-describedby="{{{tip-id}}}"><span class="blind">툴팁 열기</span></button>
-	</div>
-	<div class="tip_panel" role="tooltip" id="{{{tip-id}}}">
-		<div class="tip_cont">
-			<p class="tip_title">{{title}}</p>
-			<div class="tip_contents">
-			{{#if text}}
-				{{{text}}}
-			{{else}}
-				{{> @partial-block }}
-			{{/if}}
-			</div>
-			<button type="button" class="tip_close"><span class="blind">툴팁 닫기</span></button>
-		</div>
-	</div>
+<div class="tip_item{{#if tip-item}} {{tip-item}}{{/if}}">
+	<span class="tip_inner">
+		{{#if hash-h}}<h3 class="hash_h">{{{hash-h}}}</h3>{{/if}}
+		{{#if hash-tit}}<span class="hash_tit">{{{hash-tit}}}</span>{{/if}}
+		<span class="tip_wrap{{#if tip-class}} {{tip-class}}{{/if}}">
+			<span class="tip_head{{#if h-class}} {{h-class}}{{/if}}">
+				<button type="button" class="btn_tip" aria-expanded="false" aria-controls="{{{tip-id}}}"><span class="blind">툴팁 열기</span></button>
+			</span>
+			<span class="tip_panel" role="tooltip" id="{{{tip-id}}}" aria-hidden="true">
+				<span class="tip_cont">
+					<span class="tip_title">{{title}}</span>
+					<span class="tip_contents">
+					{{#if text}}
+						{{{text}}}
+					{{else}}
+						{{> @partial-block }}
+					{{/if}}
+					</span>
+					<button type="button" class="tip_close"><span class="blind">툴팁 닫기</span></button>
+				</span>
+			</span>
+		</span>
+	</span>
 </div>

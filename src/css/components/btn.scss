@@ -184,8 +184,50 @@
 	}
 }
 /****   toolTip   ****/
-.tip_wrap {
+.tip_item {	
 	position: relative;
+	display: block;
+	width: 100%;
+	.tip_inner {
+		display: inline-flex;
+		align-items: center;
+		@include media-breack-down(lg) {
+			&:has(.hash_h) {
+				.tip_panel {
+					top: 44px;
+				}
+			} 
+			&:has(.hash_tit) {
+				.tip_panel {
+					top: 32px;
+				}
+			}
+		}
+	}
+	@include media-breack-down(lg) {
+		&:has(.top) {
+			&:has(.hash_h) {
+				.tip_panel {
+					top: 4px;
+				}
+			} 
+			&:has(.hash_tit) {
+				.tip_panel {
+					top: -8px;
+				}
+			}
+		}
+	}
+	@include media-breack-up(lg) {
+		.tip_wrap {
+			position: relative;
+			.tip_panel {
+				width: max-content;
+			}
+		}
+	}
+}
+.tip_wrap {	
 	.tip_head {
 		position: relative;
 		.btn_tip {
@@ -201,52 +243,137 @@
 			position: absolute;
 			border: solid transparent;
 		}
+		// ▼ 기본 (아래 방향 화살표)
 		&::before {
 			top: 21px;
 			left: 4px;
 			border-width: 0 6px 10px 6px;
 			border-bottom-color: var(--grey-color-400); /* 테두리 */
-			z-index: 1;
+			z-index: 2;
 		}
 		&::after {
 			top: 23px;
 			left: 5px;
 			border-width: 0 5px 8px 5px;
 			border-bottom-color:white; /* 내부 색 */
-			z-index: 2;
+			z-index: 3;
 		}
+		
 	}
-	&:not(.center, .right) {
-		.tip_cont {
-			top: 30px;
-			left: -5px;
-		}
-
-	}
-	&.center {
-		.tip_cont {
-			top: 30px;
-			left: 10px;
-			transform: translateX(-50%);
-		}
-	}
-	&.right {
-		.tip_cont {
-			top: 30px;
-			left: 25px;
-			transform: translateX(-100%);
-		}
-	}
-	.tip_cont {
+	// =====================
+	// PANEL
+	// =====================
+	.tip_panel {
 		position: absolute;
+		top: 30px;
+		left: -10px;
 		display: none;
-		padding: var(--px-4) var(--px-14) var(--px-4) var(--px-4);
+
 		width: auto;
 		max-width: 500px;
+		padding: var(--px-4) var(--px-14) var(--px-4) var(--px-4);
+
 		background: var(--white-color);
 		border: 1px solid var(--grey-color-400);
 		border-radius: var(--radius-l);
+		box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+		transform: translateY(0);
+		transition: 0.2s;
+		z-index: 1;
 	}
+
+	// =====================
+	// OPEN
+	// =====================
+	&.active {
+		.tip_head::before,
+		.tip_head::after {
+		display: block;
+		}
+
+		.tip_panel {
+			display: inline-block;
+		}
+	}
+
+	// =====================
+	// TOP (위로 열림)
+	// =====================
+	&.top {
+		.tip_head {
+			&::before {
+				top: -11px;
+				border-width: 10px 6px 0 6px;
+				border-top-color: var(--grey-color-400);
+				border-bottom-color: transparent;
+			}
+
+			&::after {
+				top: -11px;
+				border-width: 8px 5px 0 5px;
+				border-top-color: var(--white-color);
+				border-bottom-color: transparent;
+			}
+		}
+
+		.tip_panel {
+			top: -10px;
+			transform: translateY(-100%);
+		}
+	}
+	// =====================
+	// ALIGN
+	// =====================
+	&.center {
+		.tip_panel {
+			left: 10px;
+			transform: translate(-50%, 0);
+		}
+
+		&.top .tip_panel {
+			transform: translate(-50%, -100%);
+		}
+	}
+
+	&.right {
+		.tip_panel {
+			left: 30px;
+			transform: translate(-100%, 0);
+		}
+
+		&.top .tip_panel {
+			transform: translate(-100%, -100%);
+		}
+	}
+
+	// =====================
+	// MOBILE ONLY
+	// =====================
+	@include media-breack-down(lg) {
+		.tip_panel {
+			left: 0;
+			right: 0;
+			max-width: none;
+		}
+		&.center,
+		&.right {
+			.tip_panel {
+				transform: translate(0, 0);
+			}
+		}
+
+		&.top .tip_panel {
+			transform: translate(0, -100%) !important;
+		}
+		
+		&.active .tip_panel {
+			display: block;
+		}
+	}
+	// =====================
+	// CLOSE BUTTON
+	// =====================
 	.tip_close {
 		position: absolute;
 		right: 12px;
@@ -255,16 +382,5 @@
 		width: 10px;
 		height: 10px;
 		background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M17.0208 3.68558C17.2161 3.49032 17.2161 3.17374 17.0208 2.97848C16.8256 2.78322 16.509 2.78322 16.3137 2.97848L10.0001 9.29206L3.68656 2.97848C3.4913 2.78322 3.17472 2.78322 2.97945 2.97848C2.78419 3.17374 2.78419 3.49032 2.97945 3.68558L9.29304 9.99917L2.97945 16.3128C2.78419 16.508 2.78419 16.8246 2.97945 17.0199C3.17472 17.2151 3.4913 17.2151 3.68656 17.0199L10.0001 10.7063L16.3137 17.0199C16.509 17.2151 16.8256 17.2151 17.0208 17.0199C17.2161 16.8246 17.2161 16.508 17.0208 16.3128L10.7073 9.99917L17.0208 3.68558Z' fill='%23111111'/%3E%3Cpath d='M17.0208 2.97848L17.1976 2.8017L17.1976 2.8017L17.0208 2.97848ZM17.0208 3.68558L17.1976 3.86236V3.86236L17.0208 3.68558ZM16.3137 2.97848L16.137 2.8017L16.137 2.8017L16.3137 2.97848ZM10.0001 9.29206L9.82337 9.46884L10.0001 9.64561L10.1769 9.46884L10.0001 9.29206ZM3.68656 2.97848L3.86334 2.8017V2.8017L3.68656 2.97848ZM2.97945 3.68558L3.15623 3.50881L2.97945 3.68558ZM9.29304 9.99917L9.46981 10.1759L9.64659 9.99917L9.46981 9.82239L9.29304 9.99917ZM2.97945 16.3128L2.80268 16.136L2.80268 16.136L2.97945 16.3128ZM2.97945 17.0199L2.80268 17.1966L2.80268 17.1966L2.97945 17.0199ZM3.68656 17.0199L3.86334 17.1966L3.68656 17.0199ZM10.0001 10.7063L10.1769 10.5295L10.0001 10.3527L9.82337 10.5295L10.0001 10.7063ZM16.3137 17.0199L16.137 17.1966H16.137L16.3137 17.0199ZM17.0208 17.0199L17.1976 17.1966L17.1976 17.1966L17.0208 17.0199ZM17.0208 16.3128L17.1976 16.136V16.136L17.0208 16.3128ZM10.7073 9.99917L10.5305 9.82239L10.3537 9.99917L10.5305 10.1759L10.7073 9.99917ZM16.8441 3.15525C16.9417 3.25289 16.9417 3.41118 16.8441 3.50881L17.1976 3.86236C17.4905 3.56947 17.4905 3.09459 17.1976 2.8017L16.8441 3.15525ZM16.4905 3.15525C16.5881 3.05762 16.7464 3.05762 16.8441 3.15525L17.1976 2.8017C16.9047 2.50881 16.4298 2.50881 16.137 2.8017L16.4905 3.15525ZM10.1769 9.46884L16.4905 3.15525L16.137 2.8017L9.82337 9.11528L10.1769 9.46884ZM3.50978 3.15525L9.82337 9.46884L10.1769 9.11528L3.86334 2.8017L3.50978 3.15525ZM3.15623 3.15525C3.25386 3.05762 3.41215 3.05762 3.50978 3.15525L3.86334 2.8017C3.57044 2.50881 3.09557 2.50881 2.80268 2.8017L3.15623 3.15525ZM3.15623 3.50881C3.0586 3.41118 3.0586 3.25289 3.15623 3.15525L2.80268 2.8017C2.50978 3.09459 2.50978 3.56947 2.80268 3.86236L3.15623 3.50881ZM9.46981 9.82239L3.15623 3.50881L2.80268 3.86236L9.11626 10.1759L9.46981 9.82239ZM3.15623 16.4895L9.46981 10.1759L9.11626 9.82239L2.80268 16.136L3.15623 16.4895ZM3.15623 16.8431C3.0586 16.7455 3.0586 16.5872 3.15623 16.4895L2.80268 16.136C2.50978 16.4289 2.50978 16.9037 2.80268 17.1966L3.15623 16.8431ZM3.50978 16.8431C3.41215 16.9407 3.25386 16.9407 3.15623 16.8431L2.80268 17.1966C3.09557 17.4895 3.57044 17.4895 3.86334 17.1966L3.50978 16.8431ZM9.82337 10.5295L3.50978 16.8431L3.86334 17.1966L10.1769 10.8831L9.82337 10.5295ZM16.4905 16.8431L10.1769 10.5295L9.82337 10.8831L16.137 17.1966L16.4905 16.8431ZM16.8441 16.8431C16.7464 16.9407 16.5881 16.9407 16.4905 16.8431L16.137 17.1966C16.4298 17.4895 16.9047 17.4895 17.1976 17.1966L16.8441 16.8431ZM16.8441 16.4895C16.9417 16.5872 16.9417 16.7455 16.8441 16.8431L17.1976 17.1966C17.4905 16.9037 17.4905 16.4289 17.1976 16.136L16.8441 16.4895ZM10.5305 10.1759L16.8441 16.4895L17.1976 16.136L10.884 9.82239L10.5305 10.1759ZM16.8441 3.50881L10.5305 9.82239L10.884 10.1759L17.1976 3.86236L16.8441 3.50881Z' fill='%23111111'/%3E%3C/svg%3E%0A") no-repeat center;
-	}
-	&.active {
-		.tip_head {
-			&::before,
-			&::after {
-				display: block;
-			}
-		}
-		.tip_cont {
-			display: inline-block;
-		}
 	}
 }
