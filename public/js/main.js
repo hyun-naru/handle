@@ -202,79 +202,74 @@ function initAllAccessibleTabs(wrapperSelector = '.tab_wrap') {
  * @param {HTMLElement} container - 단일 탭 그룹 요소
  */
 function initSingleTabGroup(container) {
-  const tabs = container.querySelectorAll('[role="tab"]');
-  const panels = container.querySelectorAll('[role="tabpanel"]');
+  const tabs = container.querySelectorAll(':scope > [role="tab"]');
+  const panels = container.querySelectorAll(':scope > [role="tabpanel"]');
+
+  if (tabs.length !== panels.length) {
+    console.warn('tab / panel mismatch', container);
+    return;
+  }
+  const uid = Math.random().toString(36).slice(2, 6);
+  
+  // =========================
+  // 🔗 tab ↔ panel 연결
+  // =========================
+  tabs.forEach((tab, i) => {
+    const tabId = `tab_${uid}_${i}`;
+    const panelId = `panel_${uid}_${i}`;
+    const isActive = tab.classList.contains('active') || i === 0;
+    
+    tab.id = tabId;
+    tab.setAttribute('aria-controls', panelId);
+    tab.setAttribute('aria-selected', isActive);
+    tab.setAttribute('tabindex', isActive ? '0' : '-1');
+    tab.classList.toggle('active', isActive);
+
+    const panel = panels[i];
+    panel.id = panelId;
+    panel.setAttribute('aria-labelledby', tabId);
+    panel.hidden = !isActive;
+    panel.classList.toggle('active', isActive);
+  });
 
   /**
    * 특정 탭을 활성화하고 나머지를 비활성화합니다.
-   * @param {HTMLElement} tab - 활성화할 탭 버튼
+   * @param {HTMLElement} index - 활성화할 탭 버튼
    */
-  function activateTab(tab) {
-    const targetId = tab.getAttribute('aria-controls');
+  
+  function activateTab(index) {
+    tabs.forEach((tab, i) => {
+      const selected = i === index;
 
-    // 모든 탭 비활성화 처리
-    tabs.forEach(t => {
-      t.setAttribute('aria-selected', 'false');
-      t.setAttribute('tabindex', '-1');
-      t.classList.remove('active');
+      tab.setAttribute('aria-selected', selected);
+      tab.setAttribute('tabindex', selected ? '0' : '-1');
+      tab.classList.toggle('active', selected);
+
+      // panel
+      panels[i].hidden = !selected;
+      panels[i].classList.toggle('active', selected);
     });
 
-    // 모든 패널 숨기기
-    panels.forEach(p => {
-      p.classList.remove('active');
-      p.setAttribute('hidden', 'true');
+    tabs[index].focus();
+  }
+ tabs.forEach((tab, i) => {
+    tab.addEventListener('click', (e) => {
+      e.stopPropagation(); // 👉 중요 (중첩 이벤트 방지)
+      activateTab(i);
     });
 
-    // 클릭한 탭 활성화
-    tab.setAttribute('aria-selected', 'true');
-    tab.setAttribute('tabindex', '0');
-    tab.classList.add('active');
-    tab.focus();
+    tab.addEventListener('keydown', (e) => {
+      let newIndex = i;
 
-    // 연결된 패널 표시
-    const targetPanel = container.querySelector(`#${targetId}`);
-    if (targetPanel) {
-      targetPanel.classList.add('active');
-      targetPanel.removeAttribute('hidden');
-    }
-  }
+      if (e.key === 'ArrowRight') newIndex = (i + 1) % tabs.length;
+      if (e.key === 'ArrowLeft') newIndex = (i - 1 + tabs.length) % tabs.length;
 
-  /**
-   * 마우스 클릭 시 탭 활성화 이벤트 핸들러
-   */
-  function handleClick(event) {
-    activateTab(event.currentTarget);
-  }
-
-  /**
-   * 키보드 화살표로 탭 이동 지원 (접근성 고려)
-   */
-  function handleKeydown(event) {
-    const tab = event.currentTarget;
-    const tabsArray = Array.from(tabs);
-    let newIndex = tabsArray.indexOf(tab);
-
-    if (event.key === 'ArrowRight') {
-      newIndex = (newIndex + 1) % tabsArray.length;
-    } else if (event.key === 'ArrowLeft') {
-      newIndex = (newIndex - 1 + tabsArray.length) % tabsArray.length;
-    } else {
-      return; // 다른 키는 무시
-    }
-
-    event.preventDefault();
-    activateTab(tabsArray[newIndex]);
-  }
-
-  // 각 탭에 이벤트 바인딩
-  tabs.forEach(tab => {
-    tab.addEventListener('click', handleClick);
-    tab.addEventListener('keydown', handleKeydown);
+      if (newIndex !== i) {
+        e.preventDefault();
+        activateTab(newIndex);
+      }
+    });
   });
-
-  // 초기 활성화된 탭이 없다면 첫 번째 탭을 기본으로 활성화
-  const selected = Array.from(tabs).find(t => t.getAttribute('aria-selected') === 'true');
-  activateTab(selected || tabs[0]);
 }
 
 
@@ -358,38 +353,8 @@ function toolTip() {
         btn.setAttribute('aria-expanded', 'true');
         panel.setAttribute('aria-hidden', 'false');
 
-        const rect = btn.getBoundingClientRect();
-        // PC에서만 적용
-        if (window.innerWidth > 630) {
-          wrap.classList.remove('center', 'right');
-
-          const rect = btn.getBoundingClientRect();
-          const centerX = rect.left + rect.width / 2;
-          const screenWidth = window.innerWidth;
-
-          if (centerX > screenWidth * 0.66) {
-            wrap.classList.add('right');
-          } else if (centerX > screenWidth * 0.33) {
-            wrap.classList.add('center');
-          }
-        }
-        // 높이 측정
-        panel.style.visibility = 'hidden';
-        panel.style.display = 'block';
-        const panelHeight = panel.offsetHeight + 50;
-
-        panel.style.display = '';
-        panel.style.visibility = '';
-
-        const spaceBelow = window.innerHeight - rect.bottom;
-        const spaceAbove = rect.top;
-
-        if (spaceBelow < panelHeight && spaceAbove > panelHeight) {
-          wrap.classList.add('top');
-        } else {
-          wrap.classList.remove('top');
-        }
-
+        setTooltipPosition(wrap, btn, panel);
+        
         // 👉 포커스 이동
         setTimeout(() => {
           panel.setAttribute('tabindex', '-1');
@@ -427,5 +392,80 @@ function toolTip() {
 
     // 👉 포커스 복귀
     btn.focus();
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('.tip_wrap.active').forEach((wrap) => {
+        const btn = wrap.querySelector('.btn_tip');
+        const panel = wrap.querySelector('.tip_panel');
+
+        setTooltipPosition(wrap, btn, panel);
+      });
+    });
+  }
+  
+  function setTooltipPosition(wrap, btn, panel) {
+    const rect = btn.getBoundingClientRect();
+
+    // 초기화
+    wrap.classList.remove('center', 'right', 'top');
+    panel.style.left = '';
+    panel.style.transform = '';
+
+    // ======================
+    // PC
+    // ======================
+    if (window.innerWidth > 630) {
+      const centerX = rect.left + rect.width / 2;
+      const screenWidth = window.innerWidth;
+
+      if (centerX > screenWidth * 0.66) {
+        wrap.classList.add('right');
+      } else if (centerX > screenWidth * 0.33) {
+        wrap.classList.add('center');
+      }
+    } 
+    // ======================
+    // MOBILE
+    // ======================
+    else {
+      const viewportCenter = window.innerWidth / 2;
+      const btnCenter = rect.left + rect.width / 2;
+
+      const offset = btnCenter - viewportCenter;
+      const maxOffset = (window.innerWidth - 80) / 2 - 40;
+
+      const finalOffset = Math.max(
+        -maxOffset,
+        Math.min(offset, maxOffset)
+      );
+      if(maxOffset <= -finalOffset){
+        panel.style.left = '-5px';
+      } else {
+        panel.style.left = '50%';
+        console.log(finalOffset);
+        console.log(maxOffset);
+        if( (maxOffset - finalOffset) <= 0) {
+          panel.style.left = 'calc(50% - 5px)';
+        } 
+        panel.style.transform = `translateX(calc(-50% - ${finalOffset}px))`;
+      }
+    }
+
+    // ======================
+    // 위/아래 판단
+    // ======================
+    panel.style.visibility = 'hidden';
+    panel.style.display = 'block';
+    const panelHeight = panel.offsetHeight + 50;
+    panel.style.display = '';
+    panel.style.visibility = '';
+
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const spaceAbove = rect.top;
+
+    if (spaceBelow < panelHeight && spaceAbove > panelHeight) {
+      wrap.classList.add('top');
+    } else {
+      wrap.classList.remove('top');
+    }
   }
 }

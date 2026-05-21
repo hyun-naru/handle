@@ -528,23 +528,21 @@
 	
 	<div class="section" id="toolTip">
 		<h1 class="tit01">toolTip Guide</h1>
-		<h2 class="tit02">tip_wrap-bottom</h2>
+		<h2 class="tit02">tip_wrap-mobile</h2>
 		<div class="group_wrap">
 			{{> cp/tooltip tip-id="tip01" hash-h="left" title="title" text="내용내용내용내용내용내용내용내용" }}
 			{{> cp/tooltip tip-id="tip02" hash-tit="center" title="title" text="내용내용내용내용내용내용내용내용" }}
-			{{> cp/tooltip title="title" text="내용내용내용내용내용내용내용내용" }}			
+			<div>
+			컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 <span class="tip_set">{{> cp/tooltip tip-item="cont" title="title" text="내용내용내용내용내용내용내용내용" }}</span> 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠 컨텐츠
+			</div>
+			{{> cp/tooltip tip-id="tip03" title="title" text="내용내용내용내용내용내용내용내용" }}			
 		</div>
+		<h2 class="tit02">tip_wrap-pc</h2>
 		<div class="group_wrap flex">
-			{{> cp/tooltip tip-id="tip01" hash-h="left" title="title" text="내용내용내용내용내용내용내용내용" }}
-			{{> cp/tooltip tip-id="tip02" hash-tit="center" title="title" text="내용내용내용내용내용내용내용내용" }}
-			{{> cp/tooltip title="title" text="내용내용내용내용내용내용내용내용" }}			
+			{{> cp/tooltip hash-h="left" title="title" text="내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용" }}
+			{{> cp/tooltip hash-tit="center" title="title" text="내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용" }}
+			{{> cp/tooltip title="title" text="내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용" }}			
 		</div>
-		<!-- <h2 class="tit02">tip_wrap-top</h2>
-		<div class="group_wrap flex">
-			left {{> cp/tooltip tip-class="top" tip-id="tip01" title="title" text="내용내용내용내용내용내용내용내용" }}
-			center {{> cp/tooltip tip-class="top center" tip-id="tip02" title="title" text="내용내용내용내용내용내용내용내용" }}
-			right {{> cp/tooltip tip-class="top right" tip-id="tip03" title="title" text="내용내용내용내용내용내용내용내용" }}
-		</div> -->
 	</div>
 	<div class="section" id="listGuide">
 		<h1 class="tit01">list Guide</h1>
@@ -558,19 +556,36 @@
 		<div class="guideComponent">
 			<div class="tab_wrap">
 				<div class="tab_list" role="tablist">
-				{{> cp/tab-btn tb-text="1번 탭" tb-id="01" tb-active=true}} 
-				{{> cp/tab-btn tb-text="2번 탭" tb-id="02"}} 
-				{{> cp/tab-btn tb-text="3번 탭" tb-id="03" }}
-			</div>
-				<div class="tab_content active" role="tabpanel" aria-labelledby="tab01" id="tabPanel01">
-					tab inner 1 <br />
-					tabpanel tabindex="0" - 적용 상태
+					{{> cp/tab-btn tb-text="1번 탭" tb-active=true}} 
+					{{> cp/tab-btn tb-text="2번 탭"}} 
+					{{> cp/tab-btn tb-text="3번 탭" }}
 				</div>
-				<div class="tab_content" role="tabpanel" aria-labelledby="tab02" id="tabPanel02">
+				<div class="tab_content active" role="tabpanel">
+					<div class="tab_wrap">
+						<div class="tab_list" role="tablist">
+							{{> cp/tab-btn tb-text="1_1번 탭" tb-active=true}} 
+							{{> cp/tab-btn tb-text="1_2번 탭"}} 
+							{{> cp/tab-btn tb-text="1_3번 탭" }}
+						</div>
+						<div class="tab_content active" role="tabpanel">
+							tab inner 1 <br />
+							tabpanel tabindex="0" - 적용 상태
+						</div>
+						<div class="tab_content" role="tabpanel">
+							tab inner 2 <br />
+							tabpanel tabindex="0" - 적용 상태
+						</div>
+						<div class="tab_content" role="tabpanel">
+							tab inner 3 <br />
+							tabpanel tabindex="0" - 적용 상태
+						</div>
+					</div>
+				</div>
+				<div class="tab_content" role="tabpanel">
 					tab inner 2 <br />
 					tabpanel tabindex="0" - 적용 상태
 				</div>
-				<div class="tab_content" role="tabpanel" aria-labelledby="tab03" id="tabPanel03">
+				<div class="tab_content" role="tabpanel">
 					tab inner 3 <br />
 					tabpanel tabindex="0" - 적용 상태
 				</div>

@@ -9,4 +9,4 @@
  *  - disabled : 비활성화 여부
  */
  --}}
-<button type="button" class="tab_btn{{#if tb-class}} {{tb-class}}{{/if}}{{#if tb-active}} active{{/if}}" role="tab" aria-selected="{{#if tb-active}}true{{else}}false{{/if}}" aria-controls="tabPanel{{#if tb-id}}{{tb-id}}{{/if}}" id="tab{{#if tb-id}}{{tb-id}}{{/if}}"{{#if disabled}} disabled{{/if}}>{{#if tb-text}}{{{tb-text}}}{{/if}}</button>
+<button type="button" class="tab_btn{{#if tb-class}} {{tb-class}}{{/if}}{{#if tb-active}} active{{/if}}" role="tab" aria-selected="{{#if tb-active}}true{{else}}false{{/if}}"{{#if disabled}} disabled{{/if}}>{{#if tb-text}}{{{tb-text}}}{{/if}}</button>

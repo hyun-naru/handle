@@ -8,7 +8,10 @@
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	overflow-x: auto;
+	width: calc(100vw- var(--px-10));
 	height: 50px;
+	padding: 0 var(--px-6);
 	background: var(--white-color);
 	border-bottom: 3px solid var(--black-color);
 	z-index: 10;
@@ -114,4 +117,7 @@
 			border-radius: 8px;
 		}
 	}
+}
+.btn_area {
+	flex-wrap: wrap;
 }
