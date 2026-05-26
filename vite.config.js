@@ -55,6 +55,7 @@ const getEntries = dir => {
 
 const getContexts = dir => {
   const contexts = {};
+  if (fs.existsSync(dir)) {
 
   fs.readdirSync(dir).forEach(item => {
     const itemPath = path.join(dir, item);
@@ -67,7 +68,7 @@ const getContexts = dir => {
       Object.assign(contexts, getContexts(itemPath));
     }
   });
-
+  }
   return contexts;
 }
 
@@ -148,6 +149,22 @@ export default defineConfig({
   // ✅ 개발 서버 설정
   server: {
     open: true,                 // 브라우저 자동 오픈
+    proxy: {
+      // 브라우저에서 /api로 시작하는 요청을 만나면 아래 target 주소로 우회시킵니다.
+      '/api': {
+        port: 5173, // 프론트엔드는 그대로 5173 유지
+        target: 'http://localhost:3000', // 🚨 본인의 Node.js Express 서버 포트 적기
+        changeOrigin: true,
+        secure: false,
+      },
+      // 단위테스트 결과서 요청용 (/test 경로)
+      '/test': {
+        port: 5173, // 프론트엔드는 그대로 5173 유지
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        secure: false,
+      }
+    },
     watch: {
       usePolling: true,        // 파일 변경 감지 방식 (network-mounted 시스템 대응)
       interval: 100,            // 폴링 간격 (ms)

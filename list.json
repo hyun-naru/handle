@@ -1,0 +1,29 @@
+[
+  {
+    "bugId": "20260526172115",
+    "reporter": "김테스트",
+    "comment": "로그인 아이디 : 34343\n메뉴 진입 경로 : 메뉴1 > 메뉴1_1\n액션 순서 및 결함 내용 :\nㄴㅇㄴㅇㄴ",
+    "assignee": "미정",
+    "status": "N",
+    "devComment": "",
+    "imagePath": "/api/bugreport/images/20260526172115.png"
+  },
+  {
+    "bugId": "20260526172136",
+    "reporter": "김테스트",
+    "comment": "로그인 아이디 : 111\n메뉴 진입 경로 : 메뉴2 > 메뉴2_2\n액션 순서 및 결함 내용 :\nㄴㅇ",
+    "assignee": "미정",
+    "status": "N",
+    "devComment": "",
+    "imagePath": "/api/bugreport/images/20260526172136.png"
+  },
+  {
+    "bugId": "20260526172228",
+    "reporter": "김테스트",
+    "comment": "로그인 아이디 : 43\n메뉴 진입 경로 : 메뉴1 > 메뉴1_1 > 메뉴1_1_1\n액션 순서 및 결함 내용 :\nㅛㅛㅘㅓ홍",
+    "assignee": "미정",
+    "status": "N",
+    "devComment": "",
+    "imagePath": "/api/bugreport/images/20260526172228.png"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "bugId": "20260526174233",
+    "reporter": "김테스트",
+    "comment": "로그인 아이디 : 111\n메뉴 진입 경로 : 메뉴1 > 메뉴1_1\n액션 순서 및 결함 내용 :\nㄴㄴㄹㄹ",
+    "assignee": "강감찬",
+    "status": "CANCEL",
+    "devComment": "노노노",
+    "imagePath": "/api/bugreport/images/20260526174233.png"
+  },
+  {
+    "bugId": "20260526174254",
+    "reporter": "김테스트",
+    "comment": "로그인 아이디 : ㄴ3544\n메뉴 진입 경로 : 메뉴2 > 메뉴2_1 > 메뉴2_1_1\n액션 순서 및 결함 내용 :\nㄹㅇ호로",
+    "assignee": "홍길동",
+    "status": "CLOSED",
+    "devComment": "완료완료",
+    "imagePath": "/api/bugreport/images/20260526174254.png"
+  },
+  {
+    "bugId": "20260526174634",
+    "reporter": "김테스트",
+    "comment": "[재결함 : 20260526174233] \n로그인 아이디 : 111\n메뉴 진입 경로 : 메뉴1 > 메뉴1_1\n액션 순서 및 결함 내용 :\nㄴㄴㄹㄹ",
+    "assignee": "강감찬",
+    "status": "CANCEL",
+    "devComment": "아님",
+    "imagePath": "/api/bugreport/images/20260526174634.png"
+  },
+  {
+    "bugId": "20260526174647",
+    "reporter": "김테스트",
+    "comment": "[재결함 : 20260526174233] \n로그인 아이디 : 111\n메뉴 진입 경로 : 메뉴1 > 메뉴1_1\n액션 순서 및 결함 내용 :\nㄴㄴㄹㄹ->다시",
+    "assignee": "강감찬",
+    "status": "CLOSED",
+    "devComment": "다했다",
+    "imagePath": "/api/bugreport/images/20260526174647.png"
+  },
+  {
+    "bugId": "20260526174912",
+    "reporter": "박버그",
+    "comment": "로그인 아이디 : 4ㄱ\n메뉴 진입 경로 : 메뉴1 > 메뉴1_1\n액션 순서 및 결함 내용 :\nㄷㄱㄷㄱㄷ",
+    "assignee": "이순신",
+    "status": "CLOSED",
+    "devComment": "예~",
+    "imagePath": "/api/bugreport/images/20260526174912.png"
+  }
+]

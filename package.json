@@ -26,5 +26,11 @@
 		"> 1%",
 		"last 2 versions",
 		"Firefox ESR"
-	]
+	],
+	"dependencies": {
+		"body-parser": "^2.2.2",
+		"cors": "^2.8.6",
+		"exceljs": "^4.4.0",
+		"express": "^5.2.1"
+	}
 }
