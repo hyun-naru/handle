@@ -43,5 +43,14 @@
     "status": "CLOSED",
     "devComment": "예~",
     "imagePath": "/api/bugreport/images/20260526174912.png"
+  },
+  {
+    "bugId": "20260527180428",
+    "reporter": "김테스트",
+    "comment": "로그인 아이디 : ㅇㄹㅇ\n메뉴 진입 경로 : 메뉴1\n액션 순서 및 결함 내용 :\nㅇㄹㅇ",
+    "assignee": "미정",
+    "status": "N",
+    "devComment": "",
+    "imagePath": "/api/bugreport/images/20260527180428.png"
   }
 ]
