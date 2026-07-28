@@ -151,6 +151,21 @@ export default defineConfig({
     watch: {
       usePolling: true,        // 파일 변경 감지 방식 (network-mounted 시스템 대응)
       interval: 100,            // 폴링 간격 (ms)
+    },
+    headers: {
+      'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' ws: http://localhost:* http://127.0.0.1:*;"
+    },
+    // 💡 2. API 프록시 설정 추가 (에러 해결 핵심)
+    proxy: {
+      // 프론트엔드에서 /api 로 시작하는 요청을 보낼 때 처리
+      '/api': {
+        target: 'http://127.0.0.1:3000', // 🔥 백엔드 API 서버의 실제 주소로 변경하세요!
+        changeOrigin: true,
+        secure: false,
+        // 만약 백엔드 서버의 실제 URL이 /handle/api/... 라면 rewrite 추가
+        // rewrite: (path) => path.replace(/^\/api/, '/handle/api'),
+      },
+
     }
   },
 
