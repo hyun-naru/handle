@@ -38,15 +38,6 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' })); // Base64 이미지 수신을 위해 용량 확대
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// 💡 [추가 1] uploads 및 data 폴더 정적 파일 접근 허용
-app.use('/uploads', express.static(UPLOAD_DIR));
-app.use('/data', express.static(DATA_DIR));
-
-// 💡 2. dist 폴더 정적 서빙 (폴더가 실제로 존재할 때만 등록하여 로컬 에러 방지)
-const DIST_DIR = path.join(process.cwd(), 'dist');
-if (fs.existsSync(DIST_DIR)) {
-    app.use(express.static(DIST_DIR));
-}
 
 // 1. 버그 리포트 저장 (JSON 저장 + PNG 파일 저장)
 app.post(['/api/bugreport/save.json', '/handle/api/bugreport/save.json'], (req, res) => {
@@ -293,6 +284,15 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
 });
 
 
+// 💡 [추가 1] uploads 및 data 폴더 정적 파일 접근 허용
+app.use('/uploads', express.static(UPLOAD_DIR));
+app.use('/data', express.static(DATA_DIR));
+
+// 💡 2. dist 폴더 정적 서빙 (폴더가 실제로 존재할 때만 등록하여 로컬 에러 방지)
+const DIST_DIR = path.join(process.cwd(), 'dist');
+if (fs.existsSync(DIST_DIR)) {
+    app.use(express.static(DIST_DIR));
+}
 
 // 💡 API 이외의 GET 요청 처리 (dist/index.html이 있을 때만 전송)
 app.get(/(.*)/, (req, res, next) => {
