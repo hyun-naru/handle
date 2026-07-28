@@ -295,8 +295,7 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
 
 
 // 💡 API 이외의 GET 요청 처리 (dist/index.html이 있을 때만 전송)
-app.get('*splat', (req, res, next) => {
-    // API 요청이나 이미지는 404/다음 라우터로 통과
+app.get(/(.*)/, (req, res, next) => {
     if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
         return next();
     }
