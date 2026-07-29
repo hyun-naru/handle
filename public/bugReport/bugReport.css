@@ -1,7 +1,7 @@
 /* 메인 헤더 버튼 스타일 */
 .bug-report-main-btn {
     position: fixed;
-    top: 60px;
+    bottom: 60px;
     right: 10px;
     z-index: 9999999;
     /* 무조건 맨 위에 */
@@ -267,7 +267,7 @@
 
 .bug-top-nav {
     position: fixed;
-    top: 15px;
+    bottom: 15px;
     right: 15px;
     z-index: 9999999;
     display: none;
