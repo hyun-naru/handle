@@ -360,6 +360,8 @@ function openUnifiedDashboard() {
         dataType: 'json',
         cache: true, 
         success: function (list) {
+            // 배열 데이터가 정상적으로 들어왔을 때만 진행
+            if (!Array.isArray(list)) list = [];
             const tbody = document.getElementById('bugAdminTableBody');
             tbody.innerHTML = '';
             
@@ -517,7 +519,11 @@ function openUnifiedDashboard() {
             });
             showModal('bugAdminModal');
         },
-        error: function () { alert('현황판 데이터를 불러오는데 실패했습니다.'); }
+        error: function (xhr, status, error) {
+            console.error("list.json 로드 실패:", status, error);
+            alert('버그 리포트 목록을 불러오지 못했습니다. (404 Not Found)');
+        }
+        //error: function () { alert('현황판 데이터를 불러오는데 실패했습니다.'); }
     });
 }
 
