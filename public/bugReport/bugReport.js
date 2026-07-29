@@ -796,10 +796,10 @@ function saveAndReportBug() {
     if (step2) menuPath += ` > ${step2}`;
     if (step3) menuPath += ` > ${step3}`;
     // 5. 최종 데이터 조합
-    let finalComment = `로그인 아이디 : ${loginId}\n메뉴 진입 경로 : ${menuPath}\n액션 순서 및 결함 내용 :\n${comment}`;
+    let finalComment = `로그인 아이디 : ${loginId}\n\n메뉴 진입 경로 : ${menuPath}\n\n액션 순서 및 결함 내용 :\n\n${comment}`;
 
     if (reopenTargetId) {
-        finalComment = `[재결함 : ${reopenTargetId}] \n로그인 아이디 : ${loginId}\n메뉴 진입 경로 : ${menuPath}\n액션 순서 및 결함 내용 :\n${comment}`;
+        finalComment = `[재결함 : ${reopenTargetId}] \n\n로그인 아이디 : ${loginId}\n\n메뉴 진입 경로 : ${menuPath}\n\n액션 순서 및 결함 내용 :\n\n${comment}`;
     }
     if (!comment) { alert('코멘트를 입력해야 저장됩니다.'); return; }
     if (!confirm('결함을 서버로 전송하시겠습니까?')) return;
@@ -928,7 +928,7 @@ function initCanvasDraw(base64Str) {
             console.log("=== 🔄 재결함 이전 데이터 복원 시작 ===");
 
             // 1. 기존 comment에서 로그인 ID와 결함 내용 본문 추출하기
-            // (저장할 때 형식을 '로그인 아이디 : ID\n메뉴 진입 경로 : Path\n액션 순서 및 결함 내용 :\n본문' 구조로 보냈기 때문에 파싱이 필요합니다.)
+            // (저장할 때 형식을 '로그인 아이디 : ID\n\n메뉴 진입 경로 : Path\n\n액션 순서 및 결함 내용 :\n\n본문' 구조로 보냈기 때문에 파싱이 필요합니다.)
             const fullComment = reopenData.comment || '';
             
             // 로그인 ID 추출

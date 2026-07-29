@@ -3,6 +3,7 @@ import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
 import ExcelJS from 'exceljs';
+import { imageSize } from 'image-size';
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use(cors({
 }));
 app.use(express.json({ limit: '50mb' })); // Base64 이미지 수신을 위해 용량 확대
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
 
 
 // 1. 버그 리포트 저장 (JSON 저장 + PNG 파일 저장)
@@ -190,6 +192,22 @@ app.get('/api/bugreport/image.json', (req, res) => {
         res.status(404).send('Image Not Found');
     }
 });
+// PNG 파일의 원본 너비, 높이(px)를 읽어오는 내장 유틸리티 함수
+function getPngDimensions(filePath) {
+    const buffer = Buffer.alloc(24);
+    const fd = fs.openSync(filePath, 'r');
+    fs.readSync(fd, buffer, 0, 24, 0);
+    fs.closeSync(fd);
+
+    // PNG 바이너리 헤더 체크 (PNG 시그니처)
+    if (buffer.toString('hex', 0, 8) !== '89504e470d0a1a0a') {
+        throw new Error('Not a valid PNG file');
+    }
+
+    const width = buffer.readUInt32BE(16);
+    const height = buffer.readUInt32BE(20);
+    return { width, height };
+}
 // 📌 엑셀 다운로드 API (오류 방지 및 안정화 코드)
 app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'], async (req, res) => {
     try {
@@ -198,18 +216,50 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
 
         const workbook = new ExcelJS.Workbook();
         const worksheet = workbook.addWorksheet('버그리포트_현황');
+        
+        // Target Image Width 지정
+        // const TARGET_WIDTH = 560; //가로
+        const TARGET_HEIGHT = 400; //세로
+
+        // 📌 헤더 틀 고정 (1행 고정)
+        worksheet.views = [
+            { state: 'frozen', xSplit: 0, ySplit: 1 }
+        ];
 
         // 컬럼 정의
         worksheet.columns = [
             { header: '결함 ID', key: 'bugId', width: 18 },
-            { header: '작성자(테스터)', key: 'reporter', width: 15 },
-            { header: '담당자(개발자)', key: 'assignee', width: 15 },
-            { header: '조치상태', key: 'status', width: 12 },
-            { header: '결함 내용', key: 'comment', width: 35 },
-            { header: '개발자 코멘트', key: 'devComment', width: 30 },
+            { header: '작성자\n(테스터)', key: 'reporter', width: 15 },
+            { header: '담당자\n(개발자)', key: 'assignee', width: 15 },
+            { header: '조치상태', key: 'status', width: 15 },
+            { header: '결함 내용', key: 'comment', width: 60 },
+            { header: '개발자 코멘트', key: 'devComment', width: 60 },
             { header: '등록일시', key: 'createdAt', width: 22 },
-            { header: '캡쳐이미지', key: 'image', width: 22 }
+            { header: '캡쳐이미지', key: 'image', width: 70 } // 💡 캡쳐이미지 컬럼 고정 너비
         ];
+
+        // =========================================================
+        // 🎨 헤더(첫 번째 행) 배경색 및 글자 스타일 적용
+        // =========================================================
+        const headerRow = worksheet.getRow(1);
+        headerRow.height = 30; // 헤더 높이 살짝 늘리기
+        headerRow.eachCell((cell) => {
+            cell.fill = {
+                type: 'pattern',
+                pattern: 'solid',
+                fgColor: { argb: 'FF203764' } // 짙은 네이비 배경
+            };
+            cell.font = {
+                color: { argb: 'FFFFFFFF' }, // 흰색 글자
+                bold: true,
+                size: 11
+            };
+            cell.alignment = { 
+                vertical: 'middle', 
+                horizontal: 'center' 
+            };
+        });
+                
 
         if (bugList && bugList.length > 0) {
             for (let i = 0; i < bugList.length; i++) {
@@ -226,6 +276,32 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
                     devComment: bug.devComment || '',
                     createdAt: bug.createdAt || '',
                     image: ''
+                });
+                // 각 셀에 자동 줄바꿈 및 정렬 적용
+                row.eachCell((cell, colNumber) => {
+                    cell.alignment = { 
+                        wrapText: true,    // 텍스트 자동 줄바꿈
+                        vertical: 'middle' // 세로 가운데 정렬
+                    };
+                    // =========================================================
+                    // 🎨 특정 조건(조치상태)에 맞춰 셀 배경색 넣기
+                    // =========================================================
+                    // 4번째 컬럼 (조치상태) 배경색 적용
+                    if (colNumber === 4) {
+                        if (cell.value === '완료') {
+                            cell.fill = { 
+                                type: 'pattern', 
+                                pattern: 'solid', 
+                                fgColor: { argb: 'FFE2EFDA' } // 연한 녹색
+                            };
+                        } else if (cell.value === '접수') {
+                            cell.fill = { 
+                                type: 'pattern', 
+                                pattern: 'solid', 
+                                fgColor: { argb: 'FFFCE4D6' } // 연한 주황색
+                            };
+                        }
+                    }
                 });
 
                 // ----------------------------------------------------
@@ -251,27 +327,68 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
 
                 // 3. 후보 경로 중 실제 파일이 존재하는 첫 번째 경로 선택
                 let absoluteImagePath = candidatePaths.find(p => fs.existsSync(p));
-
                 if (absoluteImagePath) {
-                    // 행 높이 조절 (이미지가 잘 보이도록)
-                    row.height = 70; 
+                    //let calculatedHeight = 200; // 기본 세로값 (오류 시 대체)
+                    let calculatedWidth = 500; // 기본 가로값 (오류 발생 시 대체)
 
+                    try {
+                        // 🖼️ 1. PNG 바이너리에서 원본 크기 추출
+                        const dimensions = getPngDimensions(absoluteImagePath);
+                        const originalWidth = dimensions.width || 1;
+                        const originalHeight = dimensions.height || 1;
+
+                        // 🖼️ 2. 가로 기준(TARGET_WIDTH)에 맞춰 비율 자동 계산
+                        // calculatedHeight = Math.round((TARGET_WIDTH / originalWidth) * originalHeight);
+                        // 🖼️ 3. 세로 기준(TARGET_HEIGHT)에 맞춰 가로 너비 자동 계산
+                        calculatedWidth = Math.round((TARGET_HEIGHT / originalHeight) * originalWidth);
+                    } catch (imgErr) {
+                        console.warn(`⚠️ [${bug.bugId}] 이미지 해상도 파싱 실패, 기본 크기 적용:`, imgErr.message);
+                    }
+
+                    // 🖼️ 3. 행 높이를 계산된 이미지 높이에 맞춰 동적 조절
+                    // row.height = Math.max(calculatedHeight * 0.75 + 15, 40); //가로
+                    // 🖼️ 4. 행 높이를 지정한 세로 높이에 맞춰 고정 (pt 단위 변환 + 여백)
+                    row.height = TARGET_HEIGHT * 0.75 + 15;
+                    // 🖼️ 5. 이미지 가로 폭에 맞춰 H열 너비 동적 조절 (px ➡️ excel column width)
+                    const imageCol = worksheet.getColumn(8); // 8번째 컬럼 (image)
+                    const requiredColWidth = Math.round(calculatedWidth / 7) + 3;
+                    if ((imageCol.width || 0) < requiredColWidth) {
+                        imageCol.width = requiredColWidth;
+                    }
                     const imageId = workbook.addImage({
                         filename: absoluteImagePath,
                         extension: 'png',
                     });
 
-                    // H열 (8번째 컬럼, 0-indexed로 col: 7)에 이미지 추가
+                    // 🖼️ 4. 비율대로 이미지 삽입
                     worksheet.addImage(imageId, {
                         tl: { col: 7, row: rowIndex - 1 },
-                        ext: { width: 120, height: 85 }   // 엑셀 셀 내 이미지 폭/높이(px)
+                        //ext: { width: TARGET_WIDTH, height: calculatedHeight } //가로
+                        ext: { width: calculatedWidth, height: TARGET_HEIGHT } //세로
                     });
-                    
+                    //console.log(`✅ [${bug.bugId}] 이미지 비율 계산 성공 (높이: ${calculatedHeight}px)`);
+                    console.log(`✅ [${bug.bugId}] 이미지 세로 기준 계산 성공 (가로: ${calculatedWidth}px, 세로: ${TARGET_HEIGHT}px)`);
                     console.log(`✅ [${bug.bugId}] 엑셀 내 이미지 매칭 성공:`, absoluteImagePath);
                 } else {
+                    row.height = 30;
                     console.warn(`⚠️ [${bug.bugId}] 엑셀용 이미지 파일을 찾지 못함. 시도했던 경로들:`, candidatePaths);
                 }
             }
+            // 루프가 완전히 끝난 뒤 단 1회만 컬럼 너비 자동 계산 처리
+            worksheet.columns.forEach(column => {
+                // 이미지 컬럼(image)은 너비 계산에서 제외
+                if (column.key === 'image') return;
+
+                let maxLength = 0;
+                column.eachCell({ includeEmpty: true }, (cell) => {
+                    const columnLength = cell.value ? cell.value.toString().length : 10;
+                    if (columnLength > maxLength) {
+                        maxLength = columnLength;
+                    }
+                });
+                // 최소 너비 12 설정 (한글 고려)
+                column.width = Math.max(maxLength + 4, 12);
+            });
         }
 
         // 응답 전송

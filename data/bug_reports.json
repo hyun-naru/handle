@@ -20,5 +20,16 @@
     "imagePath": "/api/bugreport/image.json?bugId=20260728101205.png",
     "reopenTargetId": "",
     "createdAt": "2026-07-28T01:12:05.024Z"
+  },
+  {
+    "bugId": "20260729174830",
+    "reporter": "테스터1",
+    "assignee": "미정",
+    "comment": "로그인 아이디 : 222\n\n메뉴 진입 경로 : 메뉴1 > 메뉴1-1 > 메뉴1-1-2\n\n액션 순서 및 결함 내용 :\n\n33333",
+    "devComment": "",
+    "status": "N",
+    "imagePath": "/api/bugreport/image.json?bugId=20260729174830.png",
+    "reopenTargetId": "",
+    "createdAt": "2026-07-29T08:48:30.388Z"
   }
 ]
