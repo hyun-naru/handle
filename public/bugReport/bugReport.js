@@ -5,9 +5,9 @@ let startX, startY;
 let currentTool = 'rect'; // 'rect' or 'text'
 let bgImageBase64 = '';
 
-let developerList = ['주현태', '김민준', '김현지', '문병윤', '조진원', '이광희', '전영석', '김연희'];
-let testerList = ['주현태', '김민준', '김현지', '박서원', '장경희', '김훈기', '정영석', '김재헌', '김남식', '강혜림', '이선일', '김유중', '한길형'];
-let adminList = ['주현태', '김민준', '김현지'];
+let developerList = ['개발자1', '개발자2', '개발자3'];
+let testerList = ['테스터1', '테스터2', '테스터3', '테스터4'];
+let adminList = ['관리자1', '관리자2'];
 
 let savedImageData = null;
 let reopenTargetId = null; // 재결함
