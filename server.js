@@ -34,7 +34,11 @@ const saveBugList = (list) => {
 };
 
 // 미들웨어
-app.use(cors());
+app.use(cors({
+    origin: '*', // 모든 도메인에서의 API 요청 허용
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json({ limit: '50mb' })); // Base64 이미지 수신을 위해 용량 확대
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
