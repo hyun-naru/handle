@@ -14,6 +14,21 @@ let reopenTargetId = null; // 재결함
 const SESSION_KEY_NAME = 'BUG_REPORT_USER_NAME';
 const SESSION_KEY_ROLE = 'BUG_REPORT_USER_ROLE';
 
+// 💡 [핵심] 현재 접속한 환경(로컬 vs 웹배포)을 자동 감지하여 API 주소 설정
+const getApiBaseUrl = () => {
+    const host = window.location.hostname;
+    
+    // 1. 로컬 개발 환경인 경우 (localhost 또는 127.0.0.1)
+    if (host === 'localhost' || host === '127.0.0.1') {
+        return ''; // 상대 경로 사용 (Express가 프론트/백엔드 모두 서빙하거나 로컬 3000포트 이용)
+    }
+    
+    // 2. GitHub Pages 등 외부 정적 웹에서 실행 중인 경우 -> Render 백엔드 주소 지정
+    return 'https://handle-cl1q.onrender.com'; // 👈 본인의 실제 Render 도메인으로 작성
+};
+
+const API_BASE = getApiBaseUrl();
+
 // 스크립트 로드 시 초기화
 window.addEventListener('load', function() {
     injectHtml();
@@ -290,7 +305,7 @@ function doFakeLogin() {
 
     if (role === 'tester') {
         $.ajax({
-            url: '/api/bugreport/list.json', 
+            url: API_BASE + '/api/bugreport/list.json', 
             type: 'GET', 
             dataType: 'json',
             success: function (list) {
@@ -308,7 +323,7 @@ function doFakeLogin() {
         });
     } else if (role === 'developer') { // 👈 개발자 로그인 처리 추가
         $.ajax({
-            url: '/api/bugreport/list.json', 
+            url: API_BASE + '/api/bugreport/list.json', 
             type: 'GET', 
             dataType: 'json',
             success: function (list) {
@@ -355,7 +370,7 @@ function openUnifiedDashboard() {
     if (!userInfo) return;
 
     $.ajax({
-        url: '/api/bugreport/list.json', 
+        url: API_BASE + '/api/bugreport/list.json', 
         type: 'GET', 
         dataType: 'json',
         cache: true, 
@@ -532,7 +547,7 @@ function openUnifiedDashboard() {
  */
 function downloadExcelReport() {
     if (!confirm('지금까지 접수된 버그 현황을 엑셀로 다운로드 하시겠습니까?')) return;
-    window.location.href = '/api/bugreport/download.json';
+    window.location.href = API_BASE + '/api/bugreport/download.json';
 }
 // 💡 관리자가 담당 배정 함수
 /**
@@ -555,7 +570,7 @@ window.assignDeveloperToBug = function (bugId, selectedAssignee) {
     // 셀렉트 박스 변경 시마다 무분별하게 alert 창이 뜨면 번거로우므로, 
     // confirm 확인창은 생략하고 바로 저장한 뒤 결과만 깔끔하게 alert로 띄웁니다.
     $.ajax({
-        url: '/api/bugreport/assign.json', // 프로젝트 컨텍스트 패스 반영
+        url: API_BASE + '/api/bugreport/assign.json', // 프로젝트 컨텍스트 패스 반영
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify({
@@ -604,7 +619,7 @@ window.updateBugByDev = function (bugId, selectValue) {
 
     // 3. 백엔드로 즉시 통신 요청 처리
     $.ajax({
-        url: '/api/bugreport/update.json',
+        url: API_BASE + '/api/bugreport/update.json',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify({ 
@@ -641,7 +656,7 @@ window.updateBugByDev = function (bugId, selectValue) {
 //     const devComment = document.getElementById(`devCom_${bugId}`).value.trim();
 
 //     $.ajax({
-//         url: '/api/bugreport/update.json', 
+//         url: API_BASE + '/api/bugreport/update.json', 
 //         type: 'POST',
 //         contentType: 'application/json; charset=utf-8',
 //         data: JSON.stringify({ bugId: bugId, status: status, devComment: devComment }),
@@ -659,7 +674,7 @@ window.updateBugStatus = function (bugId, newStatus) {
     const statusText = newStatus === 'CLOSED' ? '종결' : '취소';
     if (!confirm(`정말 이 결함을 [${statusText}] 처리하시겠습니까?`)) { return; }
     $.ajax({
-        url: '/api/bugreport/update.json', 
+        url: API_BASE + '/api/bugreport/update.json', 
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify({ bugId: bugId, status: newStatus }),
@@ -706,7 +721,7 @@ window.viewBugImage = function (originalPath) {
     console.log("🎯 서버 파일 시스템과 대조할 최종 파일명(bugId):", pureBugId);
     
     // 5. 정확한 경로 명세에 컨텍스트 패스를 붙여 최종 요청을 보냅니다.
-    imgTag.src = '/api/bugreport/image.json?bugId=' + encodeURIComponent(pureBugId) + '&t=' + new Date().getTime();
+    imgTag.src = API_BASE + '/api/bugreport/image.json?bugId=' + encodeURIComponent(pureBugId) + '&t=' + new Date().getTime();
     
     showModal('bugImageModal');
 };
@@ -724,7 +739,7 @@ window.viewBugImage = function (originalPath) {
 //     console.log("🎯 요청할 pureBugId:", pureBugId);
     
 //     // 캐시 방지를 위해 랜덤 타임스탬프 파라미터를 뒤에 추가합니다.
-//     imgTag.src = '/api/bugreport/image.json?bugId=' + encodeURIComponent(pureBugId) + '&t=' + new Date().getTime();
+//     imgTag.src = API_BASE + '/api/bugreport/image.json?bugId=' + encodeURIComponent(pureBugId) + '&t=' + new Date().getTime();
 //     showModal('bugImageModal');
 // };
 
@@ -738,13 +753,13 @@ window.startReopenProcess = function (bugId) {
     
     // 1. 🌟 현재 대시보드 리스트 데이터에서 해당 bugId의 기존 결함 정보 찾기
     // 리스트를 저장해둔 전역 배열 변수명(예: currentBugList 등)에 맞게 수정해 주세요.
-    // 만약 전역 배열이 없다면 $.getJSON('/api/bugreport/list.json')으로 서버에서 새로 찾아와도 됩니다.
+    // 만약 전역 배열이 없다면 $.getJSON(API_BASE + '/api/bugreport/list.json')으로 서버에서 새로 찾아와도 됩니다.
     if (typeof mockBugList !== 'undefined') {
         reopenData = mockBugList.find(b => b.bugId === bugId);
     } else {
         // 혹시 프론트엔드 전역에 리스트 배열이 없다면 안전하게 서버에 요청해서 가져옵니다.
         $.ajax({
-            url: '/api/bugreport/list.json',
+            url: API_BASE + '/api/bugreport/list.json',
             type: 'GET',
             async: false, // 동기식으로 진행해서 데이터를 확실히 확보
             success: function(list) {
@@ -811,7 +826,7 @@ function saveAndReportBug() {
     };
 
     $.ajax({
-        url: '/api/bugreport/save.json',
+        url: API_BASE + '/api/bugreport/save.json',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(bugData), 
