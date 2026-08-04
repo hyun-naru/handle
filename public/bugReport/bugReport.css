@@ -309,6 +309,48 @@ button.bug-nav-btn:hover {
     filter: brightness(1.08);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* 들릴 때 그림자도 같이 확산 */
 }
+.bug-nav-btn.primary {
+    background-color: #2563eb !important;
+}
+.bug-nav-btn.info {
+    background-color: #0284c7 !important;
+}
+.bug-nav-btn.warning {
+    background-color: #d97706 !important;
+}
+.bug-nav-btn.rollback {
+    background-color: #f75b01 !important;
+}
+.bug-nav-btn.danger {
+    background-color: #dc2626 !important;
+}
+.bug-nav-btn.reset {
+    background-color: #ff0095 !important;
+}
+.bug-nav-btn.success {
+    background-color: #16a34a !important;
+}
+.bug-nav-btn.close   {
+    background-color: #475569 !important;
+}
+
+table tr td .bug-nav-btn {
+    display: block;
+    margin: 0 auto;
+}
+table tr td .bug-nav-btn + .bug-nav-btn {
+    margin-top: 5px;
+}
+.rectify {
+    margin-top:5px; 
+    padding:2px 6px; 
+    font-size:11px; 
+    color:#d97706; 
+    font-weight:bold; 
+    background:#fef3c7;
+    border:1px solid #fcd34d;
+    border-radius:4px; 
+}
 
 #bugImageModal {
     z-index:10000003;

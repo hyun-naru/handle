@@ -1,35 +1,31 @@
 [
   {
-    "bugId": "20260724171546",
-    "reporter": "주현태",
-    "assignee": "김현지",
-    "comment": "로그인 아이디 : ㄴㄴ\n메뉴 진입 경로 : 메뉴1 > 메뉴1-1\n액션 순서 및 결함 내용 :\nㄴㄴ",
-    "devComment": "ㅎ롷롤",
-    "status": "B",
-    "imagePath": "/api/bugreport/image.json?bugId=20260724171546.png",
-    "reopenTargetId": "",
-    "createdAt": "2026-07-24T08:15:46.614Z"
-  },
-  {
-    "bugId": "20260728101205",
-    "reporter": "김민준",
-    "assignee": "김현지",
-    "comment": "로그인 아이디 : sds\n메뉴 진입 경로 : 메뉴1 > 메뉴1-1\n액션 순서 및 결함 내용 :\nddd",
-    "devComment": "ㄱㄱㄱㄱ",
-    "status": "J",
-    "imagePath": "/api/bugreport/image.json?bugId=20260728101205.png",
-    "reopenTargetId": "",
-    "createdAt": "2026-07-28T01:12:05.024Z"
-  },
-  {
-    "bugId": "20260729174830",
+    "bugId": "BUG_202608041108",
     "reporter": "테스터1",
     "assignee": "미정",
-    "comment": "로그인 아이디 : 222\n\n메뉴 진입 경로 : 메뉴1 > 메뉴1-1 > 메뉴1-1-2\n\n액션 순서 및 결함 내용 :\n\n33333",
+    "loginId": "ㅇㅇ",
+    "menuPath": "메뉴2\n\n  메뉴2-1\n\n    메뉴2-1-1",
+    "comment": "ㅇㅇㅇㅇ12334543",
     "devComment": "",
     "status": "N",
-    "imagePath": "/api/bugreport/image.json?bugId=20260729174830.png",
+    "imagePath": "/api/bugreport/image.json?bugId=BUG_202608041108.png",
     "reopenTargetId": "",
-    "createdAt": "2026-07-29T08:48:30.388Z"
+    "isEdited": "Y",
+    "createdAt": "2026-08-04T02:08:34.297Z",
+    "updatedAt": "2026-08-04T02:13:30.532Z"
+  },
+  {
+    "bugId": "BUG_202608041114",
+    "reporter": "테스터1",
+    "assignee": "미정",
+    "loginId": "45ㅇㅇㄹ",
+    "menuPath": "메뉴1\n\n  메뉴1-1\n\n    메뉴1-1-3",
+    "comment": "ㄴㄴㄹㅇㅎㅊ츄ㅠㅡㅓㅣ/\nㅇㄹㅇㅎ로오\nㅇㅎㅇ로",
+    "devComment": "",
+    "status": "N",
+    "imagePath": "/api/bugreport/image.json?bugId=BUG_202608041114.png",
+    "reopenTargetId": "",
+    "isEdited": "N",
+    "createdAt": "2026-08-04T02:14:07.404Z"
   }
 ]

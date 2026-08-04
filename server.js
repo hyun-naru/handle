@@ -30,10 +30,16 @@ const getBugList = () => {
     }
 };
 
+// JSON 파일 읽기/쓰기 유틸리티 함수
 const saveBugList = (list) => {
-    fs.writeFileSync(DB_FILE, JSON.stringify(list, null, 2), 'utf8');
+    try {
+        fs.writeFileSync(DB_FILE, JSON.stringify(list, null, 2), 'utf8');
+        return true; // 👈 성공 시 true 반환하도록 추가
+    } catch (e) {
+        console.error('❌ DB 파일 저장 오류:', e);
+        return false;
+    }
 };
-
 // 미들웨어
 app.use(cors({
     origin: '*', // 모든 도메인에서의 API 요청 허용
@@ -48,37 +54,88 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 // 1. 버그 리포트 저장 (JSON 저장 + PNG 파일 저장)
 app.post(['/api/bugreport/save.json', '/handle/api/bugreport/save.json'], (req, res) => {
     try {
-        const { bugId, reporter, comment, imageData, reopenTargetId } = req.body;
+        const { 
+            bugId, 
+            reporter, 
+            loginId, 
+            menuPath, 
+            comment, 
+            devComment, 
+            imageData, 
+            reopenTargetId, 
+            isEdit,   
+            isEdited 
+        } = req.body;
         let imagePath = '';
 
         // Base64 이미지 스트링 -> 실제 .png 파일로 저장
         if (imageData && imageData.includes('base64,')) {
-            const base64Data = imageData.split('base64,')[1];
-            const fileName = `${bugId}.png`;
+            const fileName = bugId.endsWith('.png') ? bugId : `${bugId}.png`;
             const filePath = path.join(UPLOAD_DIR, fileName);
+            const base64Data = imageData.split('base64,')[1];
             fs.writeFileSync(filePath, base64Data, 'base64');
             imagePath = `/api/bugreport/image.json?bugId=${fileName}`;
         }
 
-        // JSON 데이터베이스(data/bug_reports.json) 업데이트
-        const bugList = getBugList();
-        const newBug = {
-            bugId: bugId || Date.now().toString(),
-            reporter: reporter || '익명',
-            assignee: '미정',
-            comment: comment || '',
-            devComment: '',
-            status: 'N',
-            imagePath: imagePath,
-            reopenTargetId: reopenTargetId || '',
-            createdAt: new Date().toISOString()
-        };
+        let bugList = getBugList();
+        
+        // trim() 및 String 변환으로 공백/타입 차이로 인한 비교 오류 방지
+        const targetBugId = String(bugId || '').trim();
+        const existingIndex = bugList.findIndex(b => String(b.bugId).trim() === targetBugId);
 
-        bugList.push(newBug);
-        saveBugList(bugList);
+        // isEdit(boolean/string) 및 isEdited('Y') 완벽 조건 체크
+        const isEditMode = isEdit === true || isEdit === 'true' || isEdited === 'Y';
 
-        console.log(`✅ [저장 완료] 버그 ID: ${newBug.bugId}, 작성자: ${newBug.reporter}`);
+        if (existingIndex !== -1 && isEditMode) {
+            // =========================================================
+            // 🔄 1. 기존 데이터 덮어쓰기 (UPDATE)
+            // =========================================================
+            bugList[existingIndex] = {
+                ...bugList[existingIndex], // 기존 데이터(createdAt, assignee, status 등 유지)
+                loginId: loginId || bugList[existingIndex].loginId,
+                menuPath: menuPath || bugList[existingIndex].menuPath,
+                comment: comment || bugList[existingIndex].comment,
+                devComment: devComment !== undefined ? devComment : bugList[existingIndex].devComment,
+                imagePath: imagePath || bugList[existingIndex].imagePath,
+                isEdited: 'Y', // 💡 수정됨 배지 표기 플래그 저장!
+                updatedAt: new Date().toISOString()
+            };
+
+            // 💡 로그를 if 블록 안으로 이동!
+            console.log(`🔄 [수정 완료] 버그 ID: ${bugId}, 작성자: ${bugList[existingIndex].reporter}`);
+
+        } else {
+            // =========================================================
+            // 🆕 2. 신규 데이터 추가 (INSERT)
+            // =========================================================
+            const newBug = {
+                bugId: bugId || `BUG_${Date.now()}`,
+                reporter: reporter || '익명',
+                assignee: '미정',
+                loginId: loginId || '-',
+                menuPath: menuPath || '-',
+                comment: comment || '',
+                devComment: '',
+                status: 'N',
+                imagePath: imagePath,
+                reopenTargetId: reopenTargetId || '',
+                isEdited: isEdited || 'N',
+                createdAt: new Date().toISOString()
+            };
+
+            bugList.push(newBug);
+            console.log(`✅ [신규 저장 완료] 버그 ID: ${newBug.bugId}, 작성자: ${newBug.reporter}`);
+        }
+
+        // 파일에 최종 저장
+        const isSaved = saveBugList(bugList);
+
+        if (isSaved) {
         res.json({ success: true, message: '버그 리포트가 성공적으로 저장되었습니다.' });
+        } else {
+            res.status(500).json({ success: false, message: '파일 쓰기 실패' });
+        }
+
     } catch (err) {
         console.error('❌ 저장 중 오류 발생:', err);
         res.status(500).json({ success: false, message: '파일 저장 실패' });
@@ -87,13 +144,13 @@ app.post(['/api/bugreport/save.json', '/handle/api/bugreport/save.json'], (req, 
 // 📌 관리자 - 담당 개발자 배정 API (POST)
 app.post(['/api/bugreport/assign.json', '/handle/api/bugreport/assign.json'], (req, res) => {
     try {
-        const { bugId, assignee } = req.body;
+        const { bugId, assignee, status } = req.body;
 
         if (!bugId || !assignee) {
             return res.status(400).json({ status: 'fail', message: 'bugId 또는 assignee가 누락되었습니다.' });
         }
 
-        console.log(`👤 담당자 배정 요청 - ID: ${bugId}, 담당자: ${assignee}`);
+        console.log(`👤 담당자 배정 요청 - ID: ${bugId}, 담당자: ${assignee}${status ? `, 상태: ${status}` : ''}`);
 
         // 1. 기존 버그 리스트 가져오기 (기존 getBugList 함수 사용)
         let bugList = getBugList();
@@ -101,8 +158,14 @@ app.post(['/api/bugreport/assign.json', '/handle/api/bugreport/assign.json'], (r
         // 2. 해당 bugId 찾아서 assignee 변경
         let isUpdated = false;
         bugList = bugList.map(bug => {
-            if (bug.bugId.toString() === bugId.toString()) {
+            if (String(bug.bugId).trim() === String(bugId).trim()) {
                 bug.assignee = assignee;
+                
+                // 💡 프론트엔드에서 status(예: 'N')를 함께 전달했으면 상태도 업데이트
+                if (status) {
+                    bug.status = status;
+                }
+                
                 isUpdated = true;
             }
             return bug;
@@ -112,12 +175,11 @@ app.post(['/api/bugreport/assign.json', '/handle/api/bugreport/assign.json'], (r
             return res.status(404).json({ status: 'fail', message: '해당 결함 ID를 찾을 수 없습니다.' });
         }
 
-        // 3. JSON 파일에 저장 (기존 saveBugList 또는 fs.writeFileSync 사용)
-        const DATA_FILE = path.join(process.cwd(), 'data', 'bug_reports.json');
-        fs.writeFileSync(DATA_FILE, JSON.stringify(bugList, null, 2), 'utf-8');
+        // 3. JSON 파일에 저장 (💡 saveBugList 유틸리티 활용)
+        saveBugList(bugList);
 
-        console.log(`✅ [${bugId}] 담당자 배정 완료: ${assignee}`);
-        return res.json({ status: 'success', message: '담당자가 변경되었습니다.' });
+        console.log(`✅ [${bugId}] 담당자 배정 완료: ${assignee}${status ? ` (상태: ${status})` : ''}`);
+        return res.json({ status: 'success', message: '담당자 정보가 변경되었습니다.' });
 
     } catch (err) {
         console.error('❌ 담당자 배정 중 오류:', err);
@@ -140,8 +202,11 @@ app.post(['/api/bugreport/update.json', '/handle/api/bugreport/update.json'], (r
 
         // 2. 해당 bugId를 찾아 상태(status) 및 개발자 코멘트(devComment) 업데이트
         let isUpdated = false;
+
+        const targetId = String(bugId).trim();
+
         bugList = bugList.map(bug => {
-            if (bug.bugId.toString() === bugId.toString()) {
+            if (String(bug.bugId || '').trim() === targetId) {
                 // status가 넘어온 경우에만 업데이트 (undefined/null 체크)
                 if (status !== undefined) {
                     bug.status = status;
@@ -159,9 +224,8 @@ app.post(['/api/bugreport/update.json', '/handle/api/bugreport/update.json'], (r
             return res.status(404).json({ status: 'fail', message: '해당 결함 ID를 찾을 수 없습니다.' });
         }
 
-        // 3. JSON 파일 저장
-        const DATA_FILE = path.join(process.cwd(), 'data', 'bug_reports.json');
-        fs.writeFileSync(DATA_FILE, JSON.stringify(bugList, null, 2), 'utf-8');
+        // 3. JSON 파일 저장 (💡 saveBugList 유틸리티 활용)
+        saveBugList(bugList);
 
         console.log(`✅ [${bugId}] 업데이트 성공 (상태: ${status})`);
         return res.json({ status: 'success', message: '성공적으로 저장되었습니다.' });
@@ -175,10 +239,11 @@ app.post(['/api/bugreport/update.json', '/handle/api/bugreport/update.json'], (r
 app.get(['/api/bugreport/list.json', '/handle/api/bugreport/list.json'], (req, res) => {
     console.log('📌 버그 리포트 목록 조회 요청 수신');
     const bugList = getBugList();
+    
     res.json(bugList);
 });
 
-// 📌 3. 이미지 파일 제공 (캡처보기 버튼 대응)
+// 📌 이미지 파일 제공 (캡처보기 대응)
 app.get('/api/bugreport/image.json', (req, res) => {
     const bugId = req.query.bugId;
     if (!bugId) return res.status(400).send('File not found');
@@ -192,7 +257,8 @@ app.get('/api/bugreport/image.json', (req, res) => {
         res.status(404).send('Image Not Found');
     }
 });
-// PNG 파일의 원본 너비, 높이(px)를 읽어오는 내장 유틸리티 함수
+
+// PNG 파일 원본 너비, 높이(px) 추출 함수
 function getPngDimensions(filePath) {
     const buffer = Buffer.alloc(24);
     const fd = fs.openSync(filePath, 'r');
@@ -232,6 +298,8 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
             { header: '작성자\n(테스터)', key: 'reporter', width: 15 },
             { header: '담당자\n(개발자)', key: 'assignee', width: 15 },
             { header: '조치상태', key: 'status', width: 15 },
+            { header: '로그인 ID', key: 'loginId', width: 15 },
+            { header: '메뉴 진입 경로', key: 'menuPath', width: 15 },
             { header: '결함 내용', key: 'comment', width: 60 },
             { header: '개발자 코멘트', key: 'devComment', width: 60 },
             { header: '등록일시', key: 'createdAt', width: 22 },
@@ -266,14 +334,16 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
                 const bug = bugList[i];
                 const rowIndex = i + 2; // 1행은 헤더
 
-                // 행 데이터 추가
+                // 💡 [수정 2] Key 중복 제거 및 각각의 파싱된 필드에 바인딩
                 const row = worksheet.addRow({
                     bugId: bug.bugId || '',
                     reporter: bug.reporter || '',
                     assignee: bug.assignee || '미정',
                     status: bug.status === 'Y' ? '완료' : (bug.status === 'N' ? '접수' : '대기'),
+                    loginId: bug.loginId || '-',
+                    menuPath: bug.menuPath || '-',
                     comment: bug.comment || '',
-                    devComment: bug.devComment || '',
+                    devComment: bug.devComment || '', 
                     createdAt: bug.createdAt || '',
                     image: ''
                 });
@@ -308,7 +378,7 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
                 // 🖼️ [핵심] 만능 이미지 파일 경로 찾기 로직
                 // ----------------------------------------------------
                 // 1. bugId 기반 파일명 생성 (확장자 보장)
-                let fileName = bug.bugId ? bug.bugId.toString().trim() : '';
+                let fileName = String(bug.bugId || '').trim();
                 if (fileName && !fileName.endsWith('.png')) {
                     fileName += '.png';
                 }
@@ -350,7 +420,7 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
                     // 🖼️ 4. 행 높이를 지정한 세로 높이에 맞춰 고정 (pt 단위 변환 + 여백)
                     row.height = TARGET_HEIGHT * 0.75 + 15;
                     // 🖼️ 5. 이미지 가로 폭에 맞춰 H열 너비 동적 조절 (px ➡️ excel column width)
-                    const imageCol = worksheet.getColumn(8); // 8번째 컬럼 (image)
+                    const imageCol = worksheet.getColumn(10); // 10번째 컬럼 (image)
                     const requiredColWidth = Math.round(calculatedWidth / 7) + 3;
                     if ((imageCol.width || 0) < requiredColWidth) {
                         imageCol.width = requiredColWidth;
@@ -362,7 +432,7 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
 
                     // 🖼️ 4. 비율대로 이미지 삽입
                     worksheet.addImage(imageId, {
-                        tl: { col: 7, row: rowIndex - 1 },
+                        tl: { col: 9, row: rowIndex - 1 },
                         //ext: { width: TARGET_WIDTH, height: calculatedHeight } //가로
                         ext: { width: calculatedWidth, height: TARGET_HEIGHT } //세로
                     });
@@ -405,6 +475,51 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
 });
 
 
+// [신규 추가] 버그 리포트 삭제 API (기록 완전히 삭제)
+app.post(['/api/bugreport/delete.json', '/handle/api/bugreport/delete.json'], (req, res) => {
+    try {
+        const { bugId } = req.body;
+
+        if (!bugId) {
+            return res.status(400).json({ status: 'error', message: 'bugId가 필요합니다.' });
+        }
+
+        let bugList = getBugList();
+        const initialLength = bugList.length;
+        
+        // 해당 bugId를 제외한 목록으로 필터링
+        const targetId = String(bugId || '').trim();
+        bugList = bugList.filter(bug => String(bug.bugId || '').trim() !== targetId);
+
+        if (bugList.length === initialLength) {
+            return res.status(404).json({ status: 'error', message: '해당 버그 리포트를 찾을 수 없습니다.' });
+        }
+
+        // 💡 saveBugList 실행 및 저장 성공 여부 검사
+        if (saveBugList(bugList)) {
+            // 💡 uploadDir -> UPLOAD_DIR 변수명 수정
+            const fileName = targetId.endsWith('.png') ? targetId : `${targetId}.png`;
+            const imagePath = path.join(UPLOAD_DIR, fileName);
+            if (fs.existsSync(imagePath)) {
+                try { 
+                    fs.unlinkSync(imagePath); 
+                    console.log(`🗑️ [${targetId}] 이미지 파일 삭제 완료`);
+                } catch (e) { 
+                    console.error('이미지 삭제 실패:', e); 
+                }
+            }
+
+            return res.json({ status: 'success', message: '결함이 완전히 삭제되었습니다.' });
+        } else {
+            return res.status(500).json({ status: 'error', message: '파일 저장 중 오류가 발생했습니다.' });
+        }
+    } catch (err) {
+        console.error('❌ 삭제 처리 중 서버 오류:', err);
+        return res.status(500).json({ status: 'error', message: '서버 처리 중 오류가 발생했습니다.' });
+    }
+});
+
+
 // 💡 [추가 1] uploads 및 data 폴더 정적 파일 접근 허용
 app.use('/uploads', express.static(UPLOAD_DIR));
 app.use('/data', express.static(DATA_DIR));
@@ -417,7 +532,7 @@ if (fs.existsSync(DIST_DIR)) {
 
 // 💡 API 이외의 GET 요청 처리 (dist/index.html이 있을 때만 전송)
 app.get(/(.*)/, (req, res, next) => {
-    if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
+    if (req.path.startsWith('/api') || req.path.startsWith('/handle') || req.path.startsWith('/uploads')) {
         return next();
     }
 
