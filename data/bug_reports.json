@@ -2,12 +2,12 @@
   {
     "bugId": "BUG_202608041108",
     "reporter": "테스터1",
-    "assignee": "미정",
+    "assignee": "개발자1",
     "loginId": "ㅇㅇ",
     "menuPath": "메뉴2\n\n  메뉴2-1\n\n    메뉴2-1-1",
     "comment": "ㅇㅇㅇㅇ12334543",
     "devComment": "",
-    "status": "N",
+    "status": "J",
     "imagePath": "/api/bugreport/image.json?bugId=BUG_202608041108.png",
     "reopenTargetId": "",
     "isEdited": "Y",
@@ -17,15 +17,30 @@
   {
     "bugId": "BUG_202608041114",
     "reporter": "테스터1",
-    "assignee": "미정",
+    "assignee": "개발자1",
     "loginId": "45ㅇㅇㄹ",
     "menuPath": "메뉴1\n\n  메뉴1-1\n\n    메뉴1-1-3",
-    "comment": "ㄴㄴㄹㅇㅎㅊ츄ㅠㅡㅓㅣ/\nㅇㄹㅇㅎ로오\nㅇㅎㅇ로",
-    "devComment": "",
-    "status": "N",
+    "comment": "ㄴㄴㄹㅇㅎㅊ츄ㅠㅡㅓㅣ/123\nㅇㄹㅇㅎ로오\nㅇㅎㅇ로",
+    "devComment": "ㅁㄴㅇㄴ",
+    "status": "Y",
     "imagePath": "/api/bugreport/image.json?bugId=BUG_202608041114.png",
     "reopenTargetId": "",
+    "isEdited": "Y",
+    "createdAt": "2026-08-04T02:14:07.404Z",
+    "updatedAt": "2026-08-04T08:40:57.866Z"
+  },
+  {
+    "bugId": "BUG_202608051434",
+    "reporter": "테스터1",
+    "assignee": "개발자1",
+    "loginId": "ㅇㄴㄹㄴ",
+    "menuPath": "메뉴1\n\n  메뉴1-2\n\n    메뉴1-2-1",
+    "comment": "ㅇㄴㄹㅇㄴㄹㄴㅇ",
+    "devComment": "",
+    "status": "J",
+    "imagePath": "/api/bugreport/image.json?bugId=BUG_202608051434.png",
+    "reopenTargetId": "",
     "isEdited": "N",
-    "createdAt": "2026-08-04T02:14:07.404Z"
+    "createdAt": "2026-08-05T05:34:39.578Z"
   }
 ]
