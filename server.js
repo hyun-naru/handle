@@ -334,29 +334,30 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
                 const bug = bugList[i];
                 const rowIndex = i + 2; // 1행은 헤더
                 
-                // ISO 날짜 문자열을 "YYYY-MM-DD HH:mm" 형식으로 변환하는 함수
-                function formatDateToMinutes(dateStr) {
-                    if (!dateStr || dateStr === '-') return '-';
-                    try {
-                        const d = new Date(dateStr);
-                        if (isNaN(d.getTime())) return dateStr; // 유효하지 않은 날짜면 원본 반환
-
-                        // 한국 표준시(KST) 기준 변환이 필요할 경우 타임존 고려
-                        const year = d.getFullYear();
-                        const month = String(d.getMonth() + 1).padStart(2, '0');
-                        const day = String(d.getDate()).padStart(2, '0');
-                        const hours = String(d.getHours()).padStart(2, '0');
-                        const minutes = String(d.getMinutes()).padStart(2, '0');
-
-                        return `${year}-${month}-${day} ${hours}:${minutes}`;
-                    } catch (e) {
-                        return dateStr;
+                // 💡 [핵심] 안전한 날짜 가공 로직 (YYYY-MM-DD HH:mm)
+                let formattedCompletedAt = '-';
+                if (bug.status === 'Y') {
+                    const rawDate = bug.updatedAt || bug.createdAt;
+                    if (rawDate) {
+                        try {
+                            const d = new Date(rawDate);
+                            if (!isNaN(d.getTime())) {
+                                const year = d.getFullYear();
+                                const month = String(d.getMonth() + 1).padStart(2, '0');
+                                const day = String(d.getDate()).padStart(2, '0');
+                                const hours = String(d.getHours()).padStart(2, '0');
+                                const minutes = String(d.getMinutes()).padStart(2, '0');
+                                formattedCompletedAt = `${year}-${month}-${day} ${hours}:${minutes}`;
+                            }
+                        } catch (e) {
+                            formattedCompletedAt = String(rawDate);
+                        }
                     }
                 }
 
                 // 완료 일시 대상 값 추출
                 const rawCompletedDate = bug.status === 'Y' ? (bug.updatedAt || bug.createdAt || '-') : '-';
-                
+
                 // 💡 [수정 2] Key 중복 제거 및 각각의 파싱된 필드에 바인딩
                 const row = worksheet.addRow({
                     bugId: bug.bugId || '',
@@ -367,7 +368,7 @@ app.get(['/api/bugreport/download.json', '/handle/api/bugreport/download.json'],
                     menuPath: bug.menuPath || '-',
                     comment: bug.comment || '',
                     devComment: bug.devComment || '', 
-                    completedAt: formatDateToMinutes(rawCompletedDate),
+                    completedAt: formattedCompletedAt,
                     image: ''
                 });
                 // 각 셀에 자동 줄바꿈 및 정렬 적용
